@@ -1,4 +1,4 @@
-# need to fix reset primary keys 
+# need to fix reset primary keys
 
 ApplicationRecord.transaction do
   puts "Destroying tables..."
