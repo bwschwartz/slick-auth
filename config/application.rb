@@ -21,8 +21,8 @@ Bundler.require(*Rails.groups)
 module SlickAuth
   class Application < Rails::Application
 
-    config.middlleware.use ActionDispatch::cookeis
-    config.middllware.use ActionDospatch:Session::CookieStore,
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore,
       key: '_slick_session',
       same_site: :lax,
       secure: Rails.env.production?
