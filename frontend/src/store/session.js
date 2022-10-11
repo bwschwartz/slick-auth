@@ -12,15 +12,7 @@ const removeUser = (user) => ({
   type: REMOVE_USER
 });
 
-const storeCSRFToken = (response) => {
-  const csrfToken = response.headers.get("X-CSRF-Token")
-  if (csrfToken) sessionStorage.setItem("X-CSRF_TOKEN", csrfToken)
-}
 
-const storeUser = (user) => {
-  if (user) sessionStorage.setItem("user", JSON.stringify(user));
-  else sessionStorage.removeItem("user");
-}
 
 const sessionReducer = (state={ user: null }, action) => {
 
@@ -46,5 +38,18 @@ export const login = (user) => async (dispatch) => {
   return res;
 }
 
+export const restoreSession = () => async (dispatch) => {
+
+}
+
+const storeCSRFToken = (response) => {
+  const csrfToken = response.headers.get("X-CSRF-Token")
+  if (csrfToken) sessionStorage.setItem("X-CSRF_TOKEN", csrfToken)
+}
+
+const storeUser = (user) => {
+  if (user) sessionStorage.setItem("user", JSON.stringify(user));
+  else sessionStorage.removeItem("user");
+}
+
 export default sessionReducer;
-//two action creators, set user in sessoin slice
