@@ -1,14 +1,19 @@
 header {
   display:flex;
   justify-content: space-between;
-  margin-top: 40px;
+  margin-top: 36px;
+  padding-bottom:20px;
   height: 75px;
   align-items: center;
+  margin-bottom: -25px;
+}
+
+body {
+  font-family:Slack-Lato,Slack-Fractions,appleLogo,sans-serif ;
 }
 
 #right-column {
   display: flex;
-  /* margin-right: 17px; */
   font-weight: bolder;
   text-align: right;
   flex-direction: column;
@@ -22,14 +27,14 @@ header {
   margin: 0;
   margin-top: 4px;
   height: 19px;
+  /* letter-spacing: .5px; */
 }
 
 #right-column a {
-  /* margin: 0; */
-  /* margin-top: 14px; */
   font-weight: 400;
   color: hsl(206, 80%, 35%);
   text-decoration: none;
+  font-size: 14px;
 }
 
 #right-column-text {
@@ -51,6 +56,7 @@ header {
   font-weight: lighter;
   color: grey;
 }
+/* form */
 
 #sign-up-form {
   display: flex;
@@ -64,12 +70,88 @@ header {
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -.75px;
-  line-height: 46px;
+  line-height: 48px;
   margin-bottom: 10px;
   font-variant-ligatures: common-ligatures;
   text-align: center;
+  /* letter-spacing: -.75px; */
 }
 
-body {
-  font-family:Slack-Lato,Slack-Fractions,appleLogo,sans-serif ;
+#sign-up-form h6 {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 100;
+  text-align: center;
+  margin-bottom: 0px;
 }
+
+#rad {
+  font-weight: 400;
+}
+
+#demo-div {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+#demo-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* width: 57%; */
+  width: 380px;
+  height: 75%;
+  font-weight: normal;
+  background-color: #fff;
+  border: 2px solid #4285f4;
+  color: #4285f4;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+#freds-face {
+  border-radius: 100%;
+  margin: 16px;
+}
+
+#or {
+  display: flex;
+  font-size: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: lighter;
+}
+
+#or hr{
+  margin: 20px;
+  width: 159px;
+  border-style: solid;
+  color: lightgrey;
+}
+
+form {
+  display: flex;
+  flex-direction:column;
+  align-items: left;
+  width: 50%;
+  height: 100%;
+}
+
+
+/* form .credential {
+  background-color: white;
+  outline:none;
+  -webkit-appearance:none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  width: 1000px;
+  height:100px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  justify-content: space-between;
+
+} */

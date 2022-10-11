@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 
 import './LoginForm.css';
 import SlackIcon from '../../assets/slick_icon1.png'
+import FredsFace from '../../assets/demo_user.PNG'
 
 const LoginFormPage = () => {
   const dispatch = useDispatch();
@@ -55,27 +56,40 @@ const LoginFormPage = () => {
 
       <div id="sign-up-form">
         <h1>Sign in to Slick</h1>
-        <h6>We suggest using the email that makes you feel the most cool. </h6>
-          <ul>
-            {errors_list}
-          </ul>
-          <form onSubmit={ handleSubmit }>
-            <label>
-            Email:
-              <input type="text"
-              value={ email }
-              onChange = { (e) => setEmail(e.target.value) } />
-            </label>
 
-            <label>
-            Password:
-              <input type="password"
-              value={ password }
-              onChange = { (e) => setPassword(e.target.value) } />
-            </label>
+        <h6>We suggest using the
+          <span id="rad"> email that makes you feel the most 😎</span>
+        </h6>
 
-            <input type="submit" value="Submit"/>
-          </form>
+        <ul>
+          {errors_list}
+        </ul>
+
+        <div id="demo-div">
+            <button id="demo-button" >
+          <img id="freds-face" src={FredsFace} width="28" height="28"/>
+            Sign in with a rad Demo User</button>
+        </div>
+
+        <div id="or">
+        <hr size="1"></hr>
+        OR
+        <hr size="1"></hr>
+        </div>
+
+        <form onSubmit={ handleSubmit }>
+          <label htmlFor="email">Email address</label>
+          <input id="email" className="credential" type="text"
+            value={ email }
+            onChange = { (e) => setEmail(e.target.value) } />
+
+            <label htmlFor="password">Password</label>
+            <input id="password" className="credential" type="password"
+            value={ password }
+            onChange = { (e) => setPassword(e.target.value) } />
+
+          <input type="submit" value="Sign In"/>
+        </form>
       </div>
     </>
   )
