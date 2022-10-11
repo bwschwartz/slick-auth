@@ -77,6 +77,10 @@ body {
   /* letter-spacing: -.75px; */
 }
 
+#suave {
+  color: #4a154b;
+}
+
 #sign-up-form h6 {
   margin-top: 8px;
   font-size: 18px;
@@ -138,20 +142,5 @@ form {
   align-items: left;
   width: 50%;
   height: 100%;
-}
-
-
-/* form .credential {
-  background-color: white;
-  outline:none;
-  -webkit-appearance:none;
-  -moz-appearance: none;
-  appearance: none;
-  background: none;
-  width: 1000px;
-  height:100px;
-  box-sizing: border-box;
-  border-radius: 4px;
   justify-content: space-between;
-
-} */
+}

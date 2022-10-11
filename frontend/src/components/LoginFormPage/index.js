@@ -55,7 +55,7 @@ const LoginFormPage = () => {
       </header>
 
       <div id="sign-up-form">
-        <h1>Sign in to Slick</h1>
+        <h1>Sign in to <span id="suave">Google Fullstack</span></h1>
 
         <h6>We suggest using the
           <span id="rad"> email that makes you feel the most 😎</span>
@@ -80,11 +80,13 @@ const LoginFormPage = () => {
         <form onSubmit={ handleSubmit }>
           <label htmlFor="email">Email address</label>
           <input id="email" className="credential" type="text"
+            placeholder="name@google.com"
             value={ email }
             onChange = { (e) => setEmail(e.target.value) } />
 
             <label htmlFor="password">Password</label>
             <input id="password" className="credential" type="password"
+            placeholder="Your password (e.g. 'password')"
             value={ password }
             onChange = { (e) => setPassword(e.target.value) } />
 
