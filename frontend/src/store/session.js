@@ -12,10 +12,11 @@ const removeUser = (user) => ({
   type: REMOVE_USER
 });
 
+const initialState = {
+  user: JSON.parse(sessionStorage.getItem("currentUser"))
+};
 
-
-const sessionReducer = (state={ user: null }, action) => {
-
+const sessionReducer = (state=initialState, action) => {
   switch(action.type) {
     case SET_USER:
       return {...state, user: action.user}
@@ -34,12 +35,18 @@ export const login = (user) => async (dispatch) => {
     headers: {'Content-Type': 'application/json'}
   })
   const data = await res.json();
+  storeUser(data.user)
   dispatch(setUser(data.user));
   return res;
 }
 
 export const restoreSession = () => async (dispatch) => {
-
+  const response = await csrfFetch("/api/session");
+  storeCSRFToken(response);
+  const data = await response.json();
+  storeUser(data.user);
+  dispatch(setUser(data.user));
+  return response;
 }
 
 const storeCSRFToken = (response) => {
