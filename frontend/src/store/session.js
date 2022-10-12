@@ -59,4 +59,21 @@ const storeUser = (user) => {
   else sessionStorage.removeItem("user");
 }
 
+
+// sign up
+
+export const signUp = (user) => async (dispatch) => {
+  const { email, password } = user;
+  const res = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({email, password}),
+    type: "application/json"
+  })
+
+  const data = await res.json();
+  storeUser(data.user);
+  dispatch(setUser(data.user));
+  return res;
+}
+
 export default sessionReducer;

@@ -31,7 +31,7 @@ const LoginFormPage = () => {
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     })
-  }
+   }
 
   const loginDemoUser = () => {
     console.log("logged in")
@@ -69,7 +69,7 @@ const LoginFormPage = () => {
         </h6>
 
         <ul>
-          {/* {errors_list} */}
+          {errors_list}
         </ul>
 
         <div id="demo-div">
