@@ -17,8 +17,6 @@ export const SignUpFormPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmationPassword) {
-      // dispatch(sessionActions.signUp({email, password}))
-
       setErrors([]);
       return dispatch(sessionActions.signUp({ email, password }))
         .catch(async (res) => {
@@ -26,17 +24,17 @@ export const SignUpFormPage = () => {
         try {
           // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
-          console.log("hi")
         } catch {
           data = await res.text(); // Will hit this case if the server is down
         }
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
+        console.log(`data erros: ${data.errors}`)
       });
     }
     else {
-      setErrors(['Password and confirmation password don\'t match, bro'])
+      return setErrors(['Password and confirmation password don\'t match, bro'])
     }
   }
 
@@ -69,7 +67,9 @@ export const SignUpFormPage = () => {
 
         <ul> { errorsList } </ul>
 
-        <input type="submit" value="Sign Up" id="form-button"/>
+        {/* <input type="submit" value="Sign Up" id="form-button"/> */}
+        <input type="submit" value="Sign Up"/>
+{/*  */}
 
       </form>
     </>
