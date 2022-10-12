@@ -66,7 +66,7 @@ body {
 }
 
 #sign-up-form h1 {
-  font-family: Slack-,Helvetica Neue,Helvetica,Segoe UI,Tahoma,Arial,sans-serif;
+  font-family: Slack-Larsseit,Helvetica Neue,Helvetica,Segoe UI,Tahoma,Arial,sans-serif;
   font-size: 48px;
   font-weight: 700;
   letter-spacing: -.75px;
@@ -107,8 +107,7 @@ body {
   justify-content: center;
   /* width: 57%; */
   width: 380px;
-  /* height: 75%; */
-  height: 45px;
+  height: 75%;
   font-weight: normal;
   background-color: #fff;
   border: 2px solid #4285f4;
@@ -124,8 +123,7 @@ body {
 
 #or {
   display: flex;
-  font-size: 13px;
-  font-weight:bolder;
+  font-size: 12px;
   align-items: center;
   margin-bottom: 10px;
   font-weight: lighter;
@@ -142,7 +140,7 @@ form {
   display: flex;
   flex-direction:column;
   align-items: left;
-  width: 376px;
+  width: 50%;
   height: 100%;
   justify-content: space-between;
 }
@@ -160,15 +158,13 @@ form input {
   font-size: 18px;
   /* line-height: 1.3333333; */
   line-height: 1.46666667;
-  height: 38px;
-  border: 1px solid rgb(187, 186, 186);
-  border-radius: 3px;
+  height: 34px;
   /* text-align:center; */
 }
 
 #form-button {
   margin-top: 30px;
-  height: 44px;
+  height: 40px;
   border-radius: 4px;
   background-color: #4A154B;
   color: white;
