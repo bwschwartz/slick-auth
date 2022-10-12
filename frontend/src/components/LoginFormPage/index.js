@@ -31,8 +31,15 @@ const LoginFormPage = () => {
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     })
-
   }
+
+  const loginDemoUser = () => {
+    console.log("logged in")
+    const email = 'benjamin.schwart123@gmail.com'
+    const password = 'password123'
+    return dispatch(sessionActions.login({ email, password }))
+  }
+
   const errors_list = errors.map(error => <li key={error}>{error}</li>)
 
   return (
@@ -62,11 +69,12 @@ const LoginFormPage = () => {
         </h6>
 
         <ul>
-          {errors_list}
+          {/* {errors_list} */}
         </ul>
 
         <div id="demo-div">
-            <button id="demo-button" >
+            <button id="demo-button"
+            onClick={loginDemoUser} >
           <img id="freds-face" src={FredsFace} width="28" height="28"/>
             Sign in with a rad Demo User</button>
         </div>
@@ -80,17 +88,21 @@ const LoginFormPage = () => {
         <form onSubmit={ handleSubmit }>
           <label htmlFor="email">Email address</label>
           <input id="email" className="credential" type="text"
-            placeholder="name@google.com"
+            placeholder="  name@google.com"
             value={ email }
             onChange = { (e) => setEmail(e.target.value) } />
 
             <label htmlFor="password">Password</label>
             <input id="password" className="credential" type="password"
-            placeholder="Your password (e.g. 'password')"
+            placeholder="  e.g. 'password'"
             value={ password }
             onChange = { (e) => setPassword(e.target.value) } />
 
-          <input type="submit" value="Sign In"/>
+          {/* <span>
+          {errors_list}
+          </span> */}
+
+          <input type="submit" value="Sign In" id="form-button"/>
         </form>
       </div>
     </>

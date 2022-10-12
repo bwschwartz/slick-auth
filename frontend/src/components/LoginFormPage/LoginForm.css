@@ -144,3 +144,29 @@ form {
   height: 100%;
   justify-content: space-between;
 }
+
+form label {
+  font-size: 15px;
+  font-weight: 700;
+  font-stretch: -.75;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: #1d1c1d;
+}
+
+form input {
+  font-size: 18px;
+  /* line-height: 1.3333333; */
+  line-height: 1.46666667;
+  height: 34px;
+  /* text-align:center; */
+}
+
+#form-button {
+  margin-top: 30px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: #4A154B;
+  color: white;
+  font-weight:400;
+}
