@@ -62,7 +62,7 @@ const LoginFormPage = () => {
       </header>
 
       <div id="sign-up-form">
-        <h1>Sign in to <span id="suave">Google Fullstack</span></h1>
+        <h1>Sign in to <span id="suave">Google Magenta</span></h1>
 
         <h6>We suggest using the
           <span id="rad"> email that makes you feel the most 😎</span>
