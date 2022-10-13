@@ -17,7 +17,6 @@ export const SignUpFormPage = () => {
 
   if (user) return <Redirect to="/" />;
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmationPassword) {
@@ -47,7 +46,6 @@ export const SignUpFormPage = () => {
 
   return (
     <>
-
     <header>
         <div id="left-col">
           <h1></h1>
@@ -95,7 +93,7 @@ export const SignUpFormPage = () => {
 
         {/* <input type="submit" value="Sign Up" id="form-button"/> */}
         <input type="submit" value="Sign Up" id="sign-up-button"/>
-{/*  */}
+
 
       </form>
       </div>

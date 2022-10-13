@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import LoginFormPage from './components/LoginFormPage'
 import SignUpFormPage from './components/SignUpFormPage'
 import NavBar from './components/NavBar'
+import { ChannelPage } from './components/ChannelPage'
+
 
 function App() {
   return (
@@ -10,6 +12,11 @@ function App() {
       <Route path="/login">
         <LoginFormPage/>
       </Route>
+
+      <Route path="/channels">
+        <ChannelPage/>
+      </Route>
+
 
       <Route path="/signup">
         <SignUpFormPage/>

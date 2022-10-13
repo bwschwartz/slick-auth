@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_13_154551) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_13_174020) do
+  create_table "channel_users", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_channel_users_on_channel_id"
+    t.index ["user_id"], name: "index_channel_users_on_user_id"
+  end
+
   create_table "channels", force: :cascade do |t|
     t.string "title", null: false
     t.datetime "created_at", null: false
@@ -29,4 +38,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_13_154551) do
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
   end
 
+  add_foreign_key "channel_users", "channels"
+  add_foreign_key "channel_users", "users"
 end

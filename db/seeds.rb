@@ -28,7 +28,6 @@ ApplicationRecord.transaction do
 
   puts "Done!"
 
-
   puts "Creating channels..."
 
   Channel.create!(
@@ -43,5 +42,31 @@ ApplicationRecord.transaction do
 
   puts "Done!"
 
+  puts "Create user-channel assocations in join table..."
 
+  ChannelUser.create!(
+    channel_id: 1,
+    user_id: 1
+  )
+
+  ChannelUser.create!(
+    channel_id: 1,
+    user_id: 2
+  )
+
+  ChannelUser.create!(
+    channel_id: 1,
+    user_id: 3
+  )
+
+  puts "Done!"
+# .create!(
+#     title: 'Reasons we\'re ambivalent about Dan!'
+#   )
+
+  # 10.times do
+  #   Channel.create!({
+  #   title:  Faker::Hipster.unique.word
+  #   })
+  # end
 end

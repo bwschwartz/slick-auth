@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: :create
+    resources :channels, only: :index
     resource :session, only: %i(show create destroy)
   end
 
