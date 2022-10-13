@@ -26,15 +26,22 @@ ApplicationRecord.transaction do
     })
   end
 
+  puts "Done!"
 
+
+  puts "Creating channels..."
+
+  Channel.create!(
+    title: 'Reasons we\'re ambivalent about Dan!'
+  )
 
   10.times do
-    User.create!({
-      email:  Faker::Internet.unique.email,
-      password: 'password'
+    Channel.create!({
+    title:  Faker::Hipster.unique.word
     })
   end
 
   puts "Done!"
+
 
 end
