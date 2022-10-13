@@ -14,6 +14,20 @@ ApplicationRecord.transaction do
     password: 'password123'
   )
 
+  User.create!(
+    email: 'demo@gmail.com',
+    password: 'password'
+  )
+
+  10.times do
+    User.create!({
+      email:  Faker::Internet.unique.email,
+      password: 'password'
+    })
+  end
+
+
+
   10.times do
     User.create!({
       email:  Faker::Internet.unique.email,
