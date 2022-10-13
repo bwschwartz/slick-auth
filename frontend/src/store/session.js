@@ -1,6 +1,4 @@
 import csrfFetch from './csrf.js'
-// import storeCSRFToken from './csrf.js'
-
 export const SET_USER = 'session/SET_USER'
 export const REMOVE_USER = 'session/REMOVE_USER'
 
@@ -28,11 +26,6 @@ const sessionReducer = (state=initialState, action) => {
   }
 }
 
-// function storeCSRFToken(response) {
-//   const csrfToken = response.headers.get("X-CSRF-Token");
-//   if (csrfToken) sessionStorage.setItem("X-CSRF-Token", csrfToken);
-// }
-
 export const login = (user) => async (dispatch) => {
   const { email, password } = user;
   const res = await csrfFetch('/api/session', {
@@ -47,17 +40,20 @@ export const login = (user) => async (dispatch) => {
 }
 
 export const logout = (user) => async (dispatch) => {
-  
-
+  console.log("hit logout")
+  const res = await csrfFetch('/api/session', { method: 'DELETE'});
+  storeUser(null);
+  dispatch(removeUser())
+  return res;
 }
 
 export const restoreSession = () => async (dispatch) => {
-  const response = await csrfFetch("/api/session");
-  storeCSRFToken(response);
-  const data = await response.json();
+  const res = await csrfFetch("/api/session");
+  storeCSRFToken(res);
+  const data = await res.json();
   storeUser(data.user);
   dispatch(setUser(data.user));
-  return response;
+  return res;
 }
 
 const storeCSRFToken = (response) => {
