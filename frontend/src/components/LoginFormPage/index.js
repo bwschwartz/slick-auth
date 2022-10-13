@@ -56,13 +56,13 @@ const LoginFormPage = () => {
           <div id="right-column">
            <div id="right-column-text">
             <h4 id="new">New to Slick?</h4>
-            <a id="create-account" href="google.com">Create an Account</a>
+            <a id="create-account" href="/signup">Create an Account</a>
            </div>
         </div>
       </header>
 
       <div id="sign-up-form">
-        <h1>Sign in to <span id="suave">Google Fullstack</span></h1>
+        <h1>Sign in to <span id="suave">Google Magenta</span></h1>
 
         <h6>We suggest using the
           <span id="rad"> email that makes you feel the most 😎</span>

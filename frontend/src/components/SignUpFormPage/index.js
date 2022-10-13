@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session'
 import { Redirect } from 'react-router-dom'
+import SlackIcon from '../../assets/slick_icon1.png'
+import './SignUpForm.css';
+
+
 
 export const SignUpFormPage = () => {
   const dispatch = useDispatch();
@@ -43,7 +47,29 @@ export const SignUpFormPage = () => {
 
   return (
     <>
-      <form onSubmit= { handleSubmit }>
+
+    <header>
+        <div id="left-col">
+          <h1></h1>
+        </div>
+
+        <div id="slick-icon">
+          <img src={SlackIcon} width="134 " height="38"/>
+        </div>
+
+          <div id="right-column">
+           <div id="right-column-text">
+            <h4 id="new">Already have an Account</h4>
+            <a id="create-account" href="/login">Sign in instead</a>
+           </div>
+        </div>
+      </header>
+
+    <div id="sign-up-form">
+      <h1>Join <span id="suave">Google Magenta</span></h1>
+
+      <form
+      onSubmit= { handleSubmit }>
         <label htmlFor="email">Email</label>
         <input id="email"
           type="text"
@@ -68,10 +94,11 @@ export const SignUpFormPage = () => {
         <ul> { errorsList } </ul>
 
         {/* <input type="submit" value="Sign Up" id="form-button"/> */}
-        <input type="submit" value="Sign Up"/>
+        <input type="submit" value="Sign Up" id="sign-up-button"/>
 {/*  */}
 
       </form>
+      </div>
     </>
   )
 }

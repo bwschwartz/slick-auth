@@ -2,7 +2,7 @@
 import './NavBar.css';
 import { logout } from '../../store/session'
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react'
+import { Redirect } from 'react-router-dom'
 
 
 const NavBar = () => {
@@ -10,7 +10,7 @@ const NavBar = () => {
 
   const user = useSelector ( (state) => state.session.user )
 
-
+  if (!user) return  <Redirect to="/login"/>
   const logOutUser= () => {
     console.log("log out")
     return dispatch(logout())
