@@ -12,7 +12,7 @@ const removeUser = (user) => ({
 });
 
 const initialState = {
-  user: JSON.parse(sessionStorage.getItem("currentUser"))
+  user: JSON.parse(sessionStorage.getItem("user"))
 };
 
 const sessionReducer = (state=initialState, action) => {
@@ -40,7 +40,6 @@ export const login = (user) => async (dispatch) => {
 }
 
 export const logout = (user) => async (dispatch) => {
-  console.log("hit logout")
   const res = await csrfFetch('/api/session', { method: 'DELETE'});
   storeUser(null);
   dispatch(removeUser())
