@@ -6,6 +6,7 @@ import SlackIcon from '../../assets/slick_icon1.png'
 import './SignUpForm.css';
 
 
+
 export const SignUpFormPage = () => {
   const dispatch = useDispatch();
   const user = useSelector( (state) => state.session.user );
