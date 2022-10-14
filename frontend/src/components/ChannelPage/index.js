@@ -7,14 +7,13 @@ import { useEffect } from 'react'
 export const ChannelPage = () => {
 
   const dispatch = useDispatch();
-  const channelsObj = useSelector( (state) => state.channels ? state.channels : [] )
-  const  channelsList = Object.values(channelsObj)[0]
+  const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
 
   useEffect (()=> {
     dispatch(fetchChannels())
   }, [])
 
-  const channelsLis = channelsList.map( (channel,i) => <li key={i}>{channel.title}</li>)
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}>{channel.title}</li>)
 
   return (
     <>

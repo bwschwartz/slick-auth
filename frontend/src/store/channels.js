@@ -18,7 +18,7 @@ export const fetchChannels = () => async (dispatch) => {
 export const channelsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_CHANNELS:
-      return {...state, channels: action.channels}
+      return {...state, ...action.channels}
     default:
       return state;
   }
