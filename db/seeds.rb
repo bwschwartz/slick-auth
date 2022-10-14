@@ -31,7 +31,7 @@ ApplicationRecord.transaction do
   puts "Creating channels..."
 
   Channel.create!(
-    title: 'Reasons we\'re ambivalent about Dan!'
+    title: 'Dan'
   )
 
   10.times do
