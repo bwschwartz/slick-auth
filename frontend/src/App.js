@@ -13,21 +13,18 @@ function App() {
         <LoginFormPage/>
       </Route>
 
-      <Route path="/channels">
+      <Route exact path="/channels">
         <ChannelPage/>
       </Route>
 
-
-      <Route path="/signup">
-        <SignUpFormPage/>
-      </Route>
-
-      <Route path="/signup">
+      <Route exact path="/signup">
         <SignUpFormPage/>
       </Route>
 
       <Route path="/">
         <NavBar/>
+        <ChannelPage/>
+
       </Route>
 
     </Switch>

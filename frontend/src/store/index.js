@@ -1,7 +1,7 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import sessionReducer from './session.js'
-import {channelsReducer} from './channels.js'
+import { channelsReducer } from './channels.js'
 
 export const rootReducer = combineReducers({
   session: sessionReducer,

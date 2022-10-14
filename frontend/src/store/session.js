@@ -66,7 +66,6 @@ const storeUser = (user) => {
   else sessionStorage.removeItem("user");
 }
 
-// sign up
 
 export const signUp = (user) => async (dispatch) => {
   const { email, password } = user;

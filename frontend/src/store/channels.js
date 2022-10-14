@@ -15,6 +15,25 @@ export const fetchChannels = () => async (dispatch) => {
   dispatch(receiveChannels(data))
 }
 
+const ADD_CHANNEL = 'channels/CreateChannel'
+const addChannel = (channel) => {
+  return {
+    type: ADD_CHANNEL,
+    channel
+  }
+}
+
+export const createChannel = (channel) => async (dispatch) => {
+  const {description, title, owner_id} = channel;
+  const res = await csrfFetch('/api/channels', {
+    method: 'POST',
+    body: JSON.stringify({description, title, owner_id})
+  })
+  const data = await res.json();
+  dispatch(addChannel(data))
+  return res;
+}
+
 export const channelsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_CHANNELS:
