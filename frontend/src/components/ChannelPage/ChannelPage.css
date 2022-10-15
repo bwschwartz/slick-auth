@@ -1,0 +1,17 @@
+#channels-component {
+  display: flex;
+  flex-direction: column;
+}
+
+#channel-list {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  list-style: none;
+  /* background-color: blue; */
+}
+
+#channel-list li {
+  border: 1px solid blue;
+}
+

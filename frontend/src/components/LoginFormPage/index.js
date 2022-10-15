@@ -34,7 +34,6 @@ const LoginFormPage = () => {
    }
 
   const loginDemoUser = () => {
-    console.log("logged in")
     const email = 'benjamin.schwart123@gmail.com'
     const password = 'password123'
     return dispatch(sessionActions.login({ email, password }))

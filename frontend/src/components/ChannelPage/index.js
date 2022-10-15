@@ -1,8 +1,7 @@
 import { fetchChannels } from '../../store/channels'
 import { useDispatch, useSelector } from 'react-redux'
-// import { fetchChanells } from '../../store/channels'
-
 import { useEffect } from 'react'
+import './ChannelPage.css'
 
 export const ChannelPage = () => {
 
@@ -13,12 +12,17 @@ export const ChannelPage = () => {
     dispatch(fetchChannels())
   }, [])
 
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}>{channel.title}</li>)
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}>#      {channel.title}</li>)
 
   return (
     <>
-      <h1>Channels Page ;)</h1>
-      <ul>{channelsLis}</ul>
+    <div id="channels-component">
+      <h5>Channels</h5>
+
+      <ul id="channel-list">{channelsLis}</ul>
+
+    </div>
+
     </>
   )
 }
