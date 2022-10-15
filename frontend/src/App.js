@@ -4,6 +4,7 @@ import LoginFormPage from './components/LoginFormPage'
 import SignUpFormPage from './components/SignUpFormPage'
 import NavBar from './components/NavBar'
 import { ChannelPage } from './components/ChannelPage'
+import { ChannelCreationForm } from './components/ChannelCreationForm'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
       <Route exact path="/channels">
         <ChannelPage/>
+        <ChannelCreationForm/>
       </Route>
 
       <Route exact path="/signup">
@@ -23,7 +25,7 @@ function App() {
 
       <Route path="/">
         <NavBar/>
-        <ChannelPage/>
+      <ChannelPage/>
 
       </Route>
 
