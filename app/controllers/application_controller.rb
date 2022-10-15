@@ -13,7 +13,6 @@ class ApplicationController < ActionController::API
 
   def current_user
     @current_user ||= User.find_by(session_token: session[:session_token])
-    puts (@current_user)
   end
 
   def login!(user)
@@ -34,19 +33,6 @@ class ApplicationController < ActionController::API
     end
   end
 
-  # def test
-  #   if params.has_key?(:login)
-  #     login!(User.first)
-  #   elsif params.has_key?(:logout)
-  #     logout!
-  #   end
-
-  #   if current_user
-  #     render json: { user: current_user.slice('id', 'email', 'session_token') }
-  #   else
-  #     render json: ['No current user']
-  #   end
-  # end
 
   private
 
