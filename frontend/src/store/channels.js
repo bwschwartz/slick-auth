@@ -38,6 +38,8 @@ export const channelsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_CHANNELS:
       return {...state, ...action.channels}
+    case ADD_CHANNEL:
+      return {...state, ...action.channel}
     default:
       return state;
   }

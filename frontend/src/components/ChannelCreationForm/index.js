@@ -11,7 +11,7 @@ export const ChannelCreationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(channelActions.createChannel({description, title, owner_id}))
+     dispatch(channelActions.createChannel({description, title, owner_id}))
   }
 
   return (

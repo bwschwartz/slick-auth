@@ -26,6 +26,8 @@ function App() {
       <Route path="/">
         <NavBar/>
       <ChannelPage/>
+      <ChannelCreationForm/>
+
 
       </Route>
 
