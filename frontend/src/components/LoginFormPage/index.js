@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session'
 import { Redirect } from 'react-router-dom'
-
 import './LoginForm.css';
 import SlackIcon from '../../assets/slick_icon1.png'
 import FredsFace from '../../assets/demo_user.PNG'
@@ -79,9 +78,9 @@ const LoginFormPage = () => {
         </div>
 
         <div id="or">
-        <hr size="1"></hr>
-        OR
-        <hr size="1"></hr>
+          <hr size="1"></hr>
+          OR
+         <hr size="1"></hr>
         </div>
 
         <form onSubmit={ handleSubmit }>
