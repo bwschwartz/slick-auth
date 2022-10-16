@@ -12,7 +12,7 @@ export const ChannelPage = () => {
     dispatch(fetchChannels())
   }, [])
 
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}>#      {channel.title}</li>)
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; &nbsp; {channel.title} </li>)
 
   return (
     <>
