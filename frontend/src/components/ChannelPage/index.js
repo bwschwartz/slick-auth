@@ -32,14 +32,14 @@ export const ChannelPage = () => {
   return (
     <>
     <div className="split-container">
-    <Split className="split"  minSize={0} snapOffset={250}
+    <Split className="split"  minSize={[0, 0]} snapOffset={250} gutterSize={1}
     onDrag={ () => setOnGutter(current => !current) }>
       <div ref={channelsDivRef}>
         {width &&
-
         <>
         {/* <h1 style={{color:"green"}}>{width}</h1> */}
         <div>
+          {/* <FontAwesomeIcon icon="fa-solid fa-caret-down" /> */}
           <h5 id="channels-h5">Channels</h5>
         </div>
 
@@ -50,7 +50,7 @@ export const ChannelPage = () => {
 
       </div>
 
-      <div>
+      <div id="other-component">
       </div>
     </Split>
 

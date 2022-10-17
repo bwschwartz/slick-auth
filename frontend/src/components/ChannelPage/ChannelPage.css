@@ -1,6 +1,6 @@
 #channels-component {
   display: flex;
-  color: white;
+  color: #D1D2D3B3;
   width: 100%;
 }
 
@@ -13,8 +13,13 @@
 }
 
 #channel-list li {
-  border: 5px solid blue;
+  /* border: 5px solid blue; */
   display: flex;
+}
+
+#channel-list li:hover {
+  background-color: #d1d2d380;
+  color: #fff;
 }
 
 .split {
@@ -25,9 +30,15 @@
 }
 
 .gutter {
-  background-color: #eee;
+  background-color: #2B2A30;
   background-repeat: no-repeat;
   background-position: 50%;
+  size: 1000px;
+}
+
+.gutter:hover {
+  background-color: #1164A3;
+  border: 2px solid #1164A3;
 }
 
 .gutter.gutter-horizontal {
@@ -36,13 +47,14 @@
 }
 
 #channels-h5 {
-  color: white;
+  color: #D1D2D3B3;
+
 }
 
-div i {
-  background-color: blue;
-  color: white;
+#other-component {
+  background-color: #1B1D21;
 }
+
 
 
 
