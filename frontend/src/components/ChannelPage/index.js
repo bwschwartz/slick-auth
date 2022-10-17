@@ -5,6 +5,15 @@ import { fetchChannels } from '../../store/channels'
 import './ChannelPage.css'
 
 export const ChannelPage = () => {
+  useEffect (()=> {
+    dispatch(fetchChannels())
+  }, [])
+
+  const dispatch = useDispatch();
+  const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; &nbsp; {channel.title} </li>)
+
+
   const useChannelsWidth = (ref, onGutter) => {
     const [channelsWidth, setChannelsWidth] = useState(1);
     useEffect(() => {
@@ -17,45 +26,20 @@ export const ChannelPage = () => {
   }
 
   const [onGutter, setOnGutter] = useState(true);
-
   const channelsDivRef = createRef();
   const width = useChannelsWidth(channelsDivRef, onGutter);
-
-  const dispatch = useDispatch();
-  const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-
-  useEffect (()=> {
-    dispatch(fetchChannels())
-  }, [])
-
-  useEffect (() =>{
-    console.log(onGutter)
-  }, [onGutter])
-
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; &nbsp; {channel.title} </li>)
-
-  // const getWidth = async () => {
-  //   console.log("getting width");
-  //   await setOnGutter(false);
-  //   console.log(onGutter)
-  // }
 
   return (
     <>
     <div className="split-container">
-    <Split className="split"  minSize={0} snapOffset={250} onDragEnd={() =>  {
-      setOnGutter( current => !current );
-      console.log("firing on drag end")
-      // await console.log(onGutter)
-      }}
-       >
+    <Split className="split"  minSize={0} snapOffset={250}
+    onDrag={ () => setOnGutter(current => !current) }>
       <div ref={channelsDivRef}>
         {width &&
+
         <>
-        <h1 style={{color:"green"}}>{width}</h1>
+        {/* <h1 style={{color:"green"}}>{width}</h1> */}
         <div>
-           {/* <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" /> */}
-          <i type="caret-right"></i>
           <h5 id="channels-h5">Channels</h5>
         </div>
 
@@ -63,6 +47,7 @@ export const ChannelPage = () => {
             <ul id="channel-list">{channelsLis}</ul>
         </div>
         </>}
+
       </div>
 
       <div>
