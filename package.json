@@ -26,6 +26,7 @@
   "homepage": "https://github.com/bwschwartz/slick-auth#readme",
   "dependencies": {
     "react-split": "^2.0.14",
+    "react-split-grid": "^1.0.4",
     "split-grid": "^1.0.11"
   }
 }
