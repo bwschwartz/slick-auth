@@ -14,7 +14,11 @@ export const ChannelPage = () => {
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; {channel.title} </li>)
+  // const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; {channel.title} </li>)
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}>
+  <i className="fa-solid fa-hashtag"/> &nbsp; &nbsp;
+  {channel.title} </li>)
+
 
 
   const useChannelsWidth = (ref, onGutter) => {

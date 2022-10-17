@@ -9,17 +9,22 @@
   flex-direction: column;
   width: 100%;
   list-style: none;
+  padding-left: 10px;
   /* background-color: blue; */
 }
 
 #channel-list li {
   /* border: 5px solid blue; */
   display: flex;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  /* padding-left: -100px; */
+
 }
 
 #channel-list li:hover {
   background-color: #d1d2d380;
-  color: #fff;
+  /* color: #fff; */
 }
 
 .split {
@@ -52,7 +57,7 @@
 
 i {
   color: #D1D2D3B3;
-  padding-left: 35px;
+  padding-left: 5px;
   padding-top: 10px;
 }
 
@@ -62,13 +67,20 @@ i span {
 }
 
 #drop-button {
+
+  padding-top: 20px;
   background-color: transparent;
   border: none;
 }
 
 .fa-caret-right{
  color: white;
+ margin-left: 5px;
 }
+
+.fa-caret-down{
+  margin-left: 5px;
+ }
 
 
 #channels-h5-down {
@@ -77,6 +89,10 @@ i span {
 
 #channels-h5-right{
   color: white;
+}
+
+.fa-hashtag {
+  padding-top: 0px;
 }
 
 
