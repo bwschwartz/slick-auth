@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/bwschwartz/slick-auth/issues"
   },
-  "homepage": "https://github.com/bwschwartz/slick-auth#readme"
+  "homepage": "https://github.com/bwschwartz/slick-auth#readme",
+  "dependencies": {
+    "react-split": "^2.0.14"
+  }
 }

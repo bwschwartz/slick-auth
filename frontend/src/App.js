@@ -16,7 +16,7 @@ function App() {
 
       <Route exact path="/channels">
         <ChannelPage/>
-        <ChannelCreationForm/>
+        {/* <ChannelCreationForm/> */}
       </Route>
 
       <Route exact path="/signup">
