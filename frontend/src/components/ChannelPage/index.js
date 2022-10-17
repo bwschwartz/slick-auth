@@ -1,8 +1,11 @@
 import { useEffect, useCallback, useState, createRef } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
 import { fetchChannels } from '../../store/channels'
 import './ChannelPage.css'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const ChannelPage = () => {
   useEffect (()=> {
@@ -11,7 +14,7 @@ export const ChannelPage = () => {
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; &nbsp; {channel.title} </li>)
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}># &nbsp; {channel.title} </li>)
 
 
   const useChannelsWidth = (ref, onGutter) => {
@@ -29,6 +32,12 @@ export const ChannelPage = () => {
   const channelsDivRef = createRef();
   const width = useChannelsWidth(channelsDivRef, onGutter);
 
+
+  const [dropMenuBool, setDropMenuBool] = useState(true);
+  const dropMenu = () => {
+    setDropMenuBool( curr => !curr)
+  }
+
   return (
     <>
     <div className="split-container">
@@ -37,15 +46,18 @@ export const ChannelPage = () => {
       <div ref={channelsDivRef}>
         {width &&
         <>
-        {/* <h1 style={{color:"green"}}>{width}</h1> */}
-        <div>
-          {/* <FontAwesomeIcon icon="fa-solid fa-caret-down" /> */}
-          <h5 id="channels-h5">Channels</h5>
+        <div id="channels-menu-label">
+          <button id="drop-button"
+            onClick={dropMenu}>
+            <i className={dropMenuBool ? "fa-solid fa-caret-down" : "fa-solid fa-caret-right" }>
+            <span id={dropMenuBool ? "channels-h5-down" : "channels-h5-right"}>&nbsp;Channels</span></i>
+          </button>
+
         </div>
 
-        <div id="channels-component">
+        {dropMenuBool && <div id="channels-component">
             <ul id="channel-list">{channelsLis}</ul>
-        </div>
+        </div>}
         </>}
 
       </div>

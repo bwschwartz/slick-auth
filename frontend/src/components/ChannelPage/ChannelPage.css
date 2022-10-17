@@ -46,14 +46,41 @@
   cursor: col-resize;
 }
 
-#channels-h5 {
-  color: #D1D2D3B3;
-
-}
-
 #other-component {
   background-color: #1B1D21;
 }
+
+i {
+  color: #D1D2D3B3;
+  padding-left: 35px;
+  padding-top: 10px;
+}
+
+i span {
+  font-family: sans-serif;
+  padding-left: 8px;
+}
+
+#drop-button {
+  background-color: transparent;
+  border: none;
+}
+
+.fa-caret-right{
+ color: white;
+}
+
+
+#channels-h5-down {
+  color: #D1D2D3B3;
+}
+
+#channels-h5-right{
+  color: white;
+}
+
+
+
 
 
 
