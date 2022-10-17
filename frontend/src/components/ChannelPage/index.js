@@ -34,12 +34,14 @@ export const ChannelPage = () => {
     <div className="split-container">
     <Split className="split"  minSize={0} snapOffset={250} >
       <div ref={channelsDivRef}>
-        <h1 style={{color:"green"}}>{width}</h1>
-        <h5 id="channels-h5">Channels</h5>
-        <div id="channels-component">
-          {width &&
-          <ul id="channel-list">{channelsLis}</ul> }
-        </div>
+        {width &&
+        <>
+        {/* <h1 style={{color:"green"}}>{width}</h1> */}
+          <h5 id="channels-h5">Channels</h5>
+          <div id="channels-component">
+            <ul id="channel-list">{channelsLis}</ul>
+          </div>
+        </>}
       </div>
 
       <div>
