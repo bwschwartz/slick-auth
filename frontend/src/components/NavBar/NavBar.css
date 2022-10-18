@@ -32,13 +32,17 @@
   background-color: #38373C;
   border-radius: 6px;
   height: 22px;
-  border: 1px solid #6f6e74;
+  border: 1px solid #515055;
   color: #d1d2d3;
   text-align: center;
   padding-top: 4px;
   font-size: 13px;
   white-space: nowrap;
   /* box-shadow: 0 0 0 1px var(--saf-0),0 1px 3px 0 #00000014; */
+}
+
+#search-bar:hover {
+  border: 1px solid #8d8b8f;
 }
 
 #right-nav {
