@@ -4,7 +4,7 @@ import LoginFormPage from './components/LoginFormPage'
 import SignUpFormPage from './components/SignUpFormPage'
 import NavBar from './components/NavBar'
 import { ChannelPage } from './components/ChannelPage'
-import { ChannelCreationForm } from './components/ChannelCreationForm'
+import { ChannelFormModal } from './components/ChannelCreationModal'
 
 
 function App() {
@@ -25,10 +25,8 @@ function App() {
 
       <Route path="/">
         <NavBar/>
-      <ChannelPage/>
-      <ChannelCreationForm/>
-
-
+        <ChannelPage/>
+        {/* <ChannelFormModal/> */}
       </Route>
 
     </Switch>

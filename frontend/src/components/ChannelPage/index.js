@@ -6,6 +6,10 @@ import { fetchChannels } from '../../store/channels'
 import './ChannelPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { Modal } from '../../context/Modal'
+import { ChannelFormModal } from '../ChannelCreationModal'
+import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
+
 export const ChannelPage = () => {
   useEffect (()=> {
     dispatch(fetchChannels())
@@ -28,6 +32,7 @@ export const ChannelPage = () => {
     return channelsWidth
   }
 
+
   const [onGutter, setOnGutter] = useState(true);
   const channelsDivRef = createRef();
   const width = useChannelsWidth(channelsDivRef, onGutter);
@@ -36,6 +41,14 @@ export const ChannelPage = () => {
   const dropMenu = () => {
     setDropMenuBool(curr => !curr)
   }
+
+
+  // const [showModal, setShowModal] = useState(1)
+
+  // const showModalFunc = async () => {
+  //   await setShowModal(1)
+  //   console.log("in show modal func")
+  // }
 
   return (
     <>
@@ -64,9 +77,10 @@ export const ChannelPage = () => {
             <span id={ dropMenuBool ? "channels-h5-down" : "channels-h5-right" }>&nbsp;Channels</span></i>
           </button>
 
-          <button id="plus" className="drop-button">
+          <button id="plus"
+                  className="drop-button">
             <div id="plus-padding">
-            <i className="fa-light fa-plus fa-xl" />
+              <ChannelFormModal/>
             </div>
           </button>
         </div>

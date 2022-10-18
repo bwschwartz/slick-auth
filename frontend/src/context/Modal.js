@@ -1,9 +1,10 @@
 import { createContext, useRef, useState, useEffect, useContext } from 'react'
 import ReactDOM from 'react-dom'
 import './Modal.css'
+
 const ModalContext = createContext();
 
-export const ModalProvider = ({ children })  => {
+export const ModalProvider = ({ children }) => {
   const modalRef = useRef();
   const [value, setValue] = useState();
 
@@ -13,12 +14,11 @@ export const ModalProvider = ({ children })  => {
 
   return (
     <>
-      <ModalContext.provider value={value}>
+      <ModalContext.Provider value={value}>
         {children}
-      </ModalContext.provider>
+      </ModalContext.Provider>
       <div ref={modalRef}></div>
     </>
-
   )
 }
 
@@ -31,8 +31,7 @@ export const Modal = ({ onClose, children }) => {
     ReactDOM.createPortal(
       <>
       <div id="modal">
-        <div id="modal-background"
-              onClick={onClose}></div>
+        <div id="modal-background" onClick={onClose}></div>
         <div id="modal-content"> {children} </div>
       </div>
     </>, modalNode

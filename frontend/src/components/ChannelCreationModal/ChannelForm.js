@@ -2,20 +2,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import * as channelActions from '../../store/channels'
 
-export const ChannelCreationForm = () => {
+export const ChannelForm = () => {
   const dispatch = useDispatch()
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
+  const [showForm, setShowForm] = useState(true);
 
   const owner_id = useSelector( state => state.session.user? state.session.user.id : null )
 
   const handleSubmit = (e) => {
     e.preventDefault();
-     dispatch(channelActions.createChannel({description, title, owner_id}))
+    setShowForm(false)
+    dispatch(channelActions.createChannel({description, title, owner_id}))
   }
 
   return (
     <>
+    {showForm &&
+    <div>
       <h2>Create a channel, friendo </h2>
       <form onSubmit={ handleSubmit }>
 
@@ -33,6 +37,8 @@ export const ChannelCreationForm = () => {
           <input type="submit" value="Create Channel" id="form-button"/>
 
       </form>
+       </div>
+       }
     </>
   )
 }
