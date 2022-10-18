@@ -41,12 +41,20 @@ export const ChannelPage = () => {
     <>
     <div className="split-container">
 
-    <Split className="split" sizes={[40, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={1}
+    <Split className="split" sizes={[70, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={1}
     onDrag={ () => setOnGutter(current => !current) }>
 
 
       <div ref={channelsDivRef}>
-      <h3 id="server-name">Google Magenta</h3>
+      <div id="server-heading">
+      <h3 id="server-name">Google Magenta&nbsp;
+      <i className="fa-solid fa-angle-down"/>
+      </h3>
+      <div id="circle-around-pen">
+        <i className="fa-solid fa-pen-to-square"/>
+      </div>
+      </div>
+
         {width &&
         <>
         <div id="channels-menu-label">
