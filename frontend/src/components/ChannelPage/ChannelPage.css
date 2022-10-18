@@ -170,12 +170,14 @@ i span {
 }
 
 #server-heading{
+  margin-top: 44px;
   display:flex;
   width:100%;
   align-items:center;
   justify-content: space-between;
   /* margin-left: 2000px; */
   border: 1px solid #2B2A2F ;
+  /* border-top: 1px solid blue; */
 }
 
 #circle-around-pen{
