@@ -1,3 +1,1 @@
-json.channel do
-  json.extract! @channel, :title, :description, :id
-end
+json.extract! @channel, :title, :description, :id, :owner_id

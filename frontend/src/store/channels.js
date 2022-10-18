@@ -43,16 +43,15 @@ const editChannel = (channel) => {
 }
 
 export const updateChannel = (channel) => async (dispatch) => {
-  const { description, title, id } = channel;
+  const { description, title, id, owner_id } = channel;
   const res = await csrfFetch(`/api/channels/${id}`, {
     method: "PATCH",
-    body: JSON.stringify({ description, title, id})
+    body: JSON.stringify({ description, title, id, owner_id})
   })
   const data = await res.json();
   dispatch(editChannel(data))
   return res;
 }
-
 
 export const channelsReducer = (state={}, action) => {
   switch (action.type) {
@@ -62,9 +61,7 @@ export const channelsReducer = (state={}, action) => {
       return {...state, ...action.channel}
     case EDIT_CHANNEL:
       const nextState = {...state};
-      // console.log(action.channel)
-      console.log(action.channel)
-      nextState[action.channel.channel.id] = {...action.channel};
+      nextState[action.channel.id] = {...action.channel};
       return nextState;
     default:
       return state;
