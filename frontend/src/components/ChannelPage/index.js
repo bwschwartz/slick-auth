@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
-import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
+// import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
   useEffect (()=> {

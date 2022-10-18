@@ -32,12 +32,6 @@ const renderApplication = () => {
   );
 }
 
-if (sessionStorage.getItem("user") === null ||
-  sessionStorage.getItem("X-CSRF-Token") === null) {
-  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
-} else {
-  renderApplication();
-}
 
 function Root() {
   return (
@@ -50,6 +44,14 @@ function Root() {
     </ModalProvider>
   );
 }
+
+if (sessionStorage.getItem("user") === null ||
+  sessionStorage.getItem("X-CSRF-Token") === null) {
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+} else {
+  renderApplication();
+}
+
 
 // ReactDOM.render(
 //   <React.StrictMode>

@@ -2,29 +2,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, createRef } from 'react';
 import * as channelActions from '../../store/channels'
 
-export const ChannelForm = () => {
+export const ChannelForm = ( { onClose }) => {
   const dispatch = useDispatch();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
-  const [showForm, setShowForm] = useState(true);
-
-  const refShowModal = createRef();
 
   const owner_id = useSelector( state => state.session.user? state.session.user.id : null )
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowForm(false)
-    console.log(`inside handle submit: ${showForm}`)
-    refShowModal.current.className="modal-content-hidden";
-    console.log(refShowModal.current);
+    onClose();
     dispatch(channelActions.createChannel({description, title, owner_id}))
   }
 
   return (
     <>
-    {showForm &&
-    <div ref={refShowModal}>
+    <div>
       <h2>Create a channel, friendo </h2>
       <p>Channels are where your team communicates. They're best when organized around a topic &mdash; #dan, for example.</p>
       <form onSubmit={ handleSubmit }>
@@ -46,7 +39,6 @@ export const ChannelForm = () => {
 
       </form>
       </div>
-    }
     </>
   )
 }

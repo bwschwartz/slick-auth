@@ -31,7 +31,7 @@
   border: 1px solid rgb(44, 43, 43);
 }
 
-.modal-content-hidden {
+#modal-content-hidden {
   display:none;
 }
 

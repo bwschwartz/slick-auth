@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, createRef } from 'react';
 import * as channelActions from '../../store/channels'
 
-export const ChannelUpdateForm = ({ onClose }) => {
+export const ChannelUpdateForm = () => {
   const dispatch = useDispatch();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
@@ -15,15 +15,13 @@ export const ChannelUpdateForm = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowForm(false)
-    refShowModal.current.className="modal-content-hidden";
-    console.log(refShowModal.current.className)
-    onClose();
-
-    dispatch(channelActions.editChannel({description, title, owner_id}))
+    // refShowModal.current.className="modal-content-hidden";
+    // console.log(refShowModal.current.className)
+    dispatch(channelActions.updateChannel({description, title}))
   }
 
   return (
-    <ref={refShowModal}>
+    <>
     {showForm &&
     <div >
       <h2>Create a channel, friendo </h2>
