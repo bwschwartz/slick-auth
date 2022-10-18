@@ -36,7 +36,7 @@
   color: #d1d2d3;
   text-align: center;
   padding-top: 4px;
-  font-size: 13px;
+  font-size: 14px;
   white-space: nowrap;
   /* box-shadow: 0 0 0 1px var(--saf-0),0 1px 3px 0 #00000014; */
 }
@@ -49,15 +49,15 @@
   width: 100px;
   display: flex;
   justify-content: space-between;
-  padding-right: 20px;
+  padding-right: 25px;
 }
 
 #logout {
   display: flex;
   padding-left: 20px;
-  padding-right: 200px;
+  padding-right: 20px;
 }
 
 #logout button {
-  font-size: 10px;
+  font-size: 12px;
 }
