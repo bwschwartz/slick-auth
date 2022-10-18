@@ -11,12 +11,13 @@ export const ChannelFormModal = () => {
    id="plus"
    className="drop-button"
    onClick={() => setShowModal(true)}>
-     <i className="fa-light fa-plus fa-xl" />
+     <i className="fa-light fa-plus fa-xl"/>
    </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}
-        onSubmit={() => console.log("hi")}>
-          <ChannelForm />
+        <Modal onClose={() => setShowModal(false)}>
+          <ChannelForm onClose={() => {
+            console.log("onClose")
+            setShowModal(false)}}/>
         </Modal>
       )}
   </>)

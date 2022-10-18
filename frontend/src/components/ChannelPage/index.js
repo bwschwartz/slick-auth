@@ -17,9 +17,15 @@ export const ChannelPage = () => {
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}>
-  <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp;
-  {channel.title} </li>)
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i} id="individual-channel">
+
+    <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp; <div id ="title-and-pencil">
+    {channel.title}
+    <i id="pencil" className="fa-solid fa-pencil fa-2xs"/>
+    </div>
+
+
+   </li>)
 
   const useChannelsWidth = (ref, onGutter) => {
     const [channelsWidth, setChannelsWidth] = useState(1);
@@ -41,14 +47,6 @@ export const ChannelPage = () => {
   const dropMenu = () => {
     setDropMenuBool(curr => !curr)
   }
-
-
-  // const [showModal, setShowModal] = useState(1)
-
-  // const showModalFunc = async () => {
-  //   await setShowModal(1)
-  //   console.log("in show modal func")
-  // }
 
   return (
     <>
@@ -77,12 +75,8 @@ export const ChannelPage = () => {
             <span id={ dropMenuBool ? "channels-h5-down" : "channels-h5-right" }>&nbsp;Channels</span></i>
           </button>
 
-          <button id="plus"
-                  className="drop-button">
-            <div id="plus-padding">
-              <ChannelFormModal/>
-            </div>
-          </button>
+        <ChannelFormModal/>
+
         </div>
 
         {dropMenuBool && <div id="channels-component">

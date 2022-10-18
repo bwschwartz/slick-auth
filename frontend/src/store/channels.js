@@ -34,6 +34,7 @@ export const createChannel = (channel) => async (dispatch) => {
   return res;
 }
 
+
 export const channelsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_CHANNELS:

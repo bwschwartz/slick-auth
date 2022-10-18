@@ -5,6 +5,7 @@
   left: 0;
   bottom: 0;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   display: flex;
@@ -18,10 +19,62 @@
   width: 100%;
   height: 100%;
   position: fixed;
-  /* background-color: transparent; */
 }
 
 #modal-content {
   position: absolute;
-  background-color: blue;
+  background-color: rgb(27, 25, 25);
+  color: white;
+  padding: 20px;
+  padding-top: 0px;
+  width: 380px;
+  border: 1px solid rgb(44, 43, 43);
 }
+
+.modal-content-hidden {
+  display:none;
+}
+
+#modal-content p {
+  font-size: 12px;
+  font-weight: lighter;
+  line-height: 15px;
+  /* font-stretch: expanded; */
+}
+
+#modal-content label {
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 15px;
+  color: white;
+  /* font-stretch: expanded; */
+}
+
+#modal-content label span {
+  font-size: 13px;
+  font-weight: lighter;
+  line-height: 15px;
+  color: white;
+  /* font-stretch: expanded; */
+}
+
+#modal-content #form-button {
+  background-color: purple;
+  border: 1px solid rgb(192, 102, 192);
+  /* font-stretch: expanded; */
+}
+
+#whats-it-about {
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: lighter;
+  /* margin-left: 3px; */
+}
+
+.fa-plus {
+  margin-right:1.5px;
+  /* border: 1px solid black; */
+}
+
+
+
