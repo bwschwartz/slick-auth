@@ -37,9 +37,9 @@ const NavBar = () => {
           <img id="clock" src={ Question }/>
         </div>
         <div id="logout">
-          <button
+          <button id="logout-button"
             onClick={ logOutUser }>
-            Log Out
+            Log Out!
           </button>
           </div>
       </div>
