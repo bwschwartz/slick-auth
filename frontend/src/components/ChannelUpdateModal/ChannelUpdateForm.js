@@ -42,7 +42,7 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
 
       <label>Description <span>(optional)</span></label>
           <input type="text"
-            placeholder={storeDescription}
+            placeholder={ storeDescription }
             value={ inputDescription }
             onChange = { (e) => setInputDescription(e.target.value) } />
           <span id="whats-it-about">What's this channel about?</span>

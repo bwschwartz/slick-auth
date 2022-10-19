@@ -5,7 +5,6 @@
 #   json.id channel.id
 # end
 
-
 @channels.each do |channel|
   json.set! channel.id do
     json.title channel.title
