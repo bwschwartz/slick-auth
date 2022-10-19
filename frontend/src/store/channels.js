@@ -44,7 +44,6 @@ const editChannel = (channel) => {
 
 export const updateChannel = (channel) => async (dispatch) => {
   const { sendDescription, owner_id, sendTitle,  channelID  } = channel;
-
   const description = sendDescription;
   const title = sendTitle;
   const id = (parseInt(channelID) + 1).toString();
@@ -58,15 +57,37 @@ export const updateChannel = (channel) => async (dispatch) => {
   return res;
 }
 
+
+const REMOVE_CHANNEL = 'channels/RemoveChannel'
+const removeChannel = (channelID) => {
+  return {
+    type: REMOVE_CHANNEL,
+    channelID
+  }
+}
+
+export const deleteChannel = (channelID) => async (dispatch) => {
+  const res = await csrfFetch(`/apli/channels/${channelID}`, {
+    method: "DELETE"
+  })
+  dispatch(removeChannel(channelID))
+}
+
+
+
 export const channelsReducer = (state={}, action) => {
+  const nextState = {...state};
+
   switch (action.type) {
     case RECEIVE_CHANNELS:
       return {...state, ...action.channels}
     case ADD_CHANNEL:
       return {...state, ...action.channel}
     case EDIT_CHANNEL:
-      const nextState = {...state};
       nextState[action.channel.id -1] = {...action.channel};
+      return nextState;
+    case REMOVE_CHANNEL:
+      delete nextState[action.channelID];
       return nextState;
     default:
       return state;
