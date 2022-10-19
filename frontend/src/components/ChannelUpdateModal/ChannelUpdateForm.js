@@ -4,11 +4,10 @@ import * as channelActions from '../../store/channels'
 
 
 
-export const ChannelUpdateForm = ( { onClose, channelName, channelID }) => {
+export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
   const dispatch = useDispatch();
   const [inputDescription, setInputDescription] = useState('');
   const [title, setTitle] = useState('');
-
 
   const owner_id = useSelector( state => state.session.user? state.session.user.id : null )
   const stateChannel = useSelector( state => state.channels[channelID]  ? state.channels[channelID] : null )
@@ -17,11 +16,10 @@ export const ChannelUpdateForm = ( { onClose, channelName, channelID }) => {
 
   const storeDescription = stateChannel ? stateChannel.description : 'Click directly on the pencil pls!'
 
-
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onClose();
-    dispatch(channelActions.updateChannel({inputDescription, title, owner_id}))
+    const sendTitle = title === '' ? channelName : title
+    const sendDescription = inputDescription === '' ? storeDescription : inputDescription
+    dispatch(channelActions.updateChannel({sendDescription, sendTitle, channelID, owner_id}))
   }
 
   return (

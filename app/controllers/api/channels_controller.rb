@@ -5,6 +5,9 @@ class Api::ChannelsController < ApplicationController
   end
 
   def create
+    puts "hit create method"
+    puts channel_params
+    puts "exit create method"
      @channel = Channel.new(channel_params)
      if @channel.save!
       channel_id = @channel.id
@@ -15,19 +18,26 @@ class Api::ChannelsController < ApplicationController
   end
 
   def update
-    @channel = Channel.find_by(title: channel_params[:title])
-    if @channel and @channel.update!(channel_params)
-      render 'api/channels/update'
+    puts "hit update"
+    puts "params: #{channel_params}"
+    # channel_params[:id] = channel_params[:id].to_i + 1
+    @channel = Channel.find(channel_params[:id])
+
+    if @channel and @channel.update(channel_params)
+      puts('updating')
+      # render 'api/channels/update'
     else
-      # render json: {errors: channel not fo}
-      # render json: { errors: @channel.errors.full_messages}, status: :unprocessable_entity
+      puts('elsing \n \n')
+
+    #   # render json: {errors: channel not fo}
+    #   # render json: { errors: @channel.errors.full_messages}, status: :unprocessable_entity
     end
   end
 
   private
 
   def channel_params
-    params.require(:channel).permit(:owner_id, :description, :title)
+    params.require(:channel).permit(:id, :description, :title, :owner_id)
   end
 
 
