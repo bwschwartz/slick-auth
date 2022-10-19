@@ -6,7 +6,7 @@
   margin-left: 8px;
 }
 
-#channel-list {
+.channel-list {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -15,23 +15,21 @@
   /* background-color: blue; */
 }
 
-#channel-list li {
+.channel-list li {
   display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 14px;
   margin-left: -18px;
   padding-right: 10px;
-
-
 }
 
-#channel-list li:hover {
+.channel-list li:hover {
   background-color: #d1d2d380;
   width: 100%;
 }
 
-#title-and-pencil{
+.title-and-pencil{
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -84,6 +82,7 @@ i span {
 .drop-button {
   background-color: transparent;
   border: none;
+
 }
 
 .fa-caret-right{
@@ -200,3 +199,6 @@ align-items: center;
   margin-right: 30px;
 } */
 
+/* .fa-pencil {
+  background-color: blue;
+} */

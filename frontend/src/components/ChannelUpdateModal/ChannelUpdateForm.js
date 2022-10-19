@@ -4,18 +4,24 @@ import * as channelActions from '../../store/channels'
 
 
 
-export const ChannelUpdateForm = ( { onClose, channelName }) => {
+export const ChannelUpdateForm = ( { onClose, channelName, channelID }) => {
   const dispatch = useDispatch();
-  const [description, setDescription] = useState('');
+  const [inputDescription, setInputDescription] = useState('');
   const [title, setTitle] = useState('');
-  console.log(channelName)
+
 
   const owner_id = useSelector( state => state.session.user? state.session.user.id : null )
+  const stateChannel = useSelector( state => state.channels[channelID]  ? state.channels[channelID] : null )
+  // console.log(channelID)
+  // console.log(stateChannel)
+
+  const storeDescription = stateChannel ? stateChannel.description : 'Click directly on the pencil pls!'
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onClose();
-    dispatch(channelActions.updateChannel({description, title, owner_id}))
+    dispatch(channelActions.updateChannel({inputDescription, title, owner_id}))
   }
 
   return (
@@ -32,9 +38,9 @@ export const ChannelUpdateForm = ( { onClose, channelName }) => {
 
       <label>Description <span>(optional)</span></label>
           <input type="text"
-            placeholder="   y wi <3 2 h8 DAN"
-            value={ description }
-            onChange = { (e) => setDescription(e.target.value) } />
+            placeholder={storeDescription}
+            value={ inputDescription }
+            onChange = { (e) => setInputDescription(e.target.value) } />
           <span id="whats-it-about">What's this channel about?</span>
           <input
           type="submit" value="Update Channel" id="form-button"/>

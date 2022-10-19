@@ -1,34 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSelector } from 'react';
 import { ChannelUpdateForm } from './ChannelUpdateForm';
 import { Modal } from '../../context/Modal';
+import './ChannelUpdateModal.css'
 
 
 export const ChannelUpdateFormModal = () => {
   const [showModal, setShowModal] = useState(false)
   const [channelName, setChannelName] = useState('')
+  const [channelID, setChannelID] = useState('');
+
+  // const channels = useSelector(state => state.channels ? state.channels : null)
 
   useEffect(()=>{
-    if (channelName !=='') setShowModal(true)
-  },
-  [channelName])
+    if (channelName !=='' && channelID !=='') setShowModal(true)
+  }, [channelName])
 
 
   const prepareModal = (e) => {
-    setChannelName( e.target.parentElement.parentElement.innerText)
-    console.log(`after grabbing: ${channelName}`)
+    console.log(`channelID: ${channelID}`)
+    // console.log(channelName)
+    setChannelID(e.target.parentElement.parentElement.parentElement.id)
+    setChannelName(e.target.parentElement.parentElement.innerText)
+    if (channelName !=='' && channelID !=='') setShowModal(true)
   }
 
   return (<>
    <button
-    id="pencil"
-    className="drop-button"
+    className="drop-button clickable-pencil"
     onClick={ prepareModal }>
-        <i id="pencil" className="fa-solid fa-pencil fa-2xs"/>
+        <i id="pencil" className="fa-solid fa-pencil "/>
    </button>
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ChannelUpdateForm
+          channelID={channelID}
           channelName={channelName}
           onClose={() => {setShowModal(false)}}
           />

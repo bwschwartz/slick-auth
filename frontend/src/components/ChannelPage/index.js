@@ -18,18 +18,13 @@ export const ChannelPage = () => {
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i} id="individual-channel">
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}  id={i}>
+  {/* id="individual-channel" */}
 
     <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp;
-    <div id ="title-and-pencil"> {channel.title}
+    <div className ="title-and-pencil"> {channel.title}
     <ChannelUpdateFormModal/>
-
-
-    {/* <i id="pencil" className="fa-solid fa-pencil fa-2xs"/> */}
     </div>
-
-
-
    </li>)
 
   const useChannelsWidth = (ref, onGutter) => {
@@ -85,7 +80,7 @@ export const ChannelPage = () => {
         </div>
 
         {dropMenuBool && <div id="channels-component">
-            <ul id="channel-list">{channelsLis}</ul>
+            <ul className="channel-list">{channelsLis}</ul>
         </div>}
         </>}
       </div>
