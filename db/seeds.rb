@@ -31,12 +31,16 @@ ApplicationRecord.transaction do
   puts "Creating channels..."
 
   Channel.create!(
-    title: 'Dan'
+    title: 'Dan',
+    description: '',
+    owner_id: 1
   )
 
   10.times do
     Channel.create!({
-    title:  Faker::Hipster.unique.word
+    title:  Faker::Hipster.unique.word,
+    description: Faker::Hipster.unique.word,
+    owner_id: 1
     })
   end
 

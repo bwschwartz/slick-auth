@@ -46,7 +46,7 @@ function Root() {
 }
 
 if (sessionStorage.getItem("user") !== null ||
-  sessionStorage.getItem("X-CSRF-Token") !== null) {
+  sessionStorage.getItem("X-CSRF-Token") === null) {
   store.dispatch(sessionActions.restoreSession()).then(renderApplication);
 } else {
   renderApplication();

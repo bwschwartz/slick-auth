@@ -27,6 +27,7 @@ const sessionReducer = (state=initialState, action) => {
 }
 
 export const login = (user) => async (dispatch) => {
+  console.log("in login")
   const { email, password } = user;
   const res = await csrfFetch('/api/session', {
     method: "POST",
