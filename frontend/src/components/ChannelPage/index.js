@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
+import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
 // import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
@@ -19,10 +20,14 @@ export const ChannelPage = () => {
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
   const channelsLis = channelsObj.map( (channel, i) => <li key={i} id="individual-channel">
 
-    <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp; <div id ="title-and-pencil">
-    {channel.title}
-    <i id="pencil" className="fa-solid fa-pencil fa-2xs"/>
+    <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp;
+    <div id ="title-and-pencil"> {channel.title}
+    <ChannelUpdateFormModal/>
+
+
+    {/* <i id="pencil" className="fa-solid fa-pencil fa-2xs"/> */}
     </div>
+
 
 
    </li>)

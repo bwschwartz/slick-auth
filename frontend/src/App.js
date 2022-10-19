@@ -27,7 +27,6 @@ function App() {
       <Route path="/">
         <NavBar/>
         <ChannelPage/>
-        <ChannelUpdateForm/>
         {/* <ChannelFormModal/> */}
       </Route>
 

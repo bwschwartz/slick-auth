@@ -2,35 +2,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, createRef } from 'react';
 import * as channelActions from '../../store/channels'
 
-export const ChannelUpdateForm = () => {
+
+
+export const ChannelUpdateForm = ( { onClose, channelName }) => {
   const dispatch = useDispatch();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
-  const [showForm, setShowForm] = useState(true);
-
-  const refShowModal = createRef();
+  console.log(channelName)
 
   const owner_id = useSelector( state => state.session.user? state.session.user.id : null )
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setShowForm(false)
-    // refShowModal.current.className="modal-content-hidden";
-    // console.log(refShowModal.current.className)
-    dispatch(channelActions.updateChannel({description, title}))
+    onClose();
+    dispatch(channelActions.updateChannel({description, title, owner_id}))
   }
 
   return (
     <>
-    {showForm &&
-    <div >
-      <h2>Create a channel, friendo </h2>
-      <p>Channels are where your team communicates. They're best when organized around a topic &mdash; #dan, for example.</p>
+    <div>
+      <h2>Update, friendo </h2>
       <form onSubmit={ handleSubmit }>
 
-      <label>Title</label>
+      <label>Channel Name</label>
             <input  className="credential" type="text"
-            placeholder="  e.g. #dan "
+            placeholder={channelName}
             value={ title }
             onChange = { (e) => setTitle(e.target.value) } />
 
@@ -41,10 +37,9 @@ export const ChannelUpdateForm = () => {
             onChange = { (e) => setDescription(e.target.value) } />
           <span id="whats-it-about">What's this channel about?</span>
           <input
-          type="submit" value="Create Channel" id="form-button"/>
+          type="submit" value="Update Channel" id="form-button"/>
       </form>
       </div>
-    }
     </>
   )
 }

@@ -16,13 +16,13 @@ class Api::ChannelsController < ApplicationController
 
   def update
     @channel = Channel.find_by(title: channel_params[:title])
-    if @channel.update!(channel_params)
+    if @channel and @channel.update!(channel_params)
       render 'api/channels/update'
     else
-      render json: { errors: @channel.errors.full_messages}, status: :unprocessable_entity
+      # render json: {errors: channel not fo}
+      # render json: { errors: @channel.errors.full_messages}, status: :unprocessable_entity
     end
   end
-
 
   private
 
