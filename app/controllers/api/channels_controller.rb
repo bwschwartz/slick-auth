@@ -5,9 +5,6 @@ class Api::ChannelsController < ApplicationController
   end
 
   def create
-    puts "hit create method"
-    puts channel_params
-    puts "exit create method"
      @channel = Channel.new(channel_params)
      if @channel.save!
       channel_id = @channel.id
@@ -18,8 +15,6 @@ class Api::ChannelsController < ApplicationController
   end
 
   def update
-    puts "hit update"
-    puts "params: #{channel_params}"
     # channel_params[:id] = channel_params[:id].to_i + 1
     @channel = Channel.find(channel_params[:id])
 
@@ -31,6 +26,18 @@ class Api::ChannelsController < ApplicationController
 
     #   # render json: {errors: channel not fo}
     #   # render json: { errors: @channel.errors.full_messages}, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @channel = Channel.find(params[:id])
+    if @channel
+      puts "inside if"
+      @channel.delete()
+      render json: {message: 'deleted the channel'}
+    else
+      puts "inside else"
+      render json: { errors: @channel.errors.full_messages }
     end
   end
 

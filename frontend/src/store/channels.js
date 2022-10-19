@@ -10,8 +10,9 @@ const receiveChannels = (channels) => {
 }
 
 export const fetchChannels = () => async (dispatch) => {
-  const res = await csrfFetch('/api/channels')
-  const data = await res.json()
+  const res = await csrfFetch('/api/channels');
+  const data = await res.json();
+  // data.map( channel => channel.id:{channel} )
   dispatch(receiveChannels(data))
 }
 
@@ -46,7 +47,7 @@ export const updateChannel = (channel) => async (dispatch) => {
   const { sendDescription, owner_id, sendTitle,  channelID  } = channel;
   const description = sendDescription;
   const title = sendTitle;
-  const id = (parseInt(channelID) + 1).toString();
+  const id = channelID;
 
   const res = await csrfFetch(`/api/channels/${channelID}`, {
     method: "PATCH",
@@ -57,7 +58,6 @@ export const updateChannel = (channel) => async (dispatch) => {
   return res;
 }
 
-
 const REMOVE_CHANNEL = 'channels/RemoveChannel'
 const removeChannel = (channelID) => {
   return {
@@ -67,12 +67,12 @@ const removeChannel = (channelID) => {
 }
 
 export const deleteChannel = (channelID) => async (dispatch) => {
-  const res = await csrfFetch(`/apli/channels/${channelID}`, {
+  console.log("insdie delete channel")
+  const res = await csrfFetch(`/api/channels/${channelID}`, {
     method: "DELETE"
   })
   dispatch(removeChannel(channelID))
 }
-
 
 
 export const channelsReducer = (state={}, action) => {
@@ -84,7 +84,7 @@ export const channelsReducer = (state={}, action) => {
     case ADD_CHANNEL:
       return {...state, ...action.channel}
     case EDIT_CHANNEL:
-      nextState[action.channel.id -1] = {...action.channel};
+      nextState[action.channel.id] = {...action.channel};
       return nextState;
     case REMOVE_CHANNEL:
       delete nextState[action.channelID];

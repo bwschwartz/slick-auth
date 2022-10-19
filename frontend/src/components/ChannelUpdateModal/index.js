@@ -17,11 +17,12 @@ export const ChannelUpdateFormModal = () => {
 
 
   const prepareModal = (e) => {
-    console.log(`channelID: ${channelID}`)
-    console.log(channelName)
+    e.preventDefault();
     setChannelID(e.target.parentElement.parentElement.parentElement.id)
     setChannelName(e.target.parentElement.parentElement.innerText)
     if (channelName !=='' && channelID !=='') setShowModal(true)
+    // console.log(`channelID: ${channelID}`)
+    // console.log(channelName)
   }
 
   return (<>
