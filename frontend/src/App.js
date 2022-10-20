@@ -8,7 +8,8 @@ import { ChannelFormModal } from './components/ChannelCreationModal'
 import { ChannelUpdateForm } from './components/ChannelUpdateModal/ChannelUpdateForm.js'
 
 
-function App() {
+
+function App () { //SWITCHED FROM FUNTIONAL COMPONENT
   return (
     <Switch>
       <Route path="/login">
@@ -23,6 +24,7 @@ function App() {
       <Route exact path="/signup">
         <SignUpFormPage/>
       </Route>
+
 
       <Route path="/">
         <NavBar/>
