@@ -2,6 +2,8 @@ import csrfFetch from './csrf.js'
 export const SET_USER = 'session/SET_USER'
 export const REMOVE_USER = 'session/REMOVE_USER'
 
+//for heroku
+
 const setUser = (user) => ({
   type: SET_USER,
   user
