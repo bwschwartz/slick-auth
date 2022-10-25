@@ -2,10 +2,17 @@
 
 ApplicationRecord.transaction do
   puts "Destroying tables..."
+  ChannelUser.destroy_all
+  Channel.destroy_all
   User.destroy_all
 
-  # puts "Resetting primary keys..."
-  # ApplicationRecord.connection.reset_pk_sequence!('users') # Gives first user id of 1
+
+  puts "Resetting primary keys..."
+  ApplicationRecord.connection.reset_pk_sequence!('users')
+  ApplicationRecord.connection.reset_pk_sequence!('channels')
+  ApplicationRecord.connection.reset_pk_sequence!('channel_users') # Gives first user id of 1
+   # Gives first user id of 1
+   # Gives first user id of 1
 
   puts "Creating users..."
 
@@ -55,12 +62,12 @@ ApplicationRecord.transaction do
 
   ChannelUser.create!(
     channel_id: 1,
-    user_id: 2
+    user_id: 1
   )
 
   ChannelUser.create!(
     channel_id: 1,
-    user_id: 3
+    user_id: 1
   )
 
   puts "Done!"
