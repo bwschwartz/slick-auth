@@ -18,7 +18,6 @@ export const ChannelPage = () => {
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  // debugger
   const channelsLis = channelsObj.map( (channel, i) => <li key={i}  id={channel.id}>
 
     <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp;

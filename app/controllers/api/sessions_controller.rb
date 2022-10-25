@@ -11,7 +11,6 @@ class Api::SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:email], params[:password])
 
-    # debugger
     if @user
       login!(@user)
       # render json: { user: @user }
