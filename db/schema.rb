@@ -11,9 +11,12 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "channel_users", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "channel_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "channel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["channel_id"], name: "index_channel_users_on_channel_id"
@@ -23,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
   create_table "channels", force: :cascade do |t|
     t.string "title", null: false
     t.string "description"
-    t.integer "owner_id", null: false
+    t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_channels_on_owner_id"
@@ -31,26 +34,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.integer "owner_id", null: false
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["owner_id"], name: "index_rooms_on_owner_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false
     t.string "password_digest", null: false
     t.string "session_token", null: false
-    t.string "full_name"
-    t.string "display_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -60,5 +53,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
   add_foreign_key "channel_users", "channels"
   add_foreign_key "channel_users", "users"
   add_foreign_key "channels", "users", column: "owner_id"
-  add_foreign_key "rooms", "users", column: "owner_id"
 end
