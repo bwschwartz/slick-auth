@@ -14,6 +14,12 @@ import { fetchChannels } from './store/channels'
 
 import {ModalProvider} from './context/Modal'
 
+import actionCable from 'actioncable';
+
+// chat stuff
+const ChatApp = {}
+ChatApp.cable = actionCable.createConsumer('./cable')
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== 'production') {
@@ -31,7 +37,6 @@ const renderApplication = () => {
     document.getElementById('root')
   );
 }
-
 
 function Root() {
   return (
