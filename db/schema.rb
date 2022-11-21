@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_21_225831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,14 +29,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
     t.bigint "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "room_id"
     t.index ["owner_id"], name: "index_channels_on_owner_id"
   end
 
   create_table "messages", force: :cascade do |t|
     t.string "content"
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
+    t.bigint "channel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_messages_on_channel_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -53,4 +56,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_20_192012) do
   add_foreign_key "channel_users", "channels"
   add_foreign_key "channel_users", "users"
   add_foreign_key "channels", "users", column: "owner_id"
+  add_foreign_key "messages", "channels"
+  add_foreign_key "messages", "users"
 end
