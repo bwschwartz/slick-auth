@@ -35,6 +35,7 @@
   justify-content: space-between;
   width: 100%;
   margin-right: 30px;
+  margin-left:
 }
 
 #pencil {
@@ -94,13 +95,14 @@ i span {
 }
 
 .fa-caret-down{
-  margin-left: 7px;
+  margin-left: 8px;
   transition: all 0.4s ease;
  }
 
 
 #channels-h5-down {
   /* color: #D1D2D3B3; */
+
 }
 
 #channels-h5-right{
@@ -203,3 +205,7 @@ align-items: center;
 /* .fa-pencil {
   background-color: blue;
 } */
+
+.fa-hashtag {
+  margin-left: 10px;
+}

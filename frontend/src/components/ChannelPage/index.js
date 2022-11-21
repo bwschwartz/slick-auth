@@ -3,8 +3,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
 import { fetchChannels } from '../../store/channels'
-import './ChannelPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import './ChannelPage.css'
 
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
@@ -20,6 +20,9 @@ export const ChannelPage = () => {
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
   const channelsLis = channelsObj.map( (channel, i) => <li key={i}  id={channel.id}>
 
+    <div>
+
+    </div>
     <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}
     <ChannelUpdateFormModal/>
@@ -66,6 +69,7 @@ export const ChannelPage = () => {
       </div>
 
         {width &&
+
         <>
         <div id="channels-menu-label">
           <button className="drop-button"

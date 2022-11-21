@@ -2,23 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
-// import { ModalProvider } from './context/Modal'
-import './index.css';
 import App from './App';
 import configureStore from './store';
-// import csrfFetch, { restoreCSRF } from './store/csrf'
 import csrfFetch from './store/csrf'
-
 import * as sessionActions from './store/session'
 import { fetchChannels } from './store/channels'
-
 import {ModalProvider} from './context/Modal'
-
 import actionCable from 'actioncable';
 
+
+
+import './index.css';
+
 // chat stuff
-const ChatApp = {}
-ChatApp.cable = actionCable.createConsumer('./cable')
+const ChatApp = actionCable.createConsumer('ws://localhost:3000/cable')
 
 const store = configureStore();
 
@@ -43,7 +40,7 @@ function Root() {
     <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
-          <App />
+          <App cable ={ChatApp}/>
         </BrowserRouter>
       </Provider>
     </ModalProvider>

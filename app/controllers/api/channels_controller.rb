@@ -4,6 +4,10 @@ class Api::ChannelsController < ApplicationController
     render 'api/channels/index'
   end
 
+  def show
+    @channel = Channel.find_by()
+  end
+
   def create
      @channel = Channel.new(channel_params)
      if @channel.save!

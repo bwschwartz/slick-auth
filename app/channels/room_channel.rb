@@ -1,9 +1,11 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    # @room = Room.find_by(id: params[:id])
-    # stream_from @room_channel
-    # stream_for @room
-
-    stream_from "room_channel"
+    stop_all_streams
+    stream_from "chat_#{room_id}"
   end
+
+  def unsubscribed
+    stop_all_streams
+  end
+
 end
