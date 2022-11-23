@@ -16,17 +16,30 @@ export const ChannelPage = () => {
     dispatch(fetchChannels())
   }, [])
 
+  const [channelDisplayName, setChannelDisplayName] = useState('')
+
+  const showChannel= (e) => {
+    // e.preventDefault()
+    console.log("in show channel")
+    console.log(e.target.innerText)
+    setChannelDisplayName(e.target.innerText)
+  }
+
+
+
+
+
+
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}  id={channel.id}>
+  const channelsLis = channelsObj.map( (channel, i) => <li key={i}  id={channel.id} className={channel.title}onClick={showChannel}>
 
-    <div>
-
-    </div>
-    <i className="fa-regular fa-hashtag"/> &nbsp; &nbsp;
+    <i className="fa-regular fa-hashtag"/>
+      &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}
-    <ChannelUpdateFormModal/>
+      <ChannelUpdateFormModal/>
     </div>
+
    </li>)
 
   const useChannelsWidth = (ref, onGutter) => {
@@ -88,7 +101,19 @@ export const ChannelPage = () => {
         </>}
       </div>
 
-      <div id="other-component">
+        <div id="other-component">
+          {/* <div id="channel-heading">
+            <p >hi bitch</p>
+        </div> */}
+        <div id="server-heading">
+      <h3 id="server-name">{channelDisplayName}&nbsp;
+      <i className="fa-solid fa-angle-down"/>
+      </h3>
+      <div id="circle-around-pen">
+        <i className="fa-solid fa-pen-to-square"/>
+      </div>
+      </div>
+
       </div>
     </Split>
 
