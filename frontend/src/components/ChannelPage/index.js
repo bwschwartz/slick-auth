@@ -62,7 +62,7 @@ export const ChannelPage = () => {
     <>
     <div className="split-container">
 
-      <Split className="split" sizes={[50, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={5} onDrag={ () => setOnGutter(current => !current) }>
+      <Split className="split" sizes={[44, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={5} onDrag={ () => setOnGutter(current => !current) }>
         <div id="channel-bar" ref={channelsDivRef}>
           <div className="server-heading">
             <h3 className="server-name">A Real Workplace&nbsp;
@@ -111,10 +111,17 @@ export const ChannelPage = () => {
         <div id="chat-container">
 
           <div id="message-list">
-            im a message list
             <div id="send-message-container">
-              <input id= "message-box"></input>
-              <div id= "send-message-icon"></div>
+
+              <div className="chat-styling-icons">
+                <div id="bold">
+                  <i class="fa-sharp fa-solid fa-bold fa-xs"></i>
+                </div>
+              </div>
+              <input id="message-box" placeholder={`Message #${channelDisplayName}`}/>
+              <div id= "send-message-icon">
+                <i className="fa-solid fa-paper-plane fa-lg"></i>
+              </div>
             </div>
           </div>
 

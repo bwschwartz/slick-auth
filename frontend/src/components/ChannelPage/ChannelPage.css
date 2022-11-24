@@ -126,17 +126,18 @@ i span {
 }
 
 #plus {
-  /* background-color: green; */
   color: #1A171D;
   /* color: blue; */
   font-style: normal;
   margin-top: 2px;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   display: flex;
   justify-content: center;
   z-index: 100000;
   align-items: center;
+  /* margin-right: -1px; */
+  /* background-color: green; */
   /* padding */
 }
 
@@ -234,6 +235,7 @@ i span {
 
 #channel-bar {
   height: 100%;
+  min-width: 168px;
 }
 
 #channel-name-hash {
@@ -242,22 +244,20 @@ i span {
 
 .clickable-pencil{
   margin-right: -20px;
+  /* background-color: green */
 }
 
 #chat-container {
   display: flex;
   height: 100vh;
+
 }
 
 #message-list {
   display: flex;
   height: 90%;
-
   background-color: #1B1D21;;
-
   width: 100%;
-  /* text-align: center; */
-  /* border: 1px solid yellow; */
   border-bottom: 0px;
   justify-content: center;
   height: 100%;
@@ -267,29 +267,40 @@ i span {
   position: fixed;
   display: flex;
   align-self: flex-end;
-  border: 1px solid aliceblue;
+  border: 1px solid #787a7b;
   width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 14px;
-  /* margin-bottom: 100px; */
-  height: 100px;
+  border-radius: 8px;
+  margin-bottom: 26.5px;
+  height: 110px;
+  background-color: #232529;
 }
 
 #message-box {
-  border: 2px solid pink;
+  border: 0px solid pink;
   width: 94%;
   background-color: #1B1D21;
   height: 150px;
   padding-bottom: 0px;
   margin-bottom: 0px;
+  /* display: flex; */
+  text-align:start;
+  text-justify: start;
+  background-color: transparent
 }
 
 #send-message-icon {
-  height: 40px;
+  height: 100px;
   width: 40px;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #56595C;
+  margin-bottom: 10px;
+  margin-top:10px;
 }
 
 #channels-split-left {
@@ -317,10 +328,24 @@ i span {
   padding: 0px; */
   position: relative;
   padding-top:.19px;
-  padding-left: .49px;
+  padding-left: .38;
 }
 
-.fa-xl {
+.chat-styling-icons {
+  /* background-color:blue; */
+  width: 95%;
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* margin: 10px; */
+}
 
+#bold {
+  /* color: #787a7b; */
+  color: #56595C;
+
+  padding-left: 4px;
+  padding-top: 10px;
 }
 
