@@ -16,19 +16,14 @@ export const ChannelPage = () => {
     dispatch(fetchChannels())
   }, [])
 
-  const [channelDisplayName, setChannelDisplayName] = useState('')
+  const [channelDisplayName, setChannelDisplayName] = useState(false)
 
   const showChannel= (e) => {
     // e.preventDefault()
     console.log("in show channel")
     console.log(e.target.innerText)
-    setChannelDisplayName(e.target.innerText)
+    setChannelDisplayName((e.target.innerText).trim())
   }
-
-
-
-
-
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
@@ -71,8 +66,8 @@ export const ChannelPage = () => {
     onDrag={ () => setOnGutter(current => !current) }>
 
 
-      <div ref={channelsDivRef}>
-      <div id="server-heading">
+      <div id="channel-bar" ref={channelsDivRef}>
+      <div className="server-heading">
       <h3 id="server-name">Google Magenta&nbsp;
       <i className="fa-solid fa-angle-down"/>
       </h3>
@@ -90,9 +85,7 @@ export const ChannelPage = () => {
             <i className={ dropMenuBool ? "fa-solid fa-caret-down" : "fa-solid fa-caret-right" } id="caret">
             <span id={ dropMenuBool ? "channels-h5-down" : "channels-h5-right" }>&nbsp;Channels</span></i>
           </button>
-
         <ChannelFormModal/>
-
         </div>
 
         {dropMenuBool && <div id="channels-component">
@@ -101,20 +94,17 @@ export const ChannelPage = () => {
         </>}
       </div>
 
-        <div id="other-component">
-          {/* <div id="channel-heading">
-            <p >hi bitch</p>
-        </div> */}
-        <div id="server-heading">
-      <h3 id="server-name">{channelDisplayName}&nbsp;
-      <i className="fa-solid fa-angle-down"/>
-      </h3>
-      <div id="circle-around-pen">
-        <i className="fa-solid fa-pen-to-square"/>
-      </div>
+      <div id="other-component">
+        <div className="server-heading other">
+          <h3 id="server-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
+          {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
+          </h3>
+        <div id="circle-around-pen">
+          <i className="fa-solid fa-pen-to-square"/>
+        </div>
       </div>
 
-      </div>
+      </div>``
     </Split>
 
     </div>
