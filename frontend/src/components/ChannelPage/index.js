@@ -62,50 +62,68 @@ export const ChannelPage = () => {
     <>
     <div className="split-container">
 
-    <Split className="split" sizes={[70, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={1}
-    onDrag={ () => setOnGutter(current => !current) }>
+      <Split className="split" sizes={[70, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={1} onDrag={ () => setOnGutter(current => !current) }>
+        <div id="channel-bar" ref={channelsDivRef}>
+          <div className="server-heading">
+            <h3 id="server-name">A Real Workplace&nbsp;
+              <i className="fa-solid fa-angle-down"/>
+            </h3>
 
-
-      <div id="channel-bar" ref={channelsDivRef}>
-      <div className="server-heading">
-      <h3 id="server-name">Google Magenta&nbsp;
-      <i className="fa-solid fa-angle-down"/>
-      </h3>
-      <div id="circle-around-pen">
-        <i className="fa-solid fa-pen-to-square"/>
-      </div>
-      </div>
-
-        {width &&
-
-        <>
-        <div id="channels-menu-label">
-          <button className="drop-button"
-                  onClick={dropMenu}>
-            <i className={ dropMenuBool ? "fa-solid fa-caret-down" : "fa-solid fa-caret-right" } id="caret">
-            <span id={ dropMenuBool ? "channels-h5-down" : "channels-h5-right" }>&nbsp;Channels</span></i>
-          </button>
-        <ChannelFormModal/>
-        </div>
-
-        {dropMenuBool && <div id="channels-component">
-            <ul className="channel-list">{channelsLis}</ul>
-        </div>}
-        </>}
-      </div>
-
-      <div id="other-component">
-        <div className="server-heading other">
-          <h3 id="server-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
-          {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
-          </h3>
         <div id="circle-around-pen">
           <i className="fa-solid fa-pen-to-square"/>
         </div>
-      </div>
+        </div>
 
-      </div>``
-    </Split>
+          {width &&
+
+          <>
+          <div id="channels-split-left">
+            <div id="channels-menu-label">
+              <button className="drop-button"
+                      onClick={dropMenu}>
+                <i className={ dropMenuBool ? "fa-solid fa-caret-down" : "fa-solid fa-caret-right" } id="caret">
+                <span id={ dropMenuBool ? "channels-h5-down" : "channels-h5-right" }>&nbsp;Channels</span></i>
+              </button>
+              <ChannelFormModal/>
+            </div>
+
+            {dropMenuBool && <div id="channels-component">
+                <ul className="channel-list">
+
+                {channelsLis}</ul>
+            </div>}
+          </div>
+          </>}
+
+        </div>
+
+        <div id="other-component">
+          <div className="server-heading other">
+            <h3 id="server-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
+            {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
+            </h3>
+          <div id="circle-around-pen">
+            <i className="fa-solid fa-pen-to-square"/>
+          </div>
+
+        </div>
+
+        <div id="chat-container">
+
+          <div id="message-list">
+            im a message list
+            <div id="send-message-container">
+              <input id= "message-box"></input>
+              <div id= "send-message-icon"></div>
+            </div>
+          </div>
+
+
+        </div>
+
+        </div>
+
+      </Split>
 
     </div>
     </>
