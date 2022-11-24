@@ -126,14 +126,18 @@ i span {
 }
 
 #plus {
+  /* background-color: green; */
   color: #1A171D;
+  /* color: blue; */
   font-style: normal;
   margin-top: 2px;
   height: 15px;
-  width: 16px;
-display: flex;
-justify-content: center;
-align-items: center;
+  width: 15px;
+  display: flex;
+  justify-content: center;
+  z-index: 100000;
+  align-items: center;
+  /* padding */
 }
 
 
@@ -302,7 +306,20 @@ align-items: center;
   padding-top: 15px;
   padding-bottom: 15px;
   margin:0px;
-  /* border: 1px solid red; */
+
+
+}
+
+
+.fa-plus {
+  /* margin-bottom: 100px;
+  padding: 0px; */
+  position: relative;
+  padding-top:.19px;
+  padding-left: .49px;
+}
+
+.fa-xl {
 
 }
 
