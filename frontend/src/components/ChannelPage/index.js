@@ -62,10 +62,10 @@ export const ChannelPage = () => {
     <>
     <div className="split-container">
 
-      <Split className="split" sizes={[70, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={1} onDrag={ () => setOnGutter(current => !current) }>
+      <Split className="split" sizes={[50, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={5} onDrag={ () => setOnGutter(current => !current) }>
         <div id="channel-bar" ref={channelsDivRef}>
           <div className="server-heading">
-            <h3 id="server-name">A Real Workplace&nbsp;
+            <h3 className="server-name">A Real Workplace&nbsp;
               <i className="fa-solid fa-angle-down"/>
             </h3>
 
@@ -89,8 +89,8 @@ export const ChannelPage = () => {
 
             {dropMenuBool && <div id="channels-component">
                 <ul className="channel-list">
-
-                {channelsLis}</ul>
+                  {channelsLis}
+                </ul>
             </div>}
           </div>
           </>}
@@ -99,7 +99,7 @@ export const ChannelPage = () => {
 
         <div id="other-component">
           <div className="server-heading other">
-            <h3 id="server-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
+            <h3 className="channel-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
             {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
             </h3>
           <div id="circle-around-pen">
