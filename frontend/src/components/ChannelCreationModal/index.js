@@ -11,7 +11,7 @@ export const ChannelFormModal = () => {
 
    className="drop-button"
    onClick={() => setShowModal(true)}>
-    <div    id="plus">
+    <div  id="plus">
       <i className="fa-light fa-plus fa-lg"/>
 
     </div>

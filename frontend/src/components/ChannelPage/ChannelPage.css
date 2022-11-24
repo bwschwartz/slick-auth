@@ -295,6 +295,7 @@ i span {
 #channels-split-left {
   height: 100%;
   overflow-y: auto;
+  padding-bottom: 10px;
 
 }
 
