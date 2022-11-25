@@ -5,7 +5,8 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.find_by()
+    @channel = Channel.find_by(slug: params[:slug])
+    @message = Message.new
   end
 
   def create
@@ -19,15 +20,12 @@ class Api::ChannelsController < ApplicationController
   end
 
   def update
-    # channel_params[:id] = channel_params[:id].to_i + 1
     @channel = Channel.find(channel_params[:id])
 
     if @channel and @channel.update(channel_params)
       puts('updating')
-      # render 'api/channels/update'
     else
       puts('elsing \n \n')
-
     #   # render json: {errors: channel not fo}
     #   # render json: { errors: @channel.errors.full_messages}, status: :unprocessable_entity
     end
