@@ -21,21 +21,20 @@ export const ChannelPage = () => {
 
   const showChannel= (e) => {
     console.log("in show channel")
-    console.log(e.target.innerText)
-    console.log("firing")
+
     setChannelDisplayName((e.target.innerText).trim())
+    document.getElementById("message-box").focus();
   }
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => <li key={i}  id={channel.id} className={channel.title}onClick={showChannel}>
-
+  const channelsLis = channelsObj.map( (channel, i) =>
+  <li key={i}  id={channel.id} className={channel.title}onClick={showChannel}>
     <i className="fa-regular fa-hashtag"/>
       &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}
       <ChannelUpdateFormModal/>
     </div>
-
    </li>)
 
   const useChannelsWidth = (ref, onGutter) => {
@@ -51,6 +50,7 @@ export const ChannelPage = () => {
 
 
   const [onGutter, setOnGutter] = useState(true);
+
   const channelsDivRef = createRef();
   const width = useChannelsWidth(channelsDivRef, onGutter);
 
@@ -59,7 +59,7 @@ export const ChannelPage = () => {
     setDropMenuBool(curr => !curr)
   }
 
-  const handleSubmit = {
+  const handleSubmit = () => {
 
   }
 

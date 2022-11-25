@@ -352,8 +352,9 @@ i span {
   background-color: transparent
 }
 
-#message-box:focus {
+#message-box:focus  {
   border: 0px solid pink;
+  outline: none;
   width: 94%;
   background-color: #1B1D21;
   /* height: 100px; */
@@ -363,6 +364,9 @@ i span {
   text-justify: start;
   background-color: transparent
 }
+
+
+
 
 
 
