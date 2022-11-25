@@ -13,15 +13,16 @@ import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
 
 export const ChannelPage = () => {
   useEffect (()=> {
-    dispatch(fetchChannels())
+    dispatch(fetchChannels());
+    document.getElementById("message-box").focus();
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
 
   const showChannel= (e) => {
-    // e.preventDefault()
     console.log("in show channel")
     console.log(e.target.innerText)
+    console.log("firing")
     setChannelDisplayName((e.target.innerText).trim())
   }
 
@@ -56,6 +57,10 @@ export const ChannelPage = () => {
   const [dropMenuBool, setDropMenuBool] = useState(true);
   const dropMenu = () => {
     setDropMenuBool(curr => !curr)
+  }
+
+  const handleSubmit = {
+
   }
 
   return (
@@ -114,14 +119,35 @@ export const ChannelPage = () => {
             <div id="send-message-container">
 
               <div className="chat-styling-icons">
-                <div id="bold">
-                  <i class="fa-sharp fa-solid fa-bold fa-xs"></i>
+                <div className="style-icon">
+                  <i class="fa-sharp fa-solid fa-bold fa-xs"/>
+                </div>
+                <div className="style-icon">
+                  <i class="fa-solid fa-italic fa-xs"/>
+                </div>
+
+                <div className="style-icon">
+                  <i class="fa-solid fa-strikethrough fa-xs"/>
                 </div>
               </div>
-              <input id="message-box" placeholder={`Message #${channelDisplayName}`}/>
+
+
+              <div id="messagebox-and-plane">
+                <form onSubmit={handleSubmit} id="message-form">
+                  <input id="message-box" placeholder={channelDisplayName && `Message #${channelDisplayName}`}/>
+                </form>
+                <div id= "plane">
+                  <i className="fa-solid fa-paper-plane fa-lg"></i>
+                </div>
+
+              </div>
+
+              {/* <input id="message-box" placeholder={`Message #${channelDisplayName}`}/>
+
               <div id= "send-message-icon">
                 <i className="fa-solid fa-paper-plane fa-lg"></i>
-              </div>
+              </div> */}
+
             </div>
           </div>
 

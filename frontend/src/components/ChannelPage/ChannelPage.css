@@ -278,30 +278,9 @@ i span {
   background-color: #232529;
 }
 
-#message-box {
-  border: 0px solid pink;
-  width: 94%;
-  background-color: #1B1D21;
-  height: 150px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  /* display: flex; */
-  text-align:start;
-  text-justify: start;
-  background-color: transparent
-}
 
-#send-message-icon {
-  height: 100px;
-  width: 40px;
-  /* border: 1px solid blue; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #56595C;
-  margin-bottom: 10px;
-  margin-top:10px;
-}
+
+
 
 #channels-split-left {
   height: 100%;
@@ -341,11 +320,68 @@ i span {
   /* margin: 10px; */
 }
 
-#bold {
+.style-icon {
   /* color: #787a7b; */
   color: #56595C;
+  width: 30px;
 
   padding-left: 4px;
   padding-top: 10px;
 }
 
+#messagebox-and-plane {
+  /* background-color: blue; */
+  display: flex;
+  width: 100%;
+  height: 70%;
+  margin: 10px 0px 20px 10px;
+  padding: 0px;
+  align-items: center;
+
+}
+
+#message-box {
+  border: 0px solid pink;
+  width: 94%;
+  background-color: #1B1D21;
+  /* height: 100px; */
+  margin-left: 18px;
+  padding: 0;
+  text-align:start;
+  text-justify: start;
+  background-color: transparent
+}
+
+#message-box:focus {
+  border: 0px solid pink;
+  width: 94%;
+  background-color: #1B1D21;
+  /* height: 100px; */
+  margin-left: 18px;
+  padding: 0;
+  text-align:start;
+  text-justify: start;
+  background-color: transparent
+}
+
+
+
+#message-form {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#plane {
+  height: 70%;
+  width: 40px;
+  /* border: 1px solid blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #56595C;
+  margin-right: 20px;
+  /* margin-bottom: 10px; */
+  /* margin-top:10px; */
+}

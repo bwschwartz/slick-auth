@@ -34,7 +34,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def destroy
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find(params[:slug])
     if @channel
       puts "inside if"
       @channel.delete()
