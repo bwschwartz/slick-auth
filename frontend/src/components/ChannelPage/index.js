@@ -20,7 +20,7 @@ export const ChannelPage = () => {
 
   useEffect (()=> {
     dispatch(fetchChannels());
-    document.getElementById("message-box").focus();
+    document.getElementById("message-box")?.focus();
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
@@ -78,10 +78,9 @@ export const ChannelPage = () => {
   }
 
   const handleSubmit = (e) => {
-    console.log("in handle submit")
     e.preventDefault();
-    createMessage({ content: messageContent, channelId: currentChannelId, userId: currentUserId })
-    console.log("in handle submit after message")
+    createMessage({ content: messageContent, channelId: currentChannelId, userId: currentUserId });
+    setMessageContent('')
   }
 
   return (
@@ -140,7 +139,7 @@ export const ChannelPage = () => {
               <h1> messages go here</h1>
             </div>
 
-            <div id="send-message-container">
+          { channelDisplayName && <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
                   <i className="fa-sharp fa-solid fa-bold fa-xs"/>
@@ -177,7 +176,8 @@ export const ChannelPage = () => {
                 <i className="fa-solid fa-paper-plane fa-lg"></i>
               </div> */}
 
-            </div>
+            </div>}
+
           </div>
 
 
