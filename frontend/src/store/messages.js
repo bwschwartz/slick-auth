@@ -9,9 +9,14 @@ import csrfFetch from './csrf'
 // };
 
 
-export const createMessage = message => (
-  csrfFetch('/api/messages', {
+export const createMessage = (message) => {
+  // const { content, channelId, authorId } = message;
+  // console.log("where it breaks", channelId)
+
+  const res =  csrfFetch(`/api/messages`, {
     method: 'POST',
-    data: {message}
+    body: JSON.stringify({...message })
   })
-)
+
+
+}

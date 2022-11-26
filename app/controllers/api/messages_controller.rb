@@ -1,10 +1,12 @@
-class MessagesController < ApplicationController
+class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
-    message.user = current_user
-    if message.save
-      RoomsChannel.broadcast_to(@message.channel, @message)
+    @message.user = current_user
+    if @message.save
+      ChannelsChannel.broadcast_to(@message.channel, @message)
+      render json: {"#{@message}": @message}
     else
+      render json: "error bitch"
     end
   end
 
@@ -14,6 +16,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content , :channel_id, :author_id)
+    params.permit(:content , :channel_id, :user_id)
   end
 end

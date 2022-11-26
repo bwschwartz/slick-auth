@@ -16,7 +16,7 @@ import ActionCable from 'actioncable'
 export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
-  const currentUserId = useSelector( state => state.session.user.id )
+  const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
 
   useEffect (()=> {
     dispatch(fetchChannels());
@@ -35,9 +35,6 @@ export const ChannelPage = () => {
     setCurrentChannelId(channel.id)
   }
   //enter room and subscribe
-  const sendMessageToBackend = () => {
-  }
-
   useEffect(() => {
     let subscription = null
     if(currentChannelId) {
@@ -81,8 +78,10 @@ export const ChannelPage = () => {
   }
 
   const handleSubmit = (e) => {
+    console.log("in handle submit")
     e.preventDefault();
-    createMessage({ content: messageContent, channelId: currentChannelId, authorId: currentUserId })
+    createMessage({ content: messageContent, channelId: currentChannelId, userId: currentUserId })
+    console.log("in handle submit after message")
   }
 
   return (
