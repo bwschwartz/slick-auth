@@ -2,7 +2,7 @@ import { useEffect, useCallback, useState, createRef, useContext } from 'react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
-import { fetchChannels } from '../../store/channels'
+import { fetchChannels, fetchChannel } from '../../store/channels'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
@@ -13,39 +13,43 @@ import ActionCable from 'actioncable'
 // import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
+  const dispatch = useDispatch();
+
   // const [ messages, setMessages ] = useState([])
   // const { consumer } = useContext(ChatContext);
-
-  const setUpChat = () => {
-    // consumer.subscriptions.create({channel:'MessagesChannel'})
-    const cable = ActionCable.createConsumer("ws://localhost:5000/cable");
-    cable.subscriptions.create(
-      { channel: "ChannelsChannel"},
-      { received: (message) => console.log(message) }
-    );
-
-  }
+  const cable = ActionCable.createConsumer("ws://localhost:5000/cable");
 
   useEffect (()=> {
     dispatch(fetchChannels());
     document.getElementById("message-box").focus();
-    setUpChat()
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
+  const [currentChannelId, setCurrentChannelId] = useState({})
 
-  const showChannel= (e) => {
+  const changeChannel= (e) => {
     e.stopPropagation();
-    // document.getElementById("message-box").focus();
-    // console.log("in show channel", Date.now())
-    console.log("in show channel", e.currentTarget)
     setChannelDisplayName((e.currentTarget.innerText).trim())
+    dispatch(fetchChannel(e.currentTarget.id))
+    setCurrentChannelId(e.currentTarget.id)
   }
 
-  const dispatch = useDispatch();
+  const setUpChat = (channelId) => {
+    cable.subscriptions.create(
+      { channel: "ChannelsChannel", id: channelId },
+      { received: (message) => console.log(message) }
+    );
+  }
+
+  //enter room and subscribe
+  useEffect(() => {
+    // setUpChat()
+
+  }, [currentChannelId])
+
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) =>
-  <li key={i}  id={channel.id} className={channel.title} onClick={showChannel}>
+  const channelsLis = channelsObj.map( (channel, i) => 
+  <li key={i}  id={channel.id} className={channel.title} onClick={changeChannel}>
     <i className="fa-regular fa-hashtag"/>
       &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}

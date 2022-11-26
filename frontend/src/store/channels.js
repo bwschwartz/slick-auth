@@ -1,19 +1,32 @@
 import csrfFetch from './csrf'
 
-const RECEIVE_CHANNELS = 'channels/ReceiveChannel';
-
+const RECEIVE_CHANNELS = 'channels/ReceiveChannels';
 const receiveChannels = (channels) => {
   return {
     type: RECEIVE_CHANNELS,
     channels
   }
 }
-
 export const fetchChannels = () => async (dispatch) => {
   const res = await csrfFetch('/api/channels');
+  console.log("in fetch channels bitch", res)
   const data = await res.json();
   // data.map( channel => channel.id:{channel} )
   dispatch(receiveChannels(data))
+}
+
+const RECEIVE_CHANNEL = 'channels/ReceiveChannel';
+const receiveChannel = (channel) => {
+  return {
+    type: RECEIVE_CHANNEL,
+    channel
+  }
+}
+export const fetchChannel = (channelId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/channels/${channelId}`);
+  console.log("in fetch channel bitch", res)
+  const data = await res.json();
+  dispatch(receiveChannel(data));
 }
 
 const ADD_CHANNEL = 'channels/CreateChannel'
@@ -23,7 +36,6 @@ const addChannel = (channel) => {
     channel
   }
 }
-
 export const createChannel = (channel) => async (dispatch) => {
   const { description, title, owner_id } = channel;
   const res = await csrfFetch('/api/channels', {
@@ -73,13 +85,14 @@ export const deleteChannel = (channelID) => async (dispatch) => {
   dispatch(removeChannel(channelID))
 }
 
-
 export const channelsReducer = (state={}, action) => {
   const nextState = {...state};
 
   switch (action.type) {
     case RECEIVE_CHANNELS:
       return {...state, ...action.channels}
+    case RECEIVE_CHANNEL:
+      return{...state, ...action.channel}
     case ADD_CHANNEL:
       return {...state, ...action.channel}
     case EDIT_CHANNEL:
