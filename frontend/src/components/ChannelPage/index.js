@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
 import { fetchChannels, fetchChannel } from '../../store/channels'
-import { createMessage } from '../../store/channels'
+import { createMessage } from '../../store/messages'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
@@ -24,6 +24,7 @@ export const ChannelPage = () => {
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
   const [currentChannelId, setCurrentChannelId] = useState({})
+  const [messageContent, setMessageContent] = useState('')
 
   const changeChannel= (e) => {
     e.stopPropagation();
@@ -85,6 +86,7 @@ export const ChannelPage = () => {
   }
 
   const handleSubmit = () => {
+    createMessage()
   }
 
   return (
@@ -158,10 +160,9 @@ export const ChannelPage = () => {
                 </div>
               </div>
 
-
               <div id="messagebox-and-plane">
-                <form onSubmit={handleSubmit} id="message-form">
-                  <input id="message-box" placeholder={channelDisplayName ? `Message #${channelDisplayName}` : undefined}/>
+                <form id="message-form"onSubmit={handleSubmit}>
+                  <textarea id="message-box" placeholder={channelDisplayName ? `Message #${channelDisplayName}` : undefined}/>
                 </form>
                 <div id= "plane">
                   <i className="fa-solid fa-paper-plane fa-lg"></i>
