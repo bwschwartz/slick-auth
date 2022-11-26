@@ -174,7 +174,9 @@ i span {
   padding-left: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
-  margin:0px;
+  margin: 0px;
+  min-width: fit-content(max-content);
+  overflow-x:scroll;
 }
 
 .fa-angle-down{
@@ -235,7 +237,7 @@ i span {
 
 #channel-bar {
   height: 100%;
-  min-width: 168px;
+  /* min-width: 168px; */
 }
 
 #channel-name-hash {
