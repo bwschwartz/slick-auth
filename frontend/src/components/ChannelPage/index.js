@@ -16,6 +16,7 @@ import ActionCable from 'actioncable'
 export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
+  const currentUserId = useSelector( state => state.session.user.id )
 
   useEffect (()=> {
     dispatch(fetchChannels());
@@ -23,7 +24,7 @@ export const ChannelPage = () => {
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
-  const [currentChannelId, setCurrentChannelId] = useState({})
+  const [currentChannelId, setCurrentChannelId] = useState(null)
   const [messageContent, setMessageContent] = useState('')
 
   const changeChannel= (e) => {
@@ -33,24 +34,18 @@ export const ChannelPage = () => {
     dispatch(fetchChannel(channel.id))
     setCurrentChannelId(channel.id)
   }
-
-  const setUpChat = (channelId) => {
-    consumer.subscriptions.create(
-      { channel: "ChannelsChannel", id: channelId },
-      { received: (message) => console.log(message) }
-    );
-  }
-
   //enter room and subscribe
   const sendMessageToBackend = () => {
   }
 
   useEffect(() => {
-    const subscription = consumer.subscriptions.create(
-      { channel: "ChannelsChannel", id: currentChannelId },
-      { received: (message) => console.log(message) }
-    );
-    // setUpChat()
+    let subscription = null
+    if(currentChannelId) {
+      const subscription = consumer.subscriptions.create(
+        { channel: "ChannelsChannel", id: currentChannelId },
+        { received: (message) => console.log(message) }
+      );
+    }
     return () => subscription?.unsubscribe();
   }, [currentChannelId])
 
@@ -85,8 +80,9 @@ export const ChannelPage = () => {
     setDropMenuBool(curr => !curr)
   }
 
-  const handleSubmit = () => {
-    createMessage()
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createMessage({ content: messageContent, channelId: currentChannelId, authorId: currentUserId })
   }
 
   return (
@@ -106,7 +102,6 @@ export const ChannelPage = () => {
         </div>
 
           {width &&
-
           <>
           <div id="channels-split-left">
             <div id="channels-menu-label">
@@ -162,7 +157,14 @@ export const ChannelPage = () => {
 
               <div id="messagebox-and-plane">
                 <form id="message-form"onSubmit={handleSubmit}>
-                  <textarea id="message-box" placeholder={channelDisplayName ? `Message #${channelDisplayName}` : undefined}/>
+                  <textarea id="message-box"
+                  placeholder={ channelDisplayName ? `Message #${channelDisplayName}` : undefined }
+                  onChange={ e => setMessageContent(e.target.value) }
+                  onKeyDown={ e => {
+                  if (e.code === 'Enter' && !e.shiftKey) {
+                  handleSubmit(e); }}}
+                  value={messageContent}
+                  />
                 </form>
                 <div id= "plane">
                   <i className="fa-solid fa-paper-plane fa-lg"></i>
