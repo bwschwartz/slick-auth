@@ -13,6 +13,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def add_message
+    user = User.find(params[:user_id])
+    message = params[:message]
+    created_message = user.messages.create(content: message)
+    ActionCAble.server.broadcast('message-channel', created_message)
+    head :ok
+  end
+
   private
 
   def user_params

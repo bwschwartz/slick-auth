@@ -11,4 +11,9 @@ class MessagesController < ApplicationController
     end
   end
 
+  def index
+    messages = Message.stream
+    render json: messages
+  end
+
 end

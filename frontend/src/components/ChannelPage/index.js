@@ -9,18 +9,22 @@ import { ChannelFormModal } from '../ChannelCreationModal'
 import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
 import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
+import ActionCable from 'actioncable'
 // import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
   // const [ messages, setMessages ] = useState([])
-  const { consumer } = useContext(ChatContext);
-
-  const renderMessage = (data) => {
-    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
-  }
+  // const { consumer } = useContext(ChatContext);
 
   const setUpChat = () => {
-    consumer.subscriptions.create({channel:'MessagesChannel'})
+    // consumer.subscriptions.create({channel:'MessagesChannel'})
+    const cable = ActionCable.createConsumer("ws://localhost:5000/cable");
+    cable.subscriptions.create(
+      { channel: "MessagesChannel" },
+      { received: (message) => console.log(message) }
+    );
+
+
   }
 
   useEffect (()=> {
