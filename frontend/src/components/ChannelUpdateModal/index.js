@@ -14,6 +14,7 @@ export const ChannelUpdateFormModal = () => {
   }, [channelName])
 
   const prepareModal = (e) => {
+    e.stopPropagation();
     e.preventDefault();
     setChannelID(e.target.parentElement.parentElement.parentElement.id)
     setChannelName(e.target.parentElement.parentElement.innerText)

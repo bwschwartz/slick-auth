@@ -20,10 +20,9 @@ export const ChannelPage = () => {
     // consumer.subscriptions.create({channel:'MessagesChannel'})
     const cable = ActionCable.createConsumer("ws://localhost:5000/cable");
     cable.subscriptions.create(
-      { channel: "MessagesChannel" },
+      { channel: "ChannelsChannel"},
       { received: (message) => console.log(message) }
     );
-
 
   }
 
@@ -37,20 +36,20 @@ export const ChannelPage = () => {
 
   const showChannel= (e) => {
     // document.getElementById("message-box").focus();
-    console.log("in show channel")
+    console.log("in show channel", Date.now())
     setChannelDisplayName((e.target.innerText).trim())
   }
 
   const dispatch = useDispatch();
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
   const channelsLis = channelsObj.map( (channel, i) =>
-  <li key={i}  id={channel.id} className={channel.title}onClick={showChannel}>
+  <li key={i}  id={channel.id} className={channel.title} onClick={showChannel}>
     <i className="fa-regular fa-hashtag"/>
       &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}
       <ChannelUpdateFormModal/>
     </div>
-   </li>)
+  </li> )
 
   const useChannelsWidth = (ref, onGutter) => {
     const [channelsWidth, setChannelsWidth] = useState(1);
@@ -75,7 +74,6 @@ export const ChannelPage = () => {
   }
 
   const handleSubmit = () => {
-
   }
 
   return (

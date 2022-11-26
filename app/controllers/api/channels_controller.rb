@@ -4,11 +4,6 @@ class Api::ChannelsController < ApplicationController
     render 'api/channels/index'
   end
 
-  def show
-    @channel = Channel.find_by(slug: params[:slug])
-    @message = Message.new
-  end
-
   def create
      @channel = Channel.new(channel_params)
      if @channel.save!
@@ -32,7 +27,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def destroy
-    @channel = Channel.find(params[:slug])
+    @channel = Channel.find(params[:id])
     if @channel
       puts "inside if"
       @channel.delete()

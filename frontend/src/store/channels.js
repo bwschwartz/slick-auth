@@ -67,7 +67,6 @@ const removeChannel = (channelID) => {
 }
 
 export const deleteChannel = (channelID) => async (dispatch) => {
-  console.log("insdie delete channel")
   const res = await csrfFetch(`/api/channels/${channelID}`, {
     method: "DELETE"
   })
