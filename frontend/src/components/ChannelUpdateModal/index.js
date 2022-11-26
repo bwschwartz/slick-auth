@@ -4,15 +4,13 @@ import { Modal } from '../../context/Modal';
 import './ChannelUpdateModal.css'
 
 
-export const ChannelUpdateFormModal = ({setChannelDisplayName}) => {
+export const ChannelUpdateFormModal = () => {
   const [showModal, setShowModal] = useState(false)
   const [channelName, setChannelName] = useState('')
   const [channelID, setChannelID] = useState('');
-  console.log(setChannelDisplayName)
 
   useEffect(()=>{
     if (channelName !=='' && channelID !=='') setShowModal(true)
-    // setChannelDisplayName(false)
   }, [channelName])
 
   const prepareModal = (e) => {

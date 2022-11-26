@@ -1,20 +1,32 @@
-import { useEffect, useCallback, useState, createRef } from 'react'
+import { useEffect, useCallback, useState, createRef, useContext } from 'react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
 import { fetchChannels } from '../../store/channels'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './ChannelPage.css'
-
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
 import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
+import ChatContext  from '../../context/ChatContext'
+import './ChannelPage.css'
 // import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
+  // const [ messages, setMessages ] = useState([])
+  const { consumer } = useContext(ChatContext);
+
+  const renderMessage = (data) => {
+    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+  }
+
+  const setUpChat = () => {
+    consumer.subscriptions.create({channel:'MessagesChannel'})
+  }
+
   useEffect (()=> {
     dispatch(fetchChannels());
     document.getElementById("message-box").focus();
+    setUpChat()
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
@@ -114,9 +126,12 @@ export const ChannelPage = () => {
 
         <div id="chat-container">
 
-          <div id="message-list">
-            <div id="send-message-container">
+          <div id="messages-container">
+            <div id="messages-list">
+              <h1> messages go here</h1>
+            </div>
 
+            <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
                   <i class="fa-sharp fa-solid fa-bold fa-xs"/>

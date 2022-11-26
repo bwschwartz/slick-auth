@@ -6,15 +6,13 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   # post 'api/test', to: 'application#test'
-
-  # mount ActionCable.server => 'cable'
   # root 'pages#index'
   # get 'pages/index'
 
   namespace :api, defaults: { format: :json } do
     resources :users, only: :create
     resources :channels, only: %i(index create update destroy show), param: :slug
-    resources :messages 
+    resources :messages
     resource :session, only: %i(show create destroy)
   end
 
