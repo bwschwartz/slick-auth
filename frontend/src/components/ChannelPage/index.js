@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
 import { fetchChannels, fetchChannel } from '../../store/channels'
+import { createMessage } from '../../store/channels'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
@@ -14,10 +15,7 @@ import ActionCable from 'actioncable'
 
 export const ChannelPage = () => {
   const dispatch = useDispatch();
-
-  // const [ messages, setMessages ] = useState([])
-  // const { consumer } = useContext(ChatContext);
-  const cable = ActionCable.createConsumer("ws://localhost:5000/cable");
+  const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
 
   useEffect (()=> {
     dispatch(fetchChannels());
@@ -29,22 +27,30 @@ export const ChannelPage = () => {
 
   const changeChannel= (e) => {
     e.stopPropagation();
-    setChannelDisplayName((e.currentTarget.innerText).trim())
-    dispatch(fetchChannel(e.currentTarget.id))
-    setCurrentChannelId(e.currentTarget.id)
+    const channel = e.currentTarget
+    setChannelDisplayName((channel.innerText).trim())
+    dispatch(fetchChannel(channel.id))
+    setCurrentChannelId(channel.id)
   }
 
   const setUpChat = (channelId) => {
-    cable.subscriptions.create(
+    consumer.subscriptions.create(
       { channel: "ChannelsChannel", id: channelId },
       { received: (message) => console.log(message) }
     );
   }
 
   //enter room and subscribe
-  useEffect(() => {
-    // setUpChat()
+  const sendMessageToBackend = () => {
+  }
 
+  useEffect(() => {
+    const subscription = consumer.subscriptions.create(
+      { channel: "ChannelsChannel", id: currentChannelId },
+      { received: (message) => console.log(message) }
+    );
+    // setUpChat()
+    return () => subscription?.unsubscribe();
   }, [currentChannelId])
 
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
@@ -67,7 +73,6 @@ export const ChannelPage = () => {
     }, [onGutter])
     return channelsWidth
   }
-
 
   const [onGutter, setOnGutter] = useState(true);
 
