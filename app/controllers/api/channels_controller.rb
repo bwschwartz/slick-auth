@@ -36,8 +36,7 @@ class Api::ChannelsController < ApplicationController
   def destroy
     @channel = Channel.find(params[:id])
     if @channel
-      puts "inside if"
-      @channel.delete()
+      @channel.destroy()
       render json: {message: 'deleted the channel'}
     else
       puts "inside else"

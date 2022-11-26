@@ -30,9 +30,11 @@ export const ChannelPage = () => {
   const changeChannel= (e) => {
     e.stopPropagation();
     const channel = e.currentTarget
-    setChannelDisplayName((channel.innerText).trim())
-    dispatch(fetchChannel(channel.id))
-    setCurrentChannelId(channel.id)
+    if (channel.id !== currentChannelId) {
+      setChannelDisplayName((channel.innerText).trim())
+      dispatch(fetchChannel(channel.id))
+      setCurrentChannelId(channel.id)
+    }
   }
   //enter room and subscribe
   useEffect(() => {
