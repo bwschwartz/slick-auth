@@ -23,6 +23,7 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
 
   const deleteChannel = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     console.log(`channel id is ${channelID}`)
     dispatch(channelActions.deleteChannel(channelID))
     onClose()

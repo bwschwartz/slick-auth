@@ -35,9 +35,11 @@ export const ChannelPage = () => {
   const [channelDisplayName, setChannelDisplayName] = useState(false)
 
   const showChannel= (e) => {
+    e.stopPropagation();
     // document.getElementById("message-box").focus();
-    console.log("in show channel", Date.now())
-    setChannelDisplayName((e.target.innerText).trim())
+    // console.log("in show channel", Date.now())
+    console.log("in show channel", e.currentTarget)
+    setChannelDisplayName((e.currentTarget.innerText).trim())
   }
 
   const dispatch = useDispatch();
