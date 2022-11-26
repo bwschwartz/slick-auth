@@ -48,7 +48,7 @@ export const ChannelPage = () => {
   }, [currentChannelId])
 
   const channelsObj = useSelector( (state) => state.channels ? Object.values(state.channels) : [] )
-  const channelsLis = channelsObj.map( (channel, i) => 
+  const channelsLis = channelsObj.map( (channel, i) =>
   <li key={i}  id={channel.id} className={channel.title} onClick={changeChannel}>
     <i className="fa-regular fa-hashtag"/>
       &nbsp; &nbsp;
@@ -142,21 +142,21 @@ export const ChannelPage = () => {
             <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
-                  <i class="fa-sharp fa-solid fa-bold fa-xs"/>
+                  <i className="fa-sharp fa-solid fa-bold fa-xs"/>
                 </div>
                 <div className="style-icon">
-                  <i class="fa-solid fa-italic fa-xs"/>
+                  <i className="fa-solid fa-italic fa-xs"/>
                 </div>
 
                 <div className="style-icon">
-                  <i class="fa-solid fa-strikethrough fa-xs"/>
+                  <i className="fa-solid fa-strikethrough fa-xs"/>
                 </div>
               </div>
 
 
               <div id="messagebox-and-plane">
                 <form onSubmit={handleSubmit} id="message-form">
-                  <input id="message-box" placeholder={channelDisplayName && `Message #${channelDisplayName}`}/>
+                  <input id="message-box" placeholder={channelDisplayName ? `Message #${channelDisplayName}` : undefined}/>
                 </form>
                 <div id= "plane">
                   <i className="fa-solid fa-paper-plane fa-lg"></i>
