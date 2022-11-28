@@ -32,7 +32,7 @@ const renderApplication = () => {
   );
 }
 
-// chat stuff, need to move elsewher
+// chat stuff, need to move elsewher-
 const consumer = ActionCable.createConsumer('ws://localhost:3000/cable');
 
 

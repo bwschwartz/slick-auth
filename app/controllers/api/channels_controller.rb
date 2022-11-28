@@ -5,7 +5,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    @current_channel = Channel.find(params[:id])
+    @channel = Channel.find(params[:id])
     if @channel
       render 'api/channels/show'
     end

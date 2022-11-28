@@ -1,14 +1,11 @@
 #channels-component {
-  /* padding-top: 60px; */
   display: flex;
   color: #D1D2D3B3;
   width: 100%;
-  /* margin-top: -8px; */
   padding-top: 10px;
   margin-left: 8px;
   height: 100vh;
 
-  /* overflow-y: auto; */
 }
 
 .channel-list {
@@ -21,6 +18,7 @@
   height: 80vh;
   /* background-color: blue; */
   /* height: 100%; */
+  overflow-y: scroll;
 }
 
 .channel-list li {
@@ -252,6 +250,7 @@ i span {
 #chat-container {
   display: flex;
   height: 100vh;
+  overflow-y: scroll;
 
 }
 

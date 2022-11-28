@@ -9,9 +9,7 @@ const receiveChannels = (channels) => {
 }
 export const fetchChannels = () => async (dispatch) => {
   const res = await csrfFetch('/api/channels');
-  console.log("in fetch channels bitch", res)
   const data = await res.json();
-  // data.map( channel => channel.id:{channel} )
   dispatch(receiveChannels(data))
 }
 
