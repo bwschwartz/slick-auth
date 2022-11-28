@@ -229,10 +229,6 @@ i span {
   margin-left: 10px;
 }
 
-.split-container {
-  height: 100%;
-}
-
 #channel-bar {
   height: 100%;
   /* min-width: 168px; */
@@ -269,7 +265,7 @@ i span {
   display: flex;
   align-self: flex-end;
   border: 1px solid #787a7b;
-  width: 60%;
+  width: 79%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -284,7 +280,7 @@ i span {
 
 
 #channels-split-left {
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
   padding-bottom: 10px;
 
@@ -391,9 +387,10 @@ i span {
 
 #messages-list {
   margin-top: 100px;
-  height: 100%;
+  height: fit-content;
   border: 1px solid blue;
-  width: 73%;
+  border-radius: 9px;
+  width: 96.3%;
 }
 
 #current-channel {

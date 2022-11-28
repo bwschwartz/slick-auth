@@ -5,13 +5,14 @@ const Messages = () => {
   const messages = useSelector(state => state.channels.currentChannel? Object.values(state.channels.currentChannel.messages) : null)
 
   const getTime = (created_at) => {
-    const timeStr = created_at.split("T")[1].slice(1,5) 
+    const timeStr = created_at.split("T")[1].slice(1,5)
     return timeStr
 
   }
   const messagesLis = messages?.map(message=>
   <li id="message">
     <div>
+    <span>{message.userId}</span>
       {getTime(message.created_at)}
     </div>
     <div>
