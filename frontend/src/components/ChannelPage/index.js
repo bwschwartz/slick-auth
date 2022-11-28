@@ -37,6 +37,11 @@ export const ChannelPage = () => {
       dispatch(fetchChannel(channel.id))
       setCurrentChannelId(channel.id)
     }
+    setTimeout(() => {
+
+      document.getElementById("messages-list-bottom").scrollIntoView(false)
+    }, 100
+    )
   }
   //enter room and subscribe
   useEffect(() => {
@@ -140,13 +145,13 @@ export const ChannelPage = () => {
 
         </div>
 
-        <div id="chat-container">
 
+        <div id="chat-container">
           <div id="messages-container">
             <div id="messages-list">
               <Messages/>
             </div>
-
+          </div>
           { channelDisplayName && <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
@@ -184,12 +189,12 @@ export const ChannelPage = () => {
                 <i className="fa-solid fa-paper-plane fa-lg"></i>
               </div> */}
 
-            </div>}
+          </div>}
 
-          </div>
 
 
         </div>
+
 
         </div>
 

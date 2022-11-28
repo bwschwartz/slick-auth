@@ -58,6 +58,8 @@
   flex-direction: row;
   background-color: #1A171D;
   margin-bottom: 0px;
+  position: fixed;
+  width: 100%;
   /* padding-bottom: 100px; */
   /* height: 100%; */
 }
@@ -245,35 +247,40 @@ i span {
 
 #chat-container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: visible;
+  /* width: 100%; */
+  /* justify-content: center; */
+  align-items: center;
 
 }
 
 #messages-container {
+  width: 93%;
+  /* justify-content: center; */
   display: flex;
-  /* height: 90%; */
   background-color: #1B1D21;;
-  width: 100%;
-  border-bottom: 0px;
-  justify-content: center;
-  height: 100%;
+  height: 78%;
 }
 
 #send-message-container {
-  position: fixed;
-  display: flex;
-  align-self: flex-end;
-  border: 1px solid #787a7b;
-  width: 79%;
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 8px;
-  margin-bottom: 26.5px;
+  border: 1px solid #787a7b;
   height: 110px;
+  border-radius: 8px;
+  width: 76%;
+  /* margin-right: 10px;
+  margin-left: 10px; */
+  margin-bottom: 26.5px;
+  align-items: center;
   background-color: #232529;
+  position: fixed;
+  bottom: 0;
 }
+
 
 
 
@@ -334,7 +341,6 @@ i span {
   margin: 10px 0px 20px 10px;
   padding: 0px;
   align-items: center;
-
 }
 
 #message-box {
@@ -363,10 +369,6 @@ i span {
 }
 
 
-
-
-
-
 #message-form {
   width: 100%;
   height: 100%;
@@ -387,10 +389,15 @@ i span {
 
 #messages-list {
   margin-top: 100px;
-  height: fit-content;
+  /* height: fit-content; */
+  /* height: 100vh; */
   border: 1px solid blue;
   border-radius: 9px;
-  width: 96.3%;
+  /* width: 96.3%; */
+  width: 100%;
+  overflow-y: scroll;
+  /* justify-self: center; */
+  /* margin-left: 20px; */
 }
 
 #current-channel {

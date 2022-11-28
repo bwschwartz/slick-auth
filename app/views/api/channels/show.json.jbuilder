@@ -4,4 +4,5 @@ json.set! 'current_channel' do
   json.owner_id @channel.owner_id
   json.messages @channel.messages
   json.id "current-channel"
+  json.users @channel.users
 end
