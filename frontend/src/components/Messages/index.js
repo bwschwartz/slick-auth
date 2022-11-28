@@ -6,17 +6,17 @@ const Messages = () => {
   const channelUsers = useSelector(state => state.channels.currentChannel? Object.values(state.channels.currentChannel.users) : null)
 
   const getTime = (created_at) => {
-    let timeStr = created_at.split("T")[1].slice(0,5)
-    let [hours, minutes] = timeStr.split(":")
-    let meridiem = 'AM'
-    hours = parseInt(hours) -5
+    const timeStr = created_at.split("T")[1].slice(0,5);
+    let [hours, minutes] = timeStr.split(":");
+    let meridiem = 'AM';
+    hours = parseInt(hours) -5;
     if (hours > 12) {
       hours = parseInt(hours) - 12;
-      meridiem = 'PM'
+      meridiem = 'PM';
     } else if (hours < 0) {
-      hours = 12 + hours
+      hours = 12 + hours;
     }
-    return hours + ':' + minutes + ' ' + meridiem
+    return hours + ':' + minutes + ' ' + meridiem;
   }
 
 
