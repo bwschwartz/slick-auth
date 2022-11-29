@@ -16,13 +16,14 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
     e.preventDefault();
     const sendTitle = title === '' ? channelName : title
     const sendDescription = inputDescription === '' ? storeDescription : inputDescription
-    console.log(`channelID is ${channelID}`)
+    // console.log(`channelID is ${channelID}`)
     dispatch(channelActions.updateChannel({sendDescription, sendTitle, channelID, owner_id}))
     onClose()
   }
 
   const deleteChannel = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     console.log(`channel id is ${channelID}`)
     dispatch(channelActions.deleteChannel(channelID))
     onClose()

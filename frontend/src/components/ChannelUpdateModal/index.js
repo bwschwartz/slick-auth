@@ -9,14 +9,12 @@ export const ChannelUpdateFormModal = () => {
   const [channelName, setChannelName] = useState('')
   const [channelID, setChannelID] = useState('');
 
-  // const channels = useSelector(state => state.channels ? state.channels : null)
-
   useEffect(()=>{
     if (channelName !=='' && channelID !=='') setShowModal(true)
   }, [channelName])
 
-
   const prepareModal = (e) => {
+    e.stopPropagation();
     e.preventDefault();
     setChannelID(e.target.parentElement.parentElement.parentElement.id)
     setChannelName(e.target.parentElement.parentElement.innerText)

@@ -71,11 +71,11 @@ const storeUser = (user) => {
 
 
 export const signUp = (user) => async (dispatch) => {
-  const { email, password } = user;
+  // const { email, password } = user;
   console.log("above")
   const res = await csrfFetch("/api/users", {
     method: "POST",
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({...user})
   })
   console.log("below")
 

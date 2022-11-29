@@ -1,19 +1,39 @@
 import csrfFetch from './csrf'
 
-const RECEIVE_CHANNELS = 'channels/ReceiveChannel';
-
+const RECEIVE_CHANNELS = 'channels/ReceiveChannels';
 const receiveChannels = (channels) => {
   return {
     type: RECEIVE_CHANNELS,
     channels
   }
 }
-
 export const fetchChannels = () => async (dispatch) => {
   const res = await csrfFetch('/api/channels');
   const data = await res.json();
-  // data.map( channel => channel.id:{channel} )
   dispatch(receiveChannels(data))
+}
+
+const RECEIVE_CHANNEL = 'channels/ReceiveChannel';
+const receiveChannel = (channel) => {
+  return {
+    type: RECEIVE_CHANNEL,
+    channel
+  }
+}
+
+const shapeChannelUsers = (inShape) => {
+  const outShape = {}
+  for (let i=0; i<inShape.length; i++) {
+    outShape[Object.keys(inShape[i])[0]] = inShape[i][Object.keys(inShape[i])[0]]
+  }
+  return outShape
+}
+export const fetchChannel = (channelId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/channels/${channelId}`);
+  let data = await res.json();
+  console.log("data in fetch channel", shapeChannelUsers(data.currentChannel.users))
+  data.currentChannel.users = shapeChannelUsers(data.currentChannel.users)
+  dispatch(receiveChannel(data));
 }
 
 const ADD_CHANNEL = 'channels/CreateChannel'
@@ -23,7 +43,6 @@ const addChannel = (channel) => {
     channel
   }
 }
-
 export const createChannel = (channel) => async (dispatch) => {
   const { description, title, owner_id } = channel;
   const res = await csrfFetch('/api/channels', {
@@ -67,13 +86,11 @@ const removeChannel = (channelID) => {
 }
 
 export const deleteChannel = (channelID) => async (dispatch) => {
-  console.log("insdie delete channel")
   const res = await csrfFetch(`/api/channels/${channelID}`, {
     method: "DELETE"
   })
   dispatch(removeChannel(channelID))
 }
-
 
 export const channelsReducer = (state={}, action) => {
   const nextState = {...state};
@@ -81,6 +98,8 @@ export const channelsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_CHANNELS:
       return {...state, ...action.channels}
+    case RECEIVE_CHANNEL:
+      return{...state, ...action.channel}
     case ADD_CHANNEL:
       return {...state, ...action.channel}
     case EDIT_CHANNEL:

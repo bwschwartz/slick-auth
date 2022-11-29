@@ -2,7 +2,7 @@ development:
   # adapter: async
   adapter: redis #for websocket
   # url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  # url: redis://localhost:6379/1
+  url: redis://localhost:6379/1 #will this work? jsut tried
 
 test:
   adapter: test
@@ -11,3 +11,15 @@ production:
   adapter: redis
   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
   channel_prefix: slick_auth_production
+
+
+# development:
+#   adapter: redis
+
+# test:
+#   adapter: test
+
+# production:
+#   adapter: redis
+#   url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+#   channel_prefix: discourse_production

@@ -9,7 +9,6 @@ import { ChannelUpdateForm } from './components/ChannelUpdateModal/ChannelUpdate
 
 import Room from './components/Room'
 
-
 function App() {
   return (
     <Switch>

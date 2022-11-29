@@ -1,0 +1,82 @@
+#message {
+  list-style:none;
+  color: #d5dadf;
+}
+
+.message-content-and-info {
+  width: 95%;
+  display: flex;
+  margin-left: 33px;
+
+}
+#message-date {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 150%; */
+}
+
+#date-ruler-right {
+  border: 1px solid#2B2A2F;
+  height: 0px;
+  flex-grow: 1;
+}
+
+#date-ruler-left {
+  border: 1px solid #2B2A2F;
+  height: 0px;
+  flex-grow: 1;
+}
+
+.date-box {
+  padding: 9px;
+  padding-left: 14px;
+  padding-right: 14px;
+  border: 1px solid #2B2A2F;;
+  border-radius: 100px;
+  font-size: 13px;
+  /* z-index: 1; */
+  /* background-color: blue; */
+  /* transform: translateY(100px); */
+}
+
+#message-user-info {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 1px;
+}
+
+#message-time {
+  font-weight:lighter;
+  color: #8c889a;
+  font-size: 12px;
+}
+
+#messages-list ul {
+  /* overflow: none; */
+  /* position: sticky; */
+  /* bottom: 0; */
+  padding: 0;
+  margin: 0;
+  /* text-align: center; */
+}
+
+#message-content {
+  margin-bottom: 10px;
+  font-weight: light;
+  color: #b4b2bc;
+}
+
+#bottom-buffer{
+  height: 100px;
+}
+
+.message-pic{
+  border: 1px solid blue;
+  height: 36px;
+  width: 36px;
+  flex-shrink: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+}

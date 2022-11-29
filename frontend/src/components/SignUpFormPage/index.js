@@ -12,6 +12,7 @@ export const SignUpFormPage = () => {
   const user = useSelector( (state) => state.session.user );
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
   const [confirmationPassword, setConfirmationPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
@@ -21,7 +22,7 @@ export const SignUpFormPage = () => {
     e.preventDefault();
     if (password === confirmationPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signUp({ email, password }))
+      return dispatch(sessionActions.signUp({ email, password, username }))
         .catch(async (res) => {
         let data;
         try {
@@ -75,6 +76,13 @@ export const SignUpFormPage = () => {
           placeholder=" your email"
           onChange={ (e) => setEmail(e.target.value) } />
 
+        <label htmlFor="username">Username</label>
+        <input id="username"
+          type="text"
+          value={ username }
+          placeholder=" what should we call you? "
+          onChange={ (e) => setUsername(e.target.value) } />
+
         <label htmlFor="password">Password</label>
         <input id="password"
           type="password"
@@ -91,7 +99,6 @@ export const SignUpFormPage = () => {
 
         <ul> { errorsList } </ul>
 
-        {/* <input type="submit" value="Sign Up" id="form-button"/> */}
         <input type="submit" value="Sign Up" id="sign-up-button"/>
 
 

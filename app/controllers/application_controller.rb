@@ -60,4 +60,9 @@ class ApplicationController < ActionController::API
       logger.error "\n#{@message}:\n\t#{@stack.join("\n\t")}\n"
     end
   end
+
+  def from_template(template, locals = {})
+    JSON.parse(self.class.render(:json, template: template, locals: locals))
+  end
+  
 end
