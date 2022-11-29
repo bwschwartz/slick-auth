@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import './Messages.css'
 const Messages = () => {
   const messages = useSelector(state => state.channels.currentChannel? Object.values(state.channels.currentChannel.messages) : null)
-  const channelUsers = useSelector(state => state.channels.currentChannel? Object.values(state.channels.currentChannel.users) : null)
+  // const channelUsers = useSelector(state => state.channels.currentChannel? Object.values(state.channels.currentChannel.users) : null)
 
   const getTime = (created_at) => {
     const timeStr = created_at.split("T")[1].slice(0,5);
@@ -24,7 +24,7 @@ const Messages = () => {
   <li id="message" key={i}>
     <div>
       <div id="message-user-info">
-        {channelUsers[message.user_id]?.email}
+        {/* {channelUsers[message.user_id + 1]?.email} */}
       </div>
 
       <div id="message-time">

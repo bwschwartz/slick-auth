@@ -13,6 +13,6 @@ class Channel < ApplicationRecord
   has_many :channel_users
   has_many :messages, dependent: :destroy
 
-  has_many :users, through: :messages
+  has_many :users, -> { distinct }, through: :messages
 
 end

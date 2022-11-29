@@ -20,9 +20,20 @@ const receiveChannel = (channel) => {
     channel
   }
 }
+
+const shapeChannelUsers = (inShape) => {
+  const outShape = {}
+  for (let i=0; i<inShape.length; i++) {
+    outShape[Object.keys(inShape[i])[0]] = inShape[i][Object.keys(inShape[i])[0]]
+
+  }
+  return outShape
+}
 export const fetchChannel = (channelId) => async (dispatch) => {
   const res = await csrfFetch(`/api/channels/${channelId}`);
-  const data = await res.json();
+  let data = await res.json();
+  console.log("data in fetch channel", shapeChannelUsers(data.currentChannel.users))
+  data.currentChannel.users = shapeChannelUsers(data.currentChannel.users)
   dispatch(receiveChannel(data));
 }
 
