@@ -25,7 +25,6 @@ const shapeChannelUsers = (inShape) => {
   const outShape = {}
   for (let i=0; i<inShape.length; i++) {
     outShape[Object.keys(inShape[i])[0]] = inShape[i][Object.keys(inShape[i])[0]]
-
   }
   return outShape
 }
