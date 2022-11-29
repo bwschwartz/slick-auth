@@ -81,25 +81,34 @@ const Messages = () => {
     return outDate
   }
 
+
   const messagesLis = messages?.map((message, i)=>
   <li id="message" key={i}>
     { shouldGetDate(message.created_at) &&
-      <div id="message-date">
-        <div id="date-ruler-left"/>
-          <span className="date-box">{getDate(message.created_at)}</span>
-        <div id="date-ruler-right"/>
-    </div>}
-    <div id="not-date">
-      <div id="message-user-info">
-        {channelUsers[message.user_id]?.username ? channelUsers[message.user_id]?.username : channelUsers[message.user_id]?.email }
-      </div>
-      <div id="message-time">
-        {getTime(message.created_at)}
-      </div>
-      <div>
-        {message.content}
+        <div id="message-date">
+          <div id="date-ruler-left"/>
+            <span className="date-box">{getDate(message.created_at)}</span>
+          <div id="date-ruler-right"/>
+      </div> }
+
+    <div className="message-content-and-info">
+    <div className="message-pic"/>
+
+      <div id="not-date">
+        <div id="message-user-info">
+          { channelUsers[message.user_id]?.username ? channelUsers[message.user_id]?.username : channelUsers[message.user_id]?.email } &nbsp;
+          <span id="message-time">
+            {getTime(message.created_at)}
+          </span>
+        </div>
+
+        <div id="message-content">
+          {message.content}
+        </div>
       </div>
     </div>
+
+
 
   </li>
 
