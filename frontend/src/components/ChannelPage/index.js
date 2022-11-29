@@ -21,8 +21,6 @@ export const ChannelPage = () => {
 
   useEffect (()=> {
     dispatch(fetchChannels());
-    // dispatch(fetchMessages());
-    // document.getElementById("message-box")?.focus();
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
@@ -38,10 +36,8 @@ export const ChannelPage = () => {
       setCurrentChannelId(channel.id)
     }
     setTimeout(() => {
-
       document.getElementById("messages-list-bottom").scrollIntoView(false)
-    }, 100
-    )
+    }, 100)
   }
   //enter room and subscribe
   useEffect(() => {
@@ -52,6 +48,9 @@ export const ChannelPage = () => {
         { received: (message) => {
           dispatch(receiveMessage(message))
           dispatch(fetchChannel(currentChannelId))
+          setTimeout(() => {
+            document.getElementById("messages-list-bottom").scrollIntoView(false)
+          }, 100)
         }
            }
       );
@@ -79,12 +78,9 @@ export const ChannelPage = () => {
     }, [onGutter])
     return channelsWidth
   }
-
   const [onGutter, setOnGutter] = useState(true);
-
   const channelsDivRef = createRef();
   const width = useChannelsWidth(channelsDivRef, onGutter);
-
   const [dropMenuBool, setDropMenuBool] = useState(true);
   const dropMenu = () => {
     setDropMenuBool(curr => !curr)
