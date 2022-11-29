@@ -15,6 +15,7 @@ const Messages = () => {
       meridiem = 'PM';
     } else if (hours < 0) {
       hours = 12 + hours;
+      meridiem = 'PM';
     }
     return hours + ':' + minutes + ' ' + meridiem;
   }

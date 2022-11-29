@@ -7,7 +7,7 @@ import { messagesReducer } from './messages.js'
 export const rootReducer = combineReducers({
   session: sessionReducer,
   channels: channelsReducer,
-  messages: messagesReducer
+  // messages: messagesReducer
 });
 
 let enhancer;
