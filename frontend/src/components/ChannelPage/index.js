@@ -29,6 +29,7 @@ export const ChannelPage = () => {
 
   const changeChannel= (e) => {
     e.stopPropagation();
+    localStorage.setItem("usedDate", '')
     const channel = e.currentTarget
     if (channel.id !== currentChannelId) {
       setChannelDisplayName((channel.innerText).trim())

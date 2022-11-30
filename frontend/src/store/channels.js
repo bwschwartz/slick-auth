@@ -97,8 +97,7 @@ const removeChannels = () => {
     type: REMOVE_CHANNELS
   }
 }
-export const clearChannels = () => async(dispatch) => {
-  console.log("in clearChannelss")
+export const clearChannels = () => async (dispatch) => {
   dispatch(removeChannels())
 }
 
