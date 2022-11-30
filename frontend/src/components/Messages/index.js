@@ -1,9 +1,8 @@
-
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import './Messages.css'
 const Messages = () => {
-  const messages = useSelector(state => state.channels.currentChannel? Object.values(state.channels.currentChannel.messages) : null)
+  const messages = useSelector(state => state.channels.currentChannel? state.channels.currentChannel.messages : null)
   const channelUsers = useSelector(state => state.channels.currentChannel? state.channels.currentChannel.users : null)
 
 
@@ -45,7 +44,7 @@ const Messages = () => {
 
   }
 
-  const getDate = (created_at, channelId) => {
+  const getDate = (created_at) => {
     const jDate = new Date(created_at)
     const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -55,34 +54,18 @@ const Messages = () => {
     }
 
     let outDate = dayName + ", " + months[jDate.getMonth()] + " " + getDateWithSuffix(jDate.getDate())
-    if (outDate+channelId != localStorage.getItem("usedDate")) {
-      localStorage.setItem("usedDate", outDate+channelId);
-      console.log("setting storage in get date", outDate+channelId)
-    } else {
-      console.log("returning false in getDate", outDate+channelId)
-      return false
-    }
     return outDate
   }
 
 
   const shouldGetDate = (created_at, channelId) => {
-    // console.log("in should get date")
     const jDate = new Date(created_at)
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-    let dayName = days[jDate.getDay()]
-    if (checkIfToday(jDate)) {
-      dayName = "Today"
-    }
-    let outDate = dayName + ", " + months[jDate.getMonth()] + " " + getDateWithSuffix(jDate.getDate())
-    // console.log("outDate is", outDate+channelId);
-    // console.log('stored date is', localStorage.getItem("usedDate") )
-    if (outDate+channelId != localStorage.getItem("usedDate")) {
-      console.log("returning true from should get date")
-      return outDate
+    let outDate = String(jDate.getDay()) + String(jDate.getMonth()) + String(jDate.getDate())+String(channelId)
+    // console.log("in shoudl get date", new Date())
+    if (outDate !== localStorage.getItem("usedDate")) {
+      localStorage.setItem("usedDate", outDate);
+      return true
     } else {
-      console.log("returning false from should get date")
       return false
     }
   }
@@ -90,7 +73,7 @@ const Messages = () => {
 
   const messagesLis = messages?.map((message, i)=>
   <li id="message" key={i}>
-    { shouldGetDate(message.created_at, message.channel_id) &&
+    { (shouldGetDate(message.created_at, message.channel_id) || i===0) &&
         <div id="message-date">
           <div id="date-ruler-left"/>
             <span className="date-box">{getDate(message.created_at, message.channel_id)}</span>
