@@ -20,14 +20,14 @@
   border: 1px solid#2B2A2F;
   height: 0px;
   flex-grow: 1;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 
 }
 
 #date-ruler-left {
   border: 1px solid #2B2A2F;
   height: 0px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   flex-grow: 1;
 }
 
@@ -35,7 +35,7 @@
   padding: 9px;
   padding-left: 14px;
   padding-right: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   border: 1px solid #2B2A2F;;
   border-radius: 100px;
   font-size: 13px;

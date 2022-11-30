@@ -104,7 +104,7 @@ export const ChannelPage = () => {
             </h3>
 
         <div id="circle-around-pen">
-          <i className="fa-solid fa-pen-to-square"/>
+          {/* <i className="fa-solid fa-pen-to-square"/> */}
         </div>
         </div>
 
@@ -136,20 +136,24 @@ export const ChannelPage = () => {
               {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
             </h3>
             <div id="circle-around-pen">
-              <i className="fa-solid fa-pen-to-square"/>
+              {/* <i className="fa-solid fa-pen-to-square"/> */}
             </div>
           </div>
 
 
 
         <div id="chat-container">
+
             <div id="messages-container">
               <div id="messages-list">
                 <Messages/>
               </div>
           </div>
 
-          { channelDisplayName && <div id="send-message-container">
+
+
+        </div>
+        { channelDisplayName && <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
                   <i className="fa-sharp fa-solid fa-bold fa-xs"/>
@@ -181,8 +185,6 @@ export const ChannelPage = () => {
               </div>
 
           </div>}
-
-        </div>
 
 
         </div>
