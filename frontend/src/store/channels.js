@@ -84,12 +84,22 @@ const removeChannel = (channelID) => {
     channelID
   }
 }
-
 export const deleteChannel = (channelID) => async (dispatch) => {
   const res = await csrfFetch(`/api/channels/${channelID}`, {
     method: "DELETE"
   })
   dispatch(removeChannel(channelID))
+}
+
+const REMOVE_CHANNELS = 'channels/RemoveChannels'
+const removeChannels = () => {
+  return {
+    type: REMOVE_CHANNELS
+  }
+}
+export const clearChannels = () => async(dispatch) => {
+  console.log("in clearChannelss")
+  dispatch(removeChannels())
 }
 
 export const channelsReducer = (state={}, action) => {
@@ -108,6 +118,8 @@ export const channelsReducer = (state={}, action) => {
     case REMOVE_CHANNEL:
       delete nextState[action.channelID];
       return nextState;
+    case REMOVE_CHANNELS:
+      return {};
     default:
       return state;
   }

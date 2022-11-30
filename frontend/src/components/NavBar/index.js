@@ -1,6 +1,7 @@
 
 import './NavBar.css';
 import { logout } from '../../store/session'
+import { clearChannels } from '../../store/channels'
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 import Clock from '../../assets/transparent-clock-right-color.png'
@@ -10,10 +11,10 @@ const NavBar = () => {
   const dispatch = useDispatch();
 
   const user = useSelector ( (state) => state.session.user? state.session.user.email : null )
-  console.log("user in nav bar is", user)
 
   if (!user) return  <Redirect to="/login"/>
   const logOutUser= () => {
+    dispatch(clearChannels())
     return dispatch(logout())
   }
 
