@@ -9,6 +9,7 @@ json.set! 'current_channel' do
       # json.id user.id
       json.username user.username
       json.email user.email
+      json.photoUrl user.photo.url
     end
   end
 

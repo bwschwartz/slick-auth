@@ -37,7 +37,7 @@ export const ChannelPage = () => {
     }
     setTimeout(() => {
       document.getElementById("messages-list-bottom").scrollIntoView(false)
-    }, 100)
+    }, 400)
   }
   //enter room and subscribe
   useEffect(() => {
@@ -133,21 +133,22 @@ export const ChannelPage = () => {
         <div id="other-component">
           <div className="server-heading other">
             <h3 className="channel-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
-            {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
+              {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
             </h3>
-          <div id="circle-around-pen">
-            <i className="fa-solid fa-pen-to-square"/>
+            <div id="circle-around-pen">
+              <i className="fa-solid fa-pen-to-square"/>
+            </div>
           </div>
 
-        </div>
 
 
         <div id="chat-container">
-          <div id="messages-container">
-            <div id="messages-list">
-              <Messages/>
-            </div>
+            <div id="messages-container">
+              <div id="messages-list">
+                <Messages/>
+              </div>
           </div>
+
           { channelDisplayName && <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
@@ -179,15 +180,7 @@ export const ChannelPage = () => {
 
               </div>
 
-              {/* <input id="message-box" placeholder={`Message #${channelDisplayName}`}/>
-
-              <div id= "send-message-icon">
-                <i className="fa-solid fa-paper-plane fa-lg"></i>
-              </div> */}
-
           </div>}
-
-
 
         </div>
 

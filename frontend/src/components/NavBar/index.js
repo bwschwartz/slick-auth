@@ -9,7 +9,8 @@ import Question from '../../assets/quesiton-mark-trans.png'
 const NavBar = () => {
   const dispatch = useDispatch();
 
-  const user = useSelector ( (state) => state.session.user )
+  const user = useSelector ( (state) => state.session.user? state.session.user.email : null )
+  console.log("user in nav bar is", user)
 
   if (!user) return  <Redirect to="/login"/>
   const logOutUser= () => {
@@ -34,12 +35,13 @@ const NavBar = () => {
 
       <div id="right-nav">
         <div className="icon-holder">
-          <img id="clock" src={ Question }/>
+          {/* <img id="clock" src={ Question }/> */}
         </div>
         <div id="logout">
           <button id="logout-button"
             onClick={ logOutUser }>
-            Log Out!
+            {user[0].toUpperCase()}
+
           </button>
           </div>
       </div>

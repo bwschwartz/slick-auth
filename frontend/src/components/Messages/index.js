@@ -92,7 +92,9 @@ const Messages = () => {
       </div> }
 
     <div className="message-content-and-info">
-    <div className="message-pic"/>
+    {/* <div className="message-pic"> */}
+    <img className="message-pic" src={channelUsers[message.user_id]?.photoUrl}/>
+    {/* </div> */}
 
       <div id="not-date">
         <div id="message-user-info">
@@ -113,7 +115,6 @@ const Messages = () => {
   </li>
 
   )
-
 
 
   return (

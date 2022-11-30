@@ -13,11 +13,11 @@
 #
 class User < ApplicationRecord
   has_secure_password
-#
-has_many :channels, through: :channel_users
-has_many :channel_users
-has_many :messages, dependent: :destroy
-  before_validation :ensure_session_token
+  has_one_attached :photo
+  has_many :channels, through: :channel_users
+  has_many :channel_users
+  has_many :messages, dependent: :destroy
+    before_validation :ensure_session_token
 
   validates :email,
     uniqueness: true,
