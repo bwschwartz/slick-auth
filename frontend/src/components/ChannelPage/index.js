@@ -135,7 +135,7 @@ export const ChannelPage = () => {
         <div id="other-component">
           <div className="server-heading other">
             <h3 className="channel-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
-              {channelDisplayName &&  <i className="fa-solid fa-angle-down"/>}
+              {channelDisplayName &&  <i id="other-arrow" className="fa-solid fa-angle-down"/>}
             </h3>
             <div id="circle-around-pen">
               {/* <i className="fa-solid fa-pen-to-square"/> */}

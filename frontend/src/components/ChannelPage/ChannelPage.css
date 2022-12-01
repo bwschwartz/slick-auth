@@ -197,7 +197,8 @@ i span {
 }
 
 .fa-angle-down{
-  color: white;
+  color: #c2c7cc;
+  /* color: white; */
 }
 
 .fa-pen-to-square {
@@ -325,8 +326,10 @@ i span {
   padding-top: 15px;
   padding-bottom: 15px;
   margin:0px;
+}
 
-
+#other-arrow{
+  color: #d5dadf;;
 }
 
 

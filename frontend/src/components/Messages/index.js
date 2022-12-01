@@ -70,8 +70,14 @@ const Messages = () => {
     }
   }
 
+  // console.log("messages before sorting", messages)
 
-  const messagesLis = messages?.map((message, i)=>
+  const sortedMessages = messages?.sort(( a,  b ) => a.id-b.id ); //this is hacky, need to sort by created at
+
+  // console.log(sortedMessages)
+
+
+  const messagesLis = sortedMessages?.map((message, i)=>
   <li id="message" key={i}>
     { (shouldGetDate(message.created_at, message.channel_id) || i===0) &&
         <div id="message-date">
