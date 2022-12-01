@@ -1,7 +1,8 @@
-import React, { useState, useEffect, useSelector } from 'react';
+import React, { useState, useEffect, useSelector, dispatch} from 'react';
 import { ChannelUpdateForm } from './ChannelUpdateForm';
 import { Modal } from '../../context/Modal';
 import './ChannelUpdateModal.css'
+// import { fetchChannels } from '../../store/channels'
 
 
 export const ChannelUpdateFormModal = () => {
@@ -19,8 +20,10 @@ export const ChannelUpdateFormModal = () => {
     setChannelID(e.target.parentElement.parentElement.parentElement.id)
     setChannelName(e.target.parentElement.parentElement.innerText)
     if (channelName !=='' && channelID !=='') setShowModal(true)
-    // console.log(`channelID: ${channelID}`)
-    // console.log(channelName)
+  }
+
+  const onClose = () => {
+    setShowModal(false)
   }
 
   return (<>
@@ -31,7 +34,7 @@ export const ChannelUpdateFormModal = () => {
    </button>
 
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={onClose}>
           <ChannelUpdateForm
           channelID={channelID}
           channelName={channelName}

@@ -78,10 +78,10 @@ export const updateChannel = (channel) => async (dispatch) => {
 }
 
 const REMOVE_CHANNEL = 'channels/RemoveChannel'
-const removeChannel = (channelID) => {
+const removeChannel = (channelId) => {
   return {
     type: REMOVE_CHANNEL,
-    channelID
+    channelId
   }
 }
 export const deleteChannel = (channelID) => async (dispatch) => {
@@ -116,6 +116,7 @@ export const channelsReducer = (state={}, action) => {
       return nextState;
     case REMOVE_CHANNEL:
       delete nextState[action.channelId];
+      // console.log(nextState[action.channelId])
       // if (action.channelId === nextState.currentChannel.channelId) delete nextState.currentChannel
       // console.log("nextState in remove channel is", nextState.currentChannel)
       return nextState;

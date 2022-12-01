@@ -21,6 +21,7 @@ export const ChannelPage = () => {
 
   useEffect (()=> {
     dispatch(fetchChannels());
+    console.log("refreshing channels")
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
