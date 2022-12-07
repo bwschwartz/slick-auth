@@ -21,12 +21,12 @@ export const ChannelPage = () => {
 
   useEffect (()=> {
     dispatch(fetchChannels());
-    console.log("refreshing channels")
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
   const [currentChannelId, setCurrentChannelId] = useState(null)
   const [messageContent, setMessageContent] = useState('')
+  const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
 
   const changeChannel= (e) => {
     e.stopPropagation();
@@ -52,7 +52,7 @@ export const ChannelPage = () => {
           dispatch(fetchChannel(currentChannelId))
           setTimeout(() => {
             document.getElementById("messages-list-bottom").scrollIntoView(false)
-          }, 100)
+          }, 300)
         }
            }
       );
@@ -94,11 +94,24 @@ export const ChannelPage = () => {
     setMessageContent('')
   }
 
+  const arrayEquals = (arr1, arr2) => {
+   return arr1.every((e, i, arr) =>{
+      return e === arr2[i]
+    })
+  }
+  const showProf = () => {
+    const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 50, 30 ] : [20, 80, 0 ]
+    setShowProfileEdit(dims)
+  }
+
   return (
     <>
-    <div className="split-container">
 
-      <Split className="split" sizes={[44, 200]} minSize={[0, 0]} snapOffset={230} gutterSize={5} onDrag={ () => setOnGutter(current => !current) }>
+    <div className="split-container">
+      <Split className="split" columns={3} sizes={showProfileEdit} expandToMin={false} minSize={[0, 10, 0]} snapOffset={0} gutterSize={5} onDrag={ () => setOnGutter(current => !current) }>
+      <>
+
+
         <div id="channel-bar" ref={channelsDivRef}>
           <div className="server-heading">
             <h3 className="server-name">A Real Workplace&nbsp;
@@ -110,7 +123,7 @@ export const ChannelPage = () => {
         </div>
         </div>
 
-          {width &&
+          {true &&
           <>
           <div id="channels-split-left">
             <div id="channels-menu-label">
@@ -134,6 +147,7 @@ export const ChannelPage = () => {
 
         <div id="other-component">
           <div className="server-heading other">
+
             <h3 className="channel-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
               {channelDisplayName &&  <i id="other-arrow" className="fa-solid fa-angle-down"/>}
             </h3>
@@ -148,6 +162,8 @@ export const ChannelPage = () => {
 
             <div id="messages-container">
               <div id="messages-list">
+              <button onClick={showProf}>showProfile</button>
+
                 <Messages/>
               </div>
           </div>
@@ -191,8 +207,14 @@ export const ChannelPage = () => {
 
         </div>
 
-      </Split>
+        {<div id="profile-edit">{showProfileEdit[2]!==0  && 'profile component'}</div>}
+        {/* {showProfileEdit[2] ==0 && <div id="empty-prof"></div>} */}
 
+
+       {/* {showProfileEdit[2] !==0 && <div style={{width:0}}>shit</div>} */}
+
+       </>
+      </Split>
     </div>
     </>
   )
