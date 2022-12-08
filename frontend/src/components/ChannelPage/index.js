@@ -203,7 +203,15 @@ export const ChannelPage = () => {
 
         </div>
 
-        {<div id="profile-edit">{showProfileEdit[2]!==0  && 'profile component'}</div>}
+        {<div id="profile-edit">{showProfileEdit[2]!==0  &&
+        <>
+          <div id="profile-title" className="">Profile <span><i class="fa-solid fa-x fa-xs"></i></span></div>
+          <div id="profile-pic"></div>
+          <div id="profile-pic1"></div>
+
+
+        </>
+        }</div>}
         {/* {showProfileEdit[2] ==0 && <div id="empty-prof"></div>} */}
 
 
