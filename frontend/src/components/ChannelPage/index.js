@@ -12,6 +12,8 @@ import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
 import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
 import ActionCable from 'actioncable'
+
+// import
 // import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
@@ -26,7 +28,11 @@ export const ChannelPage = () => {
   const [channelDisplayName, setChannelDisplayName] = useState(false)
   const [currentChannelId, setCurrentChannelId] = useState(null)
   const [messageContent, setMessageContent] = useState('')
-  const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
+  // const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
+
+
+  // const [showProfileEdit, setShowProfileEdit] = useContext()
+  const { showProfileEdit, setShowProfileEdit } = useContext(ChatContext)
 
   const changeChannel= (e) => {
     e.stopPropagation();
@@ -94,21 +100,12 @@ export const ChannelPage = () => {
     setMessageContent('')
   }
 
-  const arrayEquals = (arr1, arr2) => {
-   return arr1.every((e, i, arr) =>{
-      return e === arr2[i]
-    })
-  }
-  const showProf = () => {
-    const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 50, 30 ] : [20, 80, 0 ]
-    setShowProfileEdit(dims)
-  }
 
   return (
     <>
 
     <div className="split-container">
-      <Split className="split" columns={3} sizes={showProfileEdit} expandToMin={false} minSize={[0, 10, 0]} snapOffset={0} gutterSize={5} onDrag={ () => setOnGutter(current => !current) }>
+      <Split className="split" columns={3} sizes={showProfileEdit} expandToMin={false} minSize={[0, 10, 0]} snapOffset={0} gutterSize={3} onDrag={ () => setOnGutter(current => !current) }>
       <>
 
 
@@ -162,7 +159,6 @@ export const ChannelPage = () => {
 
             <div id="messages-container">
               <div id="messages-list">
-              <button onClick={showProf}>showProfile</button>
 
                 <Messages/>
               </div>

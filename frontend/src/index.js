@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom';
@@ -36,11 +36,19 @@ const renderApplication = () => {
 const consumer = ActionCable.createConsumer('ws://localhost:3000/cable');
 
 
+
+
+//should move to its own context
+
+
+
 function Root() {
+  const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
+
   return (
     <ModalProvider>
       <Provider store={store}>
-        <ChatContext.Provider value={{ consumer }}>
+        <ChatContext.Provider value={{ consumer, showProfileEdit,  setShowProfileEdit }}>
           <BrowserRouter>
             <App/>
           </BrowserRouter>

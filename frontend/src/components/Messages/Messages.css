@@ -17,7 +17,7 @@
 }
 
 #date-ruler-right {
-  border: 1px solid#2B2A2F;
+  border: .1px solid#2B2A2F;
   height: 0px;
   flex-grow: 1;
   margin-bottom: 14px;
@@ -25,7 +25,7 @@
 }
 
 #date-ruler-left {
-  border: 1px solid #2B2A2F;
+  border: .1px solid #2B2A2F;
   height: 0px;
   margin-bottom: 14px;
   flex-grow: 1;

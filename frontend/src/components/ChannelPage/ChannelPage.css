@@ -75,18 +75,34 @@
   background-repeat: no-repeat;
   /* background-position: 50%; */
   z-index: 10000;
+  /* background-color: #4290cb; */
+
+  /* background-color: #4290cb; */
+
 }
 
 
 .gutter:hover {
-  background-color: #bceaf1;
+  background-color: #4290cb;
+  width: 100px;
+
+
+  width: 100px;
   z-index: 10000;
-  border: 2px solid #bceaf1;
+  /* border: 2px solid #bceaf1; */
+}
+
+.gutter:on-drag {
+  background-color: #4290cb;
+
+
 }
 
 .gutter.gutter-horizontal {
+
   cursor: col-resize;
   z-index: 10000;
+
 
 }
 
@@ -96,6 +112,7 @@
   border: 1px solid #2B2A2F;
   border-right: 0;
   margin-top: -1px;
+  margin-right: -3px;
   padding-bottom: 22px;
   border-bottom: 0px;
   z-index: 1;
