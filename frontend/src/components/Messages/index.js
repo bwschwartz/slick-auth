@@ -88,7 +88,12 @@ const Messages = () => {
 
     <div className="message-content-and-info">
     {/* <div className="message-pic"> */}
-    <img className="message-pic" src={channelUsers[message.user_id]?.photoUrl}/>
+    {channelUsers[message.user_id]?.photoUrl?
+      <img className="message-pic" src={channelUsers[message.user_id]?.photoUrl}/> :
+
+      <i id="default-prof"  className="fa-solid fa-user message-pic fa-2xl"></i>
+
+    }
     {/* </div> */}
 
       <div id="not-date">

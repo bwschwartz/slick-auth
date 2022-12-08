@@ -48,6 +48,8 @@
   font-weight: bold;
   /* font-size: 15px; */
   margin-bottom: 1px;
+  color: #fff;
+  /* color:#cdcac7; */
 }
 
 #message-time {
@@ -85,4 +87,21 @@
   flex-shrink: 0;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+
+#default-prof {
+  /* align-items:center; */
+  /* justify-content: center; */
+  background-color:rgb(111, 108, 104);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3px;
+  height: 33px;
+  /* color:rgb(236, 233, 229) */
+  color: #fff;
+  /* width: 36px; */
+  /* height: 36px; */
+  /* padding-top: 4px; */
 }
