@@ -11,7 +11,9 @@ import { ChannelFormModal } from '../ChannelCreationModal'
 import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
 import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
+import Clock from '../../assets/transparent-clock-right-color.png'
 import ActionCable from 'actioncable'
+
 
 // import
 // import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
@@ -20,9 +22,13 @@ export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
+  const user = useSelector ( (state) => state.session.user?.userName? state.session.user.userName :  state.session.user.email )
+  const [timeObj, setTimeObj] = useState(new Date())
+
 
   useEffect (()=> {
     dispatch(fetchChannels());
+    setInterval(() => setTimeObj(new Date()), 6000)
   }, [])
 
   const [channelDisplayName, setChannelDisplayName] = useState(false)
@@ -100,6 +106,42 @@ export const ChannelPage = () => {
     setMessageContent('')
   }
 
+  const arrayEquals = (arr1, arr2) => {
+    return arr1.every((e, i, arr) =>{
+       return e === arr2[i]
+     })
+   }
+   const showProf = () => {
+     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 50, 30 ] : [20, 80, 0 ]
+     setShowProfileEdit(dims)
+   }
+
+   const getLocalTime = () => {
+
+   }
+
+   const getTime = (dateObj) => {
+    // console.log("date Obj is", String(dateObj.getMinutes()))
+    let hours  = dateObj.getHours()
+    let minutes = dateObj.getMinutes()
+    let meridiem = 'AM';
+    // hours = parseInt(hours) -5;
+    if (hours > 12) {
+      hours = parseInt(hours) - 12;
+      meridiem = 'PM';
+    } else if (hours < 0) {
+      hours = 12 + hours;
+      meridiem = 'PM';
+    } if (minutes < 10) {
+      minutes = '0' + String(minutes)
+    }
+    return hours + ':' + minutes + ' ' + meridiem;
+  }
+
+  const getDateObj = () => {
+    return setInterval(()=> {return new Date()}, 1000)
+  }
+
 
   return (
     <>
@@ -125,7 +167,7 @@ export const ChannelPage = () => {
           <div id="channels-split-left">
             <div id="channels-menu-label">
               <button className="drop-button"
-                      onClick={dropMenu}>
+                      onClick={ dropMenu }>
                 <i className={ dropMenuBool ? "fa-solid fa-caret-down" : "fa-solid fa-caret-right" } id="caret">
                 <span id={ dropMenuBool ? "channels-h5-down" : "channels-h5-right" }>&nbsp;Channels</span></i>
               </button>
@@ -205,9 +247,16 @@ export const ChannelPage = () => {
 
         {<div id="profile-edit">{showProfileEdit[2]!==0  &&
         <>
-          <div id="profile-title" className="">Profile <span><i class="fa-solid fa-x fa-xs"></i></span></div>
-          <div id="profile-pic"></div>
-          <div id="profile-pic1"></div>
+          <div id="profile-title" className="">Profile <i class="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div>
+          <div id="profile-pic">{user[0].toUpperCase()}</div>
+          <div id="username-edit">{user} <span>Edit</span></div>
+          <div id="availability-status"><span id="profile-avail"></span>Active</div>
+          <div id="local-time">
+            <img id="clock" src={ Clock }/> &nbsp; &nbsp;
+            {/* {getTime(new Date()) + ' local time'} */}
+            {getTime(timeObj)}
+          </div>
+
 
 
         </>

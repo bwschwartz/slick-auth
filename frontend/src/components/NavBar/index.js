@@ -60,6 +60,7 @@ const NavBar = () => {
           <button id="logout-button"
             onClick={ logOutUser }>
             {user[0].toUpperCase()}
+            <div className="availability-circle"></div>
 
           </button>
           </div>
