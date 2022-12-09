@@ -31,14 +31,14 @@ export const ChannelPage = () => {
     setInterval(() => setTimeObj(new Date()), 6000)
   }, [])
 
-  const [channelDisplayName, setChannelDisplayName] = useState(false)
+  // const [channelDisplayName, setChannelDisplayName] = useState(false)
   const [currentChannelId, setCurrentChannelId] = useState(null)
   const [messageContent, setMessageContent] = useState('')
   // const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
 
 
   // const [showProfileEdit, setShowProfileEdit] = useContext()
-  const { showProfileEdit, setShowProfileEdit } = useContext(ChatContext)
+  const { showProfileEdit, setShowProfileEdit, channelDisplayName, setChannelDisplayName } = useContext(ChatContext)
 
   const changeChannel= (e) => {
     e.stopPropagation();
@@ -247,21 +247,27 @@ export const ChannelPage = () => {
 
         </div>
 
-        {<div id="profile-edit">{showProfileEdit[2]!==0  &&
+        {<div id="profile-edit">{ showProfileEdit[2]!==0  &&
         <>
           <div id="profile-title"><div id ="inner-title"> Profile <i class="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
           <div id="profile-pic">{user[0].toUpperCase()}</div>
-          <div id="username-edit">{user} <span>Edit</span></div>
+          <div className="prof-component-edit">{user} <span>Edit</span></div>
           <div id="availability-status"><span id="profile-avail"></span>Active</div>
           <div id="local-time">
-            <img id="clock" src={ Clock }/> &nbsp; &nbsp;
+            <img id="clock" src={ Clock }/> &nbsp;
             {/* {getTime(new Date()) + ' local time'} */}
             {getTime(timeObj) + ' local time'}
           </div>
-          <hr id="profile-ruler"/>
-          <div>
+          <div id="prof-options">
             <div id="set-status">Set a status</div>
+            <div id="set-status">View Profile</div>
+
+
           </div>
+
+          <hr id="profile-ruler"/>
+          <div className="prof-component-edit" id="contact-info-title">Contact Information <span>Edit</span></div>
+
 
 
 

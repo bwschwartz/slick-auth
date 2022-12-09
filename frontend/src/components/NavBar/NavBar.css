@@ -12,12 +12,8 @@
 #clock {
   width: 20px;
   height: 20px;
-  /* align-self:center; */
   padding-left:14px;
-  /* transform: translateY(-2px);  */
-  /* margin-bottom: 20px; */
-  /* margin10px; */
-  /* display: flex; */
+  margin-right: 2px;
 }
 
 .icon-holder {
@@ -98,7 +94,7 @@
   width: 100%;
   font-weight: lighter;
   font-size: 14px;
-  margin-left: 1px;
+  margin-left: 0px;
 }
 
 #profile-avail {
@@ -107,7 +103,7 @@
   width: 10px;
   border-radius: 100%;
   margin-left: 18px;
-  margin-right: 20px;
+  margin-right: 12px;
   font-size: 15px;
 }
 
@@ -126,4 +122,30 @@
   background-color: blue;
   width: 100%;
   height: 200px;
+}
+
+#set-status {
+  height: 36px;
+  width: 136px;
+  border: 1px solid orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: lighter;
+  font-size: 15px;
+  color: #D1D2D3;
+  border: 1px solid #515055;
+  border-radius: 3px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+  margin-left: 14px;
+
+}
+
+#prof-options{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
 }

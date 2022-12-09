@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, createRef } from 'react';
+import { useState, createRef, useContext } from 'react';
 import * as channelActions from '../../store/channels'
+import ChatContext  from '../../context/ChatContext'
+
 
 export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
   const dispatch = useDispatch();
@@ -9,6 +11,7 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
 
   const owner_id = useSelector( state => state.session.user? state.session.user.id : null )
   const stateChannel = useSelector( state => state.channels[channelID]  ? state.channels[channelID] : null )
+  const { setChannelDisplayName } = useContext(ChatContext)
 
   const storeDescription = stateChannel ? stateChannel.description : 'Click directly on the pencil pls!'
 
@@ -25,6 +28,7 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
     e.preventDefault();
     e.stopPropagation();
     // console.log(`channel id is ${channelID}`)
+    setChannelDisplayName('')
     dispatch(channelActions.deleteChannel(channelID));
     onClose();
   }

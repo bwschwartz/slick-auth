@@ -551,7 +551,7 @@ background-color: #1B1D21;
   font-weight: lighter;
 }
 
-#username-edit {
+.prof-component-edit {
   width: 93%;
   height: 60px;
   margin-top: 10px;
@@ -582,5 +582,9 @@ background-color: #1B1D21;
 }
 
 #set-status {
-  
+
+}
+
+#contact-info-title {
+
 }

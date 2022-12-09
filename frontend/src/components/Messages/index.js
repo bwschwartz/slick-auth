@@ -14,6 +14,8 @@ const Messages = () => {
     if (hours > 12) {
       hours = parseInt(hours) - 12;
       meridiem = 'PM';
+    } else if (hours === 0) {
+      hours = 12;
     } else if (hours < 0) {
       hours = 12 + hours;
       meridiem = 'PM';
