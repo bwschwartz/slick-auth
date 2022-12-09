@@ -22,7 +22,7 @@ export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
-  const user = useSelector ( (state) => state.session.user?.userName? state.session.user.userName :  state.session.user.email )
+  const user = useSelector ( (state) => state.session.user?.userName? state.session.user.userName :  state.session.user?.email )
   const [timeObj, setTimeObj] = useState(new Date())
 
 
@@ -129,6 +129,8 @@ export const ChannelPage = () => {
     if (hours > 12) {
       hours = parseInt(hours) - 12;
       meridiem = 'PM';
+    } else if (hours === 0) {
+      hours = 12;
     } else if (hours < 0) {
       hours = 12 + hours;
       meridiem = 'PM';
@@ -257,6 +259,9 @@ export const ChannelPage = () => {
             {getTime(timeObj) + ' local time'}
           </div>
           <hr id="profile-ruler"/>
+          <div>
+            <div id="set-status">Set a status</div>
+          </div>
 
 
 
