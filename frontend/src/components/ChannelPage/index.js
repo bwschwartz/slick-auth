@@ -247,15 +247,16 @@ export const ChannelPage = () => {
 
         {<div id="profile-edit">{showProfileEdit[2]!==0  &&
         <>
-          <div id="profile-title" className="">Profile <i class="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div>
+          <div id="profile-title"><div id ="inner-title"> Profile <i class="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
           <div id="profile-pic">{user[0].toUpperCase()}</div>
           <div id="username-edit">{user} <span>Edit</span></div>
           <div id="availability-status"><span id="profile-avail"></span>Active</div>
           <div id="local-time">
             <img id="clock" src={ Clock }/> &nbsp; &nbsp;
             {/* {getTime(new Date()) + ' local time'} */}
-            {getTime(timeObj)}
+            {getTime(timeObj) + ' local time'}
           </div>
+          <hr id="profile-ruler"/>
 
 
 

@@ -253,7 +253,7 @@ i span {
   border: 1px solid #2B2A2F ;
   /* z-index: 10; */
   /* background-color: gold */
-  background-color: #1A171D;
+  /* background-color: #1A171D; */
 }
 
 .other{
@@ -469,14 +469,27 @@ i span {
 
 #profile-title {
   display: flex;
-width: 95%;
-margin-top: 58px;
-height: 49px;
+margin-top: 43px;
+height: 34.5px;
 color: #f0edf2;
 font-weight: bold;
 background-color: transparent;
-z-index: 100;
-justify-content: space-between;
+z-index: 1000000000;
+justify-content: center;
+border: 1px solid gold;
+padding-top: 14px;
+border: 1px solid #2B2A2F;
+width: 100%;
+padding-left: 10px;
+font-size: 18px;
+/* margin-top: 0px; */
+}
+
+#inner-title {
+  display: flex;
+  width: 94%;
+  justify-content: space-between;
+
 }
 
 .fa-xs {
@@ -513,6 +526,9 @@ overflow: hidden;
 max-width: 680px;
 flex-direction: column;
 width: 100%;
+background-color: #1B1D21;
+/* margin-top: -15px; */
+/* padding-top: 10px;       */
 /* max-width: 100px; */
 }
 
@@ -520,17 +536,12 @@ width: 100%;
 #profile-pic {
   width: 256px;
   height: 256px;
-  /* align-self: center;
-  justify-self: center; */
   background-color: blue;
   margin: 0;
   padding: 0;
+  margin-top: 20px;
   background-color:rgb(70, 86, 97);
-  /* border: 2px solid palevioletred; */
-  /* width: 26px; */
-  /* height: 26px; */
   border-radius: 3%;
-  /* font-family: Times, 'Times New Roman'; */
   color:#D1D2D3;
   display: flex;
   justify-content: center;
@@ -538,7 +549,6 @@ width: 100%;
   border: none;
   font-size: 120px;
   font-weight: lighter;
-  /* overflow-y: auto; */
 }
 
 #username-edit {
@@ -564,3 +574,10 @@ width: 100%;
   border: none;
   border-left: 20px solid green;
 } */
+
+#profile-ruler {
+  /* border-top: 1px solid blue; */
+  width: 100%;
+  border: .5px solid #2B2A2F;
+
+}
