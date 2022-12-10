@@ -9,14 +9,13 @@ import Messages from '../Messages'
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
 import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
+import { EditProfileModal } from '../EditProfileModal'
 import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
 import Clock from '../../assets/transparent-clock-right-color.png'
 import ActionCable from 'actioncable'
 
 
-// import
-// import { ChannelForm } from '../ChannelCreationModal/ChannelForm'
 
 export const ChannelPage = () => {
   const dispatch = useDispatch();
@@ -249,9 +248,9 @@ export const ChannelPage = () => {
 
         {<div id="profile-edit">{ showProfileEdit[2]!==0  &&
         <>
-          <div id="profile-title"><div id ="inner-title"> Profile <i class="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
+          <div id="profile-title"><div id ="inner-title"> Profile <i className="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
           <div id="profile-pic">{user[0].toUpperCase()}</div>
-          <div className="prof-component-edit">{user} <span>Edit</span></div>
+          <div className="prof-component-edit">{user} <EditProfileModal/></div>
           <div id="availability-status"><span id="profile-avail"></span>Active</div>
           <div id="local-time">
             <img id="clock" src={ Clock }/> &nbsp;

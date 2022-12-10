@@ -7,7 +7,6 @@ import { ChannelPage } from './components/ChannelPage'
 import { ChannelFormModal } from './components/ChannelCreationModal'
 import { ChannelUpdateForm } from './components/ChannelUpdateModal/ChannelUpdateForm.js'
 
-import Room from './components/Room'
 
 function App() {
   return (
