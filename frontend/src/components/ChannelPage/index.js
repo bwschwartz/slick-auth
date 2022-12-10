@@ -250,7 +250,7 @@ export const ChannelPage = () => {
         <>
           <div id="profile-title"><div id ="inner-title"> Profile <i className="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
           <div id="profile-pic">{user[0].toUpperCase()}</div>
-          <div className="prof-component-edit">{user} <EditProfileModal/></div>
+          <div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
           <div id="availability-status"><span id="profile-avail"></span>Active</div>
           <div id="local-time">
             <img id="clock" src={ Clock }/> &nbsp;
@@ -265,7 +265,7 @@ export const ChannelPage = () => {
           </div>
 
           <hr id="profile-ruler"/>
-          <div className="prof-component-edit" id="contact-info-title">Contact Information <span>Edit</span></div>
+          <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 
 
 

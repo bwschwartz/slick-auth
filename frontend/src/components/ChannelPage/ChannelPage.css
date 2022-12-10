@@ -527,9 +527,6 @@ max-width: 680px;
 flex-direction: column;
 width: 100%;
 background-color: #1B1D21;
-/* margin-top: -15px; */
-/* padding-top: 10px;       */
-/* max-width: 100px; */
 }
 
 
@@ -555,19 +552,29 @@ background-color: #1B1D21;
   width: 93%;
   height: 60px;
   margin-top: 10px;
-  /* background-color:green; */
   overflow-y: scroll;
   font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 }
 
-#username-edit span {
-  font-size: 14px;
-  font-weight: lighter;
-  color: #1D9BD1
+#prof-username {
+  display: flex;
+  width: 150px;
+  width: 80%;
+  overflow-x: auto;
 }
+
+#contact-info-title {
+  display: flex;
+  width: 150px;
+  width: 80%;
+  overflow-x: atuo;
+}
+
+
 
 /* #empty-prof {
   background-color: blue;

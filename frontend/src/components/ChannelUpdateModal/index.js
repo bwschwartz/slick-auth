@@ -24,7 +24,7 @@ export const ChannelUpdateFormModal = () => {
 
   const onClose = () => {
     setShowModal(false)
-  }
+  } 
 
   return (<>
    <button

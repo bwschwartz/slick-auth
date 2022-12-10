@@ -24,7 +24,10 @@ export const EditProfileModal = () => {
 
           {showModal &&
             <Modal onClose = { onClose } id="profile-edit-modal">
+            <div id="prof-modal-container">
               <div id="edit-prof-title">Edit your profile</div>
+              <hr id="modal-hr"/>
+            </div>
             </Modal>
           }
   </>)
