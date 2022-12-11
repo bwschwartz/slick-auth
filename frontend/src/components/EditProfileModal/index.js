@@ -26,8 +26,41 @@ export const EditProfileModal = () => {
             <Modal onClose = { onClose } id="profile-edit-modal">
             <div id="prof-modal-container">
               <div id="edit-prof-title">Edit your profile</div>
-              <hr id="modal-hr"/>
+              {/* <hr id="modal-hr"/> */}
+
+
+
+              <div id="editable-forms">
+                <form id="edit-prof-form">
+                  <label className="prof-edit-label">Full name</label>
+                  <input className="prof-edit-attr"/>
+
+                  <label>Display name</label>
+                  <input className="prof-edit-attr"/>
+                  <span>This could be your first name, or a nickname — however you’d like people to refer to you in Slick.</span>
+
+                  <label>Title</label>
+                  <input className="prof-edit-attr"/>
+                  <span>Let the people know what you do at A Real Workplace</span>
+                </form>
+
+                <form id="edit-pic-form" style={{"margin-left":50}}>
+                  <label>Profile Photo</label>
+                  <div id="pic-placeholder"></div>
+                </form>
+              </div>
+
+              <div id="cancel-save">
+                <div className="prof-edit-attr" id="cancel-button">Cancel</div>
+                <div className="prof-edit-attr" id="save-button">Save Changes</div>
+              </div>
+
+
+
+
+
             </div>
+
             </Modal>
           }
   </>)

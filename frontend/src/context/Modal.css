@@ -27,14 +27,22 @@
 #modal-content {
   position: absolute;
   /* background-color: rgb(27, 25, 25); */
-  background-color: rgb(31, 31, 35);
-  color: white;
+  /* background-color: rgb(31, 31, 35); */
+  /* background-color: rgb(29, 30, 28); */
+  background-color: #1B1D21;
+
+
+  /* color: white; changed for prof text modal*/
   padding: 20px;
   padding-top: 0px;
+  padding-bottom: 0px;
+
   width: 380px;
   border: 1px solid rgb(44, 43, 43);
   border-radius: 11px;
   height: 380px;
+  width: 650px;
+  /* font-size: 14px; */
 }
 
 #modal-content-hidden {
@@ -52,7 +60,8 @@
   font-size: 14px;
   font-weight: bold;
   line-height: 15px;
-  color: white;
+  color:#D1D2D3;
+
   /* font-stretch: expanded; */
 }
 
