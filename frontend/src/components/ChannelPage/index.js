@@ -248,24 +248,42 @@ export const ChannelPage = () => {
 
         {<div id="profile-edit">{ showProfileEdit[2]!==0  &&
         <>
+
           <div id="profile-title"><div id ="inner-title"> Profile <i className="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
+
+          <div id="profile-edit-scrollable">
+          <div id="scroll-flex">
           <div id="profile-pic">{user[0].toUpperCase()}</div>
-          <div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
-          <div id="availability-status"><span id="profile-avail"></span>Active</div>
-          <div id="local-time">
-            <img id="clock" src={ Clock }/> &nbsp;
-            {/* {getTime(new Date()) + ' local time'} */}
-            {getTime(timeObj) + ' local time'}
+
+<div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
+
+<div id="availability-status"><span id="profile-avail"></span>Active</div>
+<div id="local-time">
+  <img id="clock" src={ Clock }/> &nbsp;
+  {getTime(timeObj) + ' local time'}
+</div>
+
+<div id="prof-options">
+  <div id="set-status">Set a status</div>
+  <div id="set-status">View Profile</div>
+</div>
+
+<hr id="profile-ruler"/>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+
+
+
+
+</div>
           </div>
-          <div id="prof-options">
-            <div id="set-status">Set a status</div>
-            <div id="set-status">View Profile</div>
 
 
-          </div>
-
-          <hr id="profile-ruler"/>
-          <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 
 
 

@@ -24,8 +24,8 @@ export const EditProfileModal = () => {
 
           {showModal &&
             <Modal onClose = { onClose } id="profile-edit-modal">
-            <div id="prof-modal-container">
               <div id="edit-prof-title">Edit your profile</div>
+            <div id="prof-modal-container">
               {/* <hr id="modal-hr"/> */}
 
 
@@ -47,13 +47,23 @@ export const EditProfileModal = () => {
                 <form id="edit-pic-form" style={{"margin-left":50}}>
                   <label>Profile Photo</label>
                   <div id="pic-placeholder"></div>
+                  <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo
+                    <input id="photo-file-input" type="file"/>
+                  </label>
                 </form>
               </div>
 
-              <div id="cancel-save">
+
+
+              <div id="edit-prof-title">
                 <div className="prof-edit-attr" id="cancel-button">Cancel</div>
                 <div className="prof-edit-attr" id="save-button">Save Changes</div>
               </div>
+
+              {/* <div>hi</div>
+              <div>hi</div>
+              <div>hi</div> */}
+
 
 
 

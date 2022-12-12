@@ -1,13 +1,26 @@
 #prof-modal-container {
-  /* width: 130%; */
   height: 100%;
   overflow-y: scroll;
-  /* width: 120%; */
   overflow-x:visible;
-  /* display: flex; */
-  /* background-color: green; */
+  padding-left: 10px;
+}
+
+#prof-modal-container {
+  height: 100%;
+  /* overflow-y: scroll; */
+  overflow-x:visible;
 
 }
+
+#prof-modal-container::-webkit-scrollbar {
+  /* height: calc(100% -20px);
+  width: 3px;
+  color: green;
+  background-color: grey;
+  margin-bottom: 10px; */
+}
+
+
 
 #edit-prof-title {
   width: 100%;
@@ -21,14 +34,17 @@
   background-color: #1B1D21;
 
   padding-top: 20px;
+  margin-left: 10px;
 }
 
 .prof-component-edit span {
   color: #1D9BD1;
   font-size: 15px;
-  margin-right: 8px;
+  margin-right: 0px;
+  margin: 0px;
   padding: 0;
-  font-weight: lighter;
+  font-weight: 100;
+  /* margin:0px; */
 }
 
 #modal-hr {
@@ -71,11 +87,12 @@
 }
 
 #edit-prof-form span {
-  margin-top: -19px;
+  margin-top: -20px;
   color: #b0aeb8c5;
   font-size: 13px;
   font-weight: lighter;
   margin-bottom: 20px;
+  margin-left: 1px;
 }
 
 
@@ -108,10 +125,11 @@
 
 #cancel-save {
   width: 100%;
+  height: 200px;
   /* align-self: end; */
   display: flex;
   /* align-items: end; */
-  position: sticky;
+  position: relative;
   background-color: #1B1D21;
 
 
@@ -143,12 +161,28 @@
   justify-content: center;
   margin-right: 28px;
   margin-bottom: 0px;
-  /* margin-top: 0px; */
   text-indent: 0px;
   font-size: 15px;
   background-color: #007A5A;
   color: #ffff;
   box-shadow: none;
-  /* padding: 0px 12px 1px 0; */
-
 }
+
+#photo-file-input {
+  background-color: orange;
+  display: none;
+}
+
+#wrapper-photo-button {
+  border: none;
+  height: 36px;
+  width: 192px;
+  border: 1px solid #2B2A2F;
+  box-shadow: 0 0 0 1px #64626cc5;
+  background-color: #1B1D21;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
