@@ -5,18 +5,30 @@ import './EditProfileModal.css'
 
 
 export const EditProfileModal = () => {
-  const [showModal, setShowModal] = useState(false)
-
+  const [showModal, setShowModal] = useState(false);
+  const [photoFile, setPhotoFile] = useState(null);
 
   const onClose = () => {
     setShowModal(false)
   }
 
   const prepareModal = (e) => {
-    console.log("logging a click bitch")
     e.stopPropagation();
     e.preventDefault();
     setShowModal(true)
+  }
+
+  const handleFile = e => {
+    const file = e.currentTarget.files[0];
+    setPhotoFile(file);
+  }
+
+  const handleSubmit = async e => {
+    e.epreventDefault();
+    const formData = new FormData();
+    if (photoFile) {
+      formData.append('post[photo]', photoFile)
+    }
   }
 
   return(<>
@@ -44,11 +56,11 @@ export const EditProfileModal = () => {
                   <span>Let the people know what you do at A Real Workplace</span>
                 </form>
 
-                <form id="edit-pic-form" style={{"margin-left":50}}>
+                <form id="edit-pic-form">
                   <label>Profile Photo</label>
                   <div id="pic-placeholder"></div>
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo
-                    <input id="photo-file-input" type="file"/>
+                    <input id="photo-file-input" type="file" onChange={handleFile}/>
                   </label>
                 </form>
               </div>
