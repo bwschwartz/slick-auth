@@ -22,6 +22,8 @@ export const ChannelPage = () => {
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
   const user = useSelector ( (state) => state.session.user?.userName? state.session.user.userName :  state.session.user?.email )
+
+  const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null )
   const [timeObj, setTimeObj] = useState(new Date())
 
 
@@ -29,14 +31,9 @@ export const ChannelPage = () => {
     dispatch(fetchChannels());
     setInterval(() => setTimeObj(new Date()), 6000)
   }, [])
-
-  // const [channelDisplayName, setChannelDisplayName] = useState(false)
   const [currentChannelId, setCurrentChannelId] = useState(null)
   const [messageContent, setMessageContent] = useState('')
-  // const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
 
-
-  // const [showProfileEdit, setShowProfileEdit] = useContext()
   const { showProfileEdit, setShowProfileEdit, channelDisplayName, setChannelDisplayName } = useContext(ChatContext)
 
   const changeChannel= (e) => {
@@ -120,11 +117,9 @@ export const ChannelPage = () => {
    }
 
    const getTime = (dateObj) => {
-    // console.log("date Obj is", String(dateObj.getMinutes()))
     let hours  = dateObj.getHours()
     let minutes = dateObj.getMinutes()
     let meridiem = 'AM';
-    // hours = parseInt(hours) -5;
     if (hours > 12) {
       hours = parseInt(hours) - 12;
       meridiem = 'PM';
@@ -142,6 +137,7 @@ export const ChannelPage = () => {
   const getDateObj = () => {
     return setInterval(()=> {return new Date()}, 1000)
   }
+
 
 
   return (
@@ -253,7 +249,7 @@ export const ChannelPage = () => {
 
           <div id="profile-edit-scrollable">
           <div id="scroll-flex">
-          <div id="profile-pic">{user[0].toUpperCase()}</div>
+          <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>
 
 <div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
 

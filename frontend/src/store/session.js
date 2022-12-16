@@ -29,7 +29,6 @@ const sessionReducer = (state=initialState, action) => {
 }
 
 export const login = (user) => async (dispatch) => {
-  console.log("in login")
   const { email, password } = user;
   const res = await csrfFetch('/api/session', {
     method: "POST",
@@ -43,7 +42,6 @@ export const login = (user) => async (dispatch) => {
 }
 
 export const logout = (user) => async (dispatch) => {
-  console.log("hit logout")
   const res = await csrfFetch('/api/session', { method: 'DELETE'});
   storeUser(null);
   dispatch(removeUser())
@@ -71,19 +69,14 @@ const storeUser = (user) => {
 
 
 export const signUp = (user) => async (dispatch) => {
-  // const { email, password } = user;
-  console.log("above")
   const res = await csrfFetch("/api/users", {
     method: "POST",
     body: JSON.stringify({...user})
   })
-  console.log("below")
 
   const data = await res.json();
   storeUser(data.user);
   dispatch(setUser(data.user));
-  console.log(`res is: ${res}`)
-  console.log(res);
 
   return res;
 }

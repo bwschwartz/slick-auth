@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useSelector, dispatch} from 'react';
+import React, { useState, useEffect, dispatch } from 'react';
+import { useSelector } from 'react-redux'
 import { Modal } from '../../context/Modal';
+import { updateUser } from '../../store/user'
 import './EditProfileModal.css'
-
-
 
 export const EditProfileModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [photoFile, setPhotoFile] = useState(null);
+  const [photoUrl, setPhotoUrl] = useState(null);
+  const userId = useSelector(state => state.session.user? state.session.user.id : null)
 
   const onClose = () => {
     setShowModal(false)
@@ -20,16 +22,29 @@ export const EditProfileModal = () => {
 
   const handleFile = e => {
     const file = e.currentTarget.files[0];
-    setPhotoFile(file);
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        setPhotoFile(file);
+        setPhotoUrl(fileReader.result);
+      };
+    }
+    // setPhotoFile(file);
+    handleSubmit(e);
   }
 
   const handleSubmit = async e => {
-    e.epreventDefault();
+    e.preventDefault();
     const formData = new FormData();
     if (photoFile) {
-      formData.append('post[photo]', photoFile)
+      formData.append('user[photo]', photoFile)
     }
+    formData.append('user[id]', userId)
+    updateUser(formData)
   }
+
+  const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%"}} /> : null;
 
   return(<>
           <div className="prof-component-edit" onClick={ prepareModal }><span>Edit</span></div>
@@ -39,8 +54,6 @@ export const EditProfileModal = () => {
               <div id="edit-prof-title">Edit your profile</div>
             <div id="prof-modal-container">
               {/* <hr id="modal-hr"/> */}
-
-
 
               <div id="editable-forms">
                 <form id="edit-prof-form">
@@ -56,12 +69,16 @@ export const EditProfileModal = () => {
                   <span>Let the people know what you do at A Real Workplace</span>
                 </form>
 
-                <form id="edit-pic-form">
+                <form id="edit-pic-form" onSubmit={handleSubmit}>
                   <label>Profile Photo</label>
-                  <div id="pic-placeholder"></div>
+                  <div id="pic-placeholder">{photoPreview}</div>
+
+
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo
                     <input id="photo-file-input" type="file" onChange={handleFile}/>
                   </label>
+
+
                 </form>
               </div>
 

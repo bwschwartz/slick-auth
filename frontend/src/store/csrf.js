@@ -4,11 +4,11 @@ async function csrfFetch(url, options = {}) {
   // set options.headers to an empty object if there are no headers
   options.headers = options.headers || {};
 
-  if (options.method.toUpperCase() !== 'GET') {
+  if (options.method.toUpperCase() !== 'GET' && !(options.body instanceof FormData)) {
     options.headers['Content-Type'] =
       options.headers['Content-Type'] || 'application/json';
-    options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token');
-  }
+    }
+    options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token'); //moved outside for photo fetch
 
   // call fetch with the url and the updated options hash
   const res = await fetch(url, options);

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # get 'pages/index'
 
   namespace :api, defaults: { format: :json } do
-    resources :users, only: :create
+    resources :users, only: %i(create update)
     resources :channels, only: %i(index create update destroy show)
     resources :messages, only: %i(index create destroy)
     resource :session, only: %i(show create destroy)
