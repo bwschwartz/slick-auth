@@ -112,10 +112,6 @@ export const ChannelPage = () => {
      setShowProfileEdit(dims)
    }
 
-   const getLocalTime = () => {
-
-   }
-
    const getTime = (dateObj) => {
     let hours  = dateObj.getHours()
     let minutes = dateObj.getMinutes()

@@ -9,6 +9,7 @@ export const EditProfileModal = () => {
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
+  const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
 
   const onClose = () => {
     setShowModal(false)
@@ -71,7 +72,7 @@ export const EditProfileModal = () => {
 
                 <form id="edit-pic-form" onSubmit={handleSubmit}>
                   <label>Profile Photo</label>
-                  <div id="pic-placeholder">{photoPreview}</div>
+                  <div id="pic-placeholder">{currentProfPic  ? <img src={currentProfPic} style={{width:"100%", height:"100%"}}/> : null}</div>
 
 
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo
@@ -88,15 +89,6 @@ export const EditProfileModal = () => {
                 <div className="prof-edit-attr" id="cancel-button">Cancel</div>
                 <div className="prof-edit-attr" id="save-button">Save Changes</div>
               </div>
-
-              {/* <div>hi</div>
-              <div>hi</div>
-              <div>hi</div> */}
-
-
-
-
-
 
             </div>
 

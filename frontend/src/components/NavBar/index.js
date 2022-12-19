@@ -12,8 +12,10 @@ import './NavBar.css';
 const NavBar = () => {
   const dispatch = useDispatch();
   const { showProfileEdit, setShowProfileEdit } = useContext(ChatContext)
+  const user = useSelector(state => state.session.user? state.session.user.email : null )
 
-  const user = useSelector ( (state) => state.session.user? state.session.user.email : null )
+
+  const profPic = useSelector(state => state.session.user? state.session.user.photoUrl :  null)
 
   if (!user) return  <Redirect to="/login"/>
 
@@ -57,12 +59,14 @@ const NavBar = () => {
           {/* <img id="clock" src={ Question }/> */}
         </div>
         <div id="logout">
-          <button id="logout-button"
-            onClick={ logOutUser }>
-            {user[0].toUpperCase()}
-            <div className="availability-circle"></div>
 
+          <button id="logout-button" style={profPic? {backgroundColor:"transparent"} : {backgroundColor:"rgb(70, 86, 97)"}}
+            onClick={ logOutUser }>
+              {profPic? <img src={profPic} style={{width:"26px", height:"26px", borderRadius:"5px"}}/> : user[0].toUpperCase() }
+            {/* {user[0].toUpperCase()} */}
+            <div className="availability-circle"></div>
           </button>
+
           </div>
       </div>
 
