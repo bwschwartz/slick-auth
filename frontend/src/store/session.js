@@ -15,7 +15,7 @@ const removeUser = (user) => ({
 });
 
 
-const editUser = (user) => ({
+export const editUser = (user) => ({
   type: EDIT_USER,
   user
 })

@@ -239,6 +239,7 @@ export const ChannelPage = () => {
         </div>
 
         {<div id="profile-edit">{ showProfileEdit[2]!==0  &&
+
         <>
 
           <div id="profile-title"><div id ="inner-title"> Profile <i className="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
