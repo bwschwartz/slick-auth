@@ -56,7 +56,6 @@ const NavBar = () => {
 
       <div id="right-nav">
         <div className="icon-holder">
-          {/* <img id="clock" src={ Question }/> */}
         </div>
         <div id="logout">
 

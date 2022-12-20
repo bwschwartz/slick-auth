@@ -1,13 +1,18 @@
-import React, { useState, useEffect, dispatch } from 'react';
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
 import { Modal } from '../../context/Modal';
-import { updateUser } from '../../store/user'
+import { updateUser } from '../../store/session'
 import './EditProfileModal.css'
 
 export const EditProfileModal = () => {
+  const dispatch = useDispatch()
   const [showModal, setShowModal] = useState(false);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
+  const user = useSelector(state => state.session.user? state.session.user : null)
+  const [displayName, setDisplayName] = useState(user.displayName);
+  const [fullName, setFullName] = useState(user.fullName);
+  const [title, setTitle] = useState('Title');
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
   const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
 
@@ -31,18 +36,21 @@ export const EditProfileModal = () => {
         setPhotoUrl(fileReader.result);
       };
     }
-    // setPhotoFile(file);
-    handleSubmit(e);
+    handleSubmit(e, true);
   }
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e, justPhoto) => {
     e.preventDefault();
     const formData = new FormData();
     if (photoFile) {
       formData.append('user[photo]', photoFile)
     }
     formData.append('user[id]', userId)
-    updateUser(formData)
+    formData.append('user[display_name]', displayName)
+    formData.append('user[full_name]', fullName)
+    formData.append('user[title', title)
+    dispatch(updateUser(formData))
+    setShowModal(false)
   }
 
   const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%"}} /> : null;
@@ -54,15 +62,24 @@ export const EditProfileModal = () => {
             <Modal onClose = { onClose } id="profile-edit-modal">
               <div id="edit-prof-title">Edit your profile</div>
             <div id="prof-modal-container">
-              {/* <hr id="modal-hr"/> */}
 
               <div id="editable-forms">
                 <form id="edit-prof-form">
                   <label className="prof-edit-label">Full name</label>
-                  <input className="prof-edit-attr"/>
+                  <input className="prof-edit-attr"
+                    placeholder={ user.fullName }
+                    value= { fullName }
+                    onChange={ e => setFullName(e.target.value)}
+                  />
 
                   <label>Display name</label>
-                  <input className="prof-edit-attr"/>
+
+                  <input className="prof-edit-attr"
+                    placeholder={ user.displayName }
+                    value= { displayName }
+                    onChange={ e => setDisplayName(e.target.value)}
+                  />
+
                   <span>This could be your first name, or a nickname — however you’d like people to refer to you in Slick.</span>
 
                   <label>Title</label>
@@ -79,19 +96,20 @@ export const EditProfileModal = () => {
                     <input id="photo-file-input" type="file" onChange={handleFile}/>
                   </label>
 
-
                 </form>
               </div>
 
 
 
-              <div id="edit-prof-title">
-                <div className="prof-edit-attr" id="cancel-button">Cancel</div>
-                <div className="prof-edit-attr" id="save-button">Save Changes</div>
-              </div>
-
             </div>
 
+
+                  <div id="save-and-cancel">
+                    <button onClick={handleSubmit}
+                    className="prof-edit-attr" id="save-button"
+                    >Save Changes</button>
+                    <button className="prof-edit-attr" id="cancel-button">Cancel</button>
+                  </div>
             </Modal>
           }
   </>)

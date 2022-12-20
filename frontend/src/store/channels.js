@@ -115,17 +115,10 @@ export const channelsReducer = (state={}, action) => {
       nextState[action.channel.id] = {...action.channel};
       return nextState;
     case REMOVE_CHANNEL:
-      console.log("in remove channel not conditional", nextState.currentChannel?.channelId)
-      // console.log("in condition", nextState.currentChannel  )
-      // console.log("in remove channel, action.channelis", action.channelID)
       if (action.channelId == nextState.currentChannel?.channelId) {
         delete nextState['currentChannel']
       }
-
-      // console.log("in remove channel currentChannel is", nextState[currentChannel])
       delete nextState[action.channelId];
-      // console.log(nextState[action.channelId])
-      // console.log("nextState in remove channel is", nextState.currentChannel)
       return nextState;
     case REMOVE_CHANNELS:
       return {};

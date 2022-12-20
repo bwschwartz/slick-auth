@@ -8,6 +8,5 @@ export const updateUser = async (updatedInfo) => {
   })
 
   const data = await res.json();
-  console.log("data is", data)
-  return
+  return data
 }

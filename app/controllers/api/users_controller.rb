@@ -6,7 +6,6 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      # render json: { user: @user}
       render :show
     else
       render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity
@@ -14,8 +13,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    puts "params are #{params}"
     @user = User.find(params[:id])
+    puts "user display name is #{@user.display_name}"
     if @user
       @user.update(user_params)
       render :show
@@ -35,6 +34,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :username, :photo)
+    params.require(:user).permit(:email, :password, :username, :photo, :display_name, :full_name, :title)
   end
 end

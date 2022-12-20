@@ -245,7 +245,7 @@ export const ChannelPage = () => {
 
           <div id="profile-edit-scrollable">
           <div id="scroll-flex">
-          <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>
+          {/* <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div> */}
 
 <div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
 

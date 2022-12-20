@@ -1,6 +1,7 @@
 import csrfFetch from './csrf.js'
 export const SET_USER = 'session/SET_USER'
 export const REMOVE_USER = 'session/REMOVE_USER'
+const EDIT_USER = 'session/EDIT_USER'
 
 //for heroku
 
@@ -13,12 +14,34 @@ const removeUser = (user) => ({
   type: REMOVE_USER
 });
 
+
+const editUser = (user) => ({
+  type: EDIT_USER,
+  user
+})
+
+export const updateUser = (updatedInfo) => async(dispatch)=> {
+  const id = updatedInfo.get('user[id]')
+  const res = await csrfFetch(`/api/users/${id}`, {
+    method: "PATCH",
+    body: updatedInfo
+  })
+  const data = await res.json();
+  console.log("data is firing", data)
+  dispatch(editUser(data))
+  return data
+}
+
 const initialState = {
   user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
 const sessionReducer = (state=initialState, action) => {
+  const nextState = {...state};
   switch(action.type) {
+    case EDIT_USER:
+
+      return {...state[action.user] = action.user}
     case SET_USER:
       return {...state, user: action.user}
     case REMOVE_USER:
