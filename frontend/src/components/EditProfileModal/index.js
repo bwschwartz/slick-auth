@@ -108,7 +108,10 @@ export const EditProfileModal = () => {
                     <button onClick={handleSubmit}
                     className="prof-edit-attr" id="save-button"
                     >Save Changes</button>
-                    <button className="prof-edit-attr" id="cancel-button">Cancel</button>
+                    <button className="prof-edit-attr" id="cancel-button"
+                    onClick={(e)=> setShowModal(false)}
+
+                    >Cancel</button>
                   </div>
             </Modal>
           }
