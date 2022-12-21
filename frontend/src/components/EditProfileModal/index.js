@@ -26,7 +26,8 @@ export const EditProfileModal = () => {
     setShowModal(true)
   }
 
-  const handleFile = e => {
+  const handleFile = async e => {
+    e.preventDefault();
     const file = e.currentTarget.files[0];
     if (file) {
       const fileReader = new FileReader();
@@ -35,8 +36,9 @@ export const EditProfileModal = () => {
         setPhotoFile(file);
         setPhotoUrl(fileReader.result);
       };
+      handleSubmit(e, true);
     }
-    handleSubmit(e, true);
+    console.log("photo url is", photoUrl)
   }
 
   const handleSubmit = async (e, justPhoto) => {
@@ -50,7 +52,7 @@ export const EditProfileModal = () => {
     formData.append('user[full_name]', fullName)
     formData.append('user[title', title)
     dispatch(updateUser(formData))
-    setShowModal(false)
+    // setShowModal(false)
   }
 
   const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%"}} /> : null;
