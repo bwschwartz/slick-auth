@@ -12,7 +12,7 @@ export const EditProfileModal = () => {
   const user = useSelector(state => state.session.user? state.session.user : null)
   const [displayName, setDisplayName] = useState(user.displayName);
   const [fullName, setFullName] = useState(user.fullName);
-  const [title, setTitle] = useState('Title');
+  const [title, setTitle] = useState(user.title);
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
   const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
 
@@ -50,7 +50,7 @@ export const EditProfileModal = () => {
     formData.append('user[id]', userId)
     formData.append('user[display_name]', displayName)
     formData.append('user[full_name]', fullName)
-    formData.append('user[title', title)
+    formData.append('user[title]', title)
     dispatch(updateUser(formData))
     // setShowModal(false)
   }
@@ -85,7 +85,12 @@ export const EditProfileModal = () => {
                   <span>This could be your first name, or a nickname — however you’d like people to refer to you in Slick.</span>
 
                   <label>Title</label>
-                  <input className="prof-edit-attr"/>
+                  <input className="prof-edit-attr"
+                    // placeholder={ user.title }
+                    value= { title }
+                    onChange={ e => setTitle(e.target.value)}
+
+                  />
                   <span>Let the people know what you do at A Real Workplace</span>
                 </form>
 

@@ -12,15 +12,6 @@
 
 }
 
-#prof-modal-container::-webkit-scrollbar {
-  /* height: calc(100% -20px);
-  width: 3px;
-  color: green;
-  background-color: grey;
-  margin-bottom: 10px; */
-}
-
-
 
 #edit-prof-title {
   width: 100%;
@@ -191,4 +182,5 @@
   justify-content: center;
   align-items: center;
 }
+
 
