@@ -117,10 +117,9 @@ export const EditProfileModal = () => {
                     <input id="photo-file-input" type="file" onChange={handleFile}/>
                   </label>
 
-                  <div id="remove-photo"
+                  {showProfPic && <div id="remove-photo"
                   onClick={removePhoto}
-
-                  >Remove Photo</div>
+                  >Remove Photo</div>}
 
                 </form>
               </div>
