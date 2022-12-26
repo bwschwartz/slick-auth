@@ -31,7 +31,7 @@ const shapeChannelUsers = (inShape) => {
 export const fetchChannel = (channelId) => async (dispatch) => {
   const res = await csrfFetch(`/api/channels/${channelId}`);
   let data = await res.json();
-  console.log("data in fetch channel", shapeChannelUsers(data.currentChannel.users))
+  // console.log("data in fetch channel", shapeChannelUsers(data.currentChannel.users))
   data.currentChannel.users = shapeChannelUsers(data.currentChannel.users)
   dispatch(receiveChannel(data));
 }

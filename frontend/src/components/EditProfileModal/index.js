@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Modal } from '../../context/Modal';
 import { updateUser } from '../../store/session'
+import { fetchChannel } from '../../store/channels'
 import ChatContext  from '../../context/ChatContext'
 import './EditProfileModal.css'
 
@@ -16,11 +17,9 @@ export const EditProfileModal = () => {
   const [title, setTitle] = useState(user.title);
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
   const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
+  const currentChannel = useSelector(state => state.channels ? state.channels.currentChannel : null)
 
   const [showProfPic, setShowProfPic] = useState(currentProfPic)
-
-  const { setReRenderMessages, reRenderMessages } = useContext(ChatContext)
-
 
   const onClose = () => {
     setShowModal(false)
@@ -55,8 +54,10 @@ export const EditProfileModal = () => {
     formData.append('user[display_name]', displayName)
     formData.append('user[full_name]', fullName)
     formData.append('user[title]', title)
-    dispatch(updateUser(formData))
-    setReRenderMessages(state => !state)
+    await dispatch(updateUser(formData))
+    if (currentChannel.channelId) {
+        dispatch(fetchChannel(currentChannel.channelId))
+    }
     setShowModal(false)
   }
 
