@@ -17,18 +17,11 @@ class Api::UsersController < ApplicationController
     if @user
       if user_params[:photo] == "delete"
         @user.photo.purge
-        puts"-----"
-        puts"-----"
-
-        puts("user_params are", user_params.except(:photo))
-        puts"-----"
-        puts"-----"
         @user.update(user_params.except(:photo))
-        render :show
       else
         @user.update(user_params)
-        render :show
       end
+      render :show
     else
       puts "im in the erroors bitch"
       render json: user.errors.full_messages, status: 422

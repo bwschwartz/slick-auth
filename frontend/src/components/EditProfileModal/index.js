@@ -59,6 +59,7 @@ export const EditProfileModal = () => {
         dispatch(fetchChannel(currentChannel.channelId))
     }
     setShowModal(false)
+    if (photoFile !== "delete") setShowProfPic(true);
   }
 
   const removePhoto = () => {
@@ -69,6 +70,7 @@ export const EditProfileModal = () => {
 
 
   const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%", backgroundColor:"blue"}} /> : null;
+  console.log("show prof pic is", showProfPic)
 
   return(<>
           <div className="prof-component-edit" onClick={ prepareModal }><span>Edit</span></div>
@@ -84,7 +86,7 @@ export const EditProfileModal = () => {
                   <input className="prof-edit-attr"
                     placeholder={ user.fullName }
                     value= { fullName }
-                    onChange={ e => setFullName(e.target.value)}
+                    onChange={ e => setFullName(e.target.value) }
                   />
 
                   <label>Display name</label>
@@ -92,7 +94,7 @@ export const EditProfileModal = () => {
                   <input className="prof-edit-attr"
                     placeholder={ user.displayName }
                     value= { displayName }
-                    onChange={ e => setDisplayName(e.target.value)}
+                    onChange={ e => setDisplayName(e.target.value) }
                   />
 
                   <span>This could be your first name, or a nickname — however you’d like people to refer to you in Slick.</span>
@@ -111,7 +113,7 @@ export const EditProfileModal = () => {
                   <label>Profile Photo</label>
                   <div id="pic-placeholder"
                   >{photoPreview  ||
-                    (showProfPic ? <img src={currentProfPic} style={{width:"100%", height:"100%", backgroundColor:"blue"}}/> : user?.displayName[0].toUpperCase())
+                    ((showProfPic && currentProfPic )? <img src={currentProfPic} style={{width:"100%", height:"100%"}}/> : user?.displayName[0].toUpperCase())
                    }</div>
 
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo
