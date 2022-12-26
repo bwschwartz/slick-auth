@@ -17,8 +17,13 @@ class Api::UsersController < ApplicationController
     if @user
       if user_params[:photo] == "delete"
         @user.photo.purge
-        user_params.delete(:photo)
-        @user.update(user_params)
+        puts"-----"
+        puts"-----"
+
+        puts("user_params are", user_params.except(:photo))
+        puts"-----"
+        puts"-----"
+        @user.update(user_params.except(:photo))
         render :show
       else
         @user.update(user_params)
