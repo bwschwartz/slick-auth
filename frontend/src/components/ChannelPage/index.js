@@ -135,10 +135,8 @@ export const ChannelPage = () => {
   }
 
 
-
   return (
     <>
-
     <div className="split-container">
       <Split className="split" columns={3} sizes={showProfileEdit} expandToMin={false} minSize={[0, 400, 0]} snapOffset={100} gutterSize={3} onDrag={ () => setOnGutter(current => !current) }>
       <>

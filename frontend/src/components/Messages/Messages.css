@@ -91,17 +91,13 @@
 
 
 #default-prof {
-  /* align-items:center; */
-  /* justify-content: center; */
-  background-color:rgb(111, 108, 104);
+  background-color: rgb(70, 86, 97);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 3px;
-  height: 33px;
-  /* color:rgb(236, 233, 229) */
-  color: #fff;
-  /* width: 36px; */
-  /* height: 36px; */
-  /* padding-top: 4px; */
+  height: 36px;
+  width: 36px;
+  color: #D1D2D3;
+  border-radius: 8%;
+  font-size: 18px;
 }
