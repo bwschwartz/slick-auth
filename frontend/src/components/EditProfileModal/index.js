@@ -55,7 +55,7 @@ export const EditProfileModal = () => {
     formData.append('user[full_name]', fullName)
     formData.append('user[title]', title)
     await dispatch(updateUser(formData))
-    if (currentChannel.channelId) {
+    if (currentChannel?.channelId) {
         dispatch(fetchChannel(currentChannel.channelId))
     }
     setShowModal(false)
