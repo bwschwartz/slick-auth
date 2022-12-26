@@ -34,7 +34,7 @@ export const ChannelPage = () => {
   const [currentChannelId, setCurrentChannelId] = useState(null)
   const [messageContent, setMessageContent] = useState('')
 
-  const { showProfileEdit, setShowProfileEdit, channelDisplayName, setChannelDisplayName } = useContext(ChatContext)
+  const { showProfileEdit, setShowProfileEdit, channelDisplayName, setChannelDisplayName, reRenderMessages } = useContext(ChatContext)
 
   const changeChannel= (e) => {
     e.stopPropagation();
@@ -195,7 +195,10 @@ export const ChannelPage = () => {
             <div id="messages-container">
               <div id="messages-list">
 
-                <Messages/>
+
+                <Messages render={reRenderMessages}/>
+
+
               </div>
           </div>
 
@@ -230,11 +233,8 @@ export const ChannelPage = () => {
                 <div id= "plane">
                   <i className="fa-solid fa-paper-plane fa-lg"></i>
                 </div>
-
               </div>
-
           </div>}
-
 
         </div>
 

@@ -44,14 +44,15 @@ const consumer = ActionCable.createConsumer('ws://localhost:3000/cable');
 
 
 function Root() {
-  const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0])
-  const [channelDisplayName, setChannelDisplayName] = useState(false)
+  const [showProfileEdit, setShowProfileEdit] = useState([20, 80, 0]);
+  const [channelDisplayName, setChannelDisplayName] = useState(false);
+  const [reRenderMessages, setReRenderMessages] = useState(false);
 
 
   return (
     <ModalProvider>
       <Provider store={store}>
-        <ChatContext.Provider value={{ consumer, showProfileEdit,  setShowProfileEdit, channelDisplayName, setChannelDisplayName }}>
+        <ChatContext.Provider value={{ consumer, showProfileEdit,  setShowProfileEdit, channelDisplayName, setChannelDisplayName, reRenderMessages, setReRenderMessages }}>
           <BrowserRouter>
             <App/>
           </BrowserRouter>

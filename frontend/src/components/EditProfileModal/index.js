@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Modal } from '../../context/Modal';
 import { updateUser } from '../../store/session'
+import ChatContext  from '../../context/ChatContext'
 import './EditProfileModal.css'
 
 export const EditProfileModal = () => {
@@ -15,6 +16,11 @@ export const EditProfileModal = () => {
   const [title, setTitle] = useState(user.title);
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
   const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
+
+  const [showProfPic, setShowProfPic] = useState(currentProfPic)
+
+  const { setReRenderMessages, reRenderMessages } = useContext(ChatContext)
+
 
   const onClose = () => {
     setShowModal(false)
@@ -50,18 +56,18 @@ export const EditProfileModal = () => {
     formData.append('user[full_name]', fullName)
     formData.append('user[title]', title)
     dispatch(updateUser(formData))
+    setReRenderMessages(state => !state)
     setShowModal(false)
   }
 
   const removePhoto = () => {
-    console.log("I'm removing a photo")
     setPhotoFile("delete");
     setPhotoUrl(null);
+    setShowProfPic(null);
   }
 
 
   const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%", backgroundColor:"blue"}} /> : null;
-  console.log("photoPreview is", photoPreview)
 
   return(<>
           <div className="prof-component-edit" onClick={ prepareModal }><span>Edit</span></div>
@@ -104,7 +110,7 @@ export const EditProfileModal = () => {
                   <label>Profile Photo</label>
                   <div id="pic-placeholder"
                   >{photoPreview  ||
-                    (currentProfPic ? <img src={currentProfPic} style={{width:"100%", height:"100%", backgroundColor:"blue"}}/> : user?.displayName[0].toUpperCase())
+                    (showProfPic ? <img src={currentProfPic} style={{width:"100%", height:"100%", backgroundColor:"blue"}}/> : user?.displayName[0].toUpperCase())
                    }</div>
 
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo

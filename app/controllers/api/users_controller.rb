@@ -14,19 +14,10 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    puts "user display name is #{@user.display_name}"
     if @user
       if user_params[:photo] == "delete"
-
         @user.photo.purge
         user_params.delete(:photo)
-        puts"-----------------------"
-        puts"-----------------------"
-        puts"-----------------------"
-        puts"-----------------------"
-        puts"-----------------------"
-        puts"-----------------------"
-        puts "i'm working?"
         @user.update(user_params)
         render :show
       else

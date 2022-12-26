@@ -1,9 +1,11 @@
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import ChatContext from '../../context/ChatContext'
 import './Messages.css'
 const Messages = () => {
   const messages = useSelector(state => state.channels.currentChannel? state.channels.currentChannel.messages : null)
   const channelUsers = useSelector(state => state.channels.currentChannel? state.channels.currentChannel.users : null)
+  const {reRenderMessages} = useContext(ChatContext)
 
 
   const getTime = (created_at) => {
@@ -72,11 +74,9 @@ const Messages = () => {
     }
   }
 
-  // console.log("messages before sorting", messages)
 
   const sortedMessages = messages?.sort(( a,  b ) => a.id-b.id ); //this is hacky, need to sort by created at
 
-  // console.log(sortedMessages)
 
 
   const messagesLis = sortedMessages?.map((message, i)=>
@@ -90,13 +90,13 @@ const Messages = () => {
 
     <div className="message-content-and-info">
     {/* <div className="message-pic"> */}
-    {channelUsers[message.user_id]?.photoUrl?
+    {
+      channelUsers[message.user_id]?.photoUrl ?
       <img className="message-pic" src={channelUsers[message.user_id]?.photoUrl}/> :
 
       <i id="default-prof"  className="fa-solid fa-user message-pic fa-2xl"></i>
 
     }
-    {/* </div> */}
 
       <div id="not-date">
         <div id="message-user-info">
