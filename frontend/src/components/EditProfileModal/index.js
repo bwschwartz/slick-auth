@@ -36,9 +36,7 @@ export const EditProfileModal = () => {
         setPhotoFile(file);
         setPhotoUrl(fileReader.result);
       };
-      // handleSubmit(e, true);
     }
-    console.log("photo url is", photoUrl)
   }
 
   const handleSubmit = async (e, justPhoto) => {
@@ -55,8 +53,15 @@ export const EditProfileModal = () => {
     setShowModal(false)
   }
 
-  const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%"}} /> : null;
-  console.log("PhotoPreview is", photoPreview)
+  const removePhoto = () => {
+    console.log("I'm removing a photo")
+    setPhotoFile("delete");
+    setPhotoUrl(null);
+  }
+
+
+  const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%", backgroundColor:"blue"}} /> : null;
+  console.log("photoPreview is", photoPreview)
 
   return(<>
           <div className="prof-component-edit" onClick={ prepareModal }><span>Edit</span></div>
@@ -97,15 +102,22 @@ export const EditProfileModal = () => {
 
                 <form id="edit-pic-form" onSubmit={handleSubmit}>
                   <label>Profile Photo</label>
-                  <div id="pic-placeholder">{photoPreview  ? photoPreview : <img src={currentProfPic} style={{width:"100%", height:"100%"}}/>}</div>
+                  <div id="pic-placeholder"
+                  >{photoPreview  ||
+                    (currentProfPic ? <img src={currentProfPic} style={{width:"100%", height:"100%", backgroundColor:"blue"}}/> : user?.displayName[0].toUpperCase())
+                   }</div>
 
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo
                     <input id="photo-file-input" type="file" onChange={handleFile}/>
                   </label>
 
+                  <div id="remove-photo"
+                  onClick={removePhoto}
+
+                  >Remove Photo</div>
+
                 </form>
               </div>
-
 
 
             </div>

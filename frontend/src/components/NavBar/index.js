@@ -50,7 +50,7 @@ const NavBar = () => {
 
       <div id="center-nav">
         <div id="search-bar">
-          <span>Search Google Magenta</span>
+          <span>Search A Real Workplace</span>
         </div>
       </div>
 

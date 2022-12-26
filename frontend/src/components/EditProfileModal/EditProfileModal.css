@@ -106,7 +106,15 @@
 #pic-placeholder {
   width: 192px;
   height: 192px;
-  background-color: blue;
+  background-color: rgb(70, 86, 97);
+  border-radius: 7%;
+  color:#D1D2D3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 100px;
+
 
 }
 
@@ -125,18 +133,6 @@
   width: 16%;
   margin-left: 50px;
 }
-
-/* #cancel-save {
-  width: 100%;
-  height: 200px;
-  display: flex;
-  position: relative;
-  background-color: #1B1D21;
-  bottom: 0;
-  height: 84px;
-  justify-content: flex-end;
-  align-items: center;
-} */
 
 #cancel-button {
   width: 80px;
@@ -183,4 +179,23 @@
   align-items: center;
 }
 
+#wrapper-photo-button:hover {
+  background-color: #504e561b;
+  cursor: pointer;
+}
 
+#remove-photo {
+  border: none;
+  width: 192px;
+  color: #1D9BD1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 100;
+}
+
+#remove-photo:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -16,9 +16,25 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     puts "user display name is #{@user.display_name}"
     if @user
-      @user.update(user_params)
-      render :show
+      if user_params[:photo] == "delete"
+
+        @user.photo.purge
+        user_params.delete(:photo)
+        puts"-----------------------"
+        puts"-----------------------"
+        puts"-----------------------"
+        puts"-----------------------"
+        puts"-----------------------"
+        puts"-----------------------"
+        puts "i'm working?"
+        @user.update(user_params)
+        render :show
+      else
+        @user.update(user_params)
+        render :show
+      end
     else
+      puts "im in the erroors bitch"
       render json: user.errors.full_messages, status: 422
     end
   end
