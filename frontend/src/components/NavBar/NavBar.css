@@ -10,10 +10,10 @@
 }
 
 #clock {
-  width: 20px;
-  height: 20px;
-  padding-left:14px;
-  margin-right: 2px;
+  width: 17px;
+  height: 17px;
+  padding-left:16px;
+  margin-right: 3px;
 }
 
 .icon-holder {
@@ -89,7 +89,19 @@
   font-weight: lighter;
   font-size: 14px;
   margin-left: 0px;
+  margin-bottom: 15px;
 }
+
+.speech-bubble {
+  /* height: 10px; */
+  width: 10px;
+  border-radius: 100%;
+  margin-left: 18px;
+  margin-right: 12px;
+  font-size: 15px;
+}
+
+
 
 #profile-avail {
   background-color: #038864;
@@ -105,7 +117,7 @@
   font-weight: lighter;
   display: flex;
   width: 100%;
-  margin-top: 15px;
+  /* margin-top: 15px; */
   font-size: 14px;
   overflow-x: hidden;
   display: flex;
@@ -145,6 +157,13 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
+}
+
+#status-and-cancel {
+  display: flex;
+  justify-content:space-between;
+  align-items:space-between;
+  width: 100%;
 
 }
 

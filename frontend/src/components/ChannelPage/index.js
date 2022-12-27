@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
 import { fetchChannels, fetchChannel } from '../../store/channels'
 import { createMessage, receiveMessage } from '../../store/messages'
+import { updateUser } from '../../store/session'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Messages from '../Messages'
 import { Modal } from '../../context/Modal'
@@ -20,7 +21,10 @@ export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
-  const user = useSelector ( (state) => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
+  const user = useSelector ( state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
+  const userStatus = useSelector( state => state.session.user ? state.session.user.status : null )
+  const [status, setStatus] = useState(userStatus);
+
 
   const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null )
   const [timeObj, setTimeObj] = useState(new Date())
@@ -133,13 +137,22 @@ export const ChannelPage = () => {
     return setInterval(()=> {return new Date()}, 1000)
   }
 
+  const removeStatus = (e) => {
+    e.preventDefault()
+    console.log("removing some shit")
+    const formData = new FormData();
+    formData.append('user[status]', '')
+    formData.append('user[id]', currentUserId)
+    setStatus(null);
+    dispatch(updateUser(formData))
+  }
+
 
   return (
     <>
     <div className="split-container">
       <Split className="split" columns={3} sizes={showProfileEdit} expandToMin={false} minSize={[0, 400, 0]} snapOffset={100} gutterSize={3} onDrag={ () => setOnGutter(current => !current) }>
       <>
-
 
         <div id="channel-bar" ref={channelsDivRef}>
           <div className="server-heading">
@@ -148,7 +161,6 @@ export const ChannelPage = () => {
             </h3>
 
         <div id="circle-around-pen">
-          {/* <i className="fa-solid fa-pen-to-square"/> */}
         </div>
         </div>
 
@@ -180,11 +192,7 @@ export const ChannelPage = () => {
             <h3 className="channel-name"> {channelDisplayName && <i id="channel-name-hash" className="fa-regular fa-hashtag fa-lg"/>} {channelDisplayName}&nbsp;
               {channelDisplayName &&  <i id="other-arrow" className="fa-solid fa-angle-down"/>}
             </h3>
-            <div id="circle-around-pen">
-              {/* <i className="fa-solid fa-pen-to-square"/> */}
-            </div>
           </div>
-
 
 
         <div id="chat-container">
@@ -192,9 +200,7 @@ export const ChannelPage = () => {
             <div id="messages-container">
               <div id="messages-list">
 
-
                 <Messages render={reRenderMessages}/>
-
 
               </div>
           </div>
@@ -236,10 +242,7 @@ export const ChannelPage = () => {
         </div>
 
         {<div id="profile-edit">{ showProfileEdit[2]!==0  &&
-
         <>
-
-
           <div id="profile-title"><div id ="inner-title"> Profile <i className="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
 
           <div id="profile-edit-scrollable">
@@ -249,13 +252,24 @@ export const ChannelPage = () => {
 <div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
 
 <div id="availability-status"><span id="profile-avail"></span>Active</div>
+
+{userStatus &&
+<div id="status-and-cancel">
+
+ <div id="availability-status"><i class="fa-regular fa-comment-dots speech-bubble fa-xl"/>{userStatus}</div>
+ <i class="fa-solid fa-x fa-xs"
+  onClick={removeStatus}
+ />
+</div>
+ }
+
 <div id="local-time">
   <img id="clock" src={ Clock }/> &nbsp;
   {getTime(timeObj) + ' local time'}
 </div>
 
 <div id="prof-options">
-  <div><StatusModal/></div>
+  <div><StatusModal status={status} setStatus={setStatus} /></div>
   <div id="set-status">View</div>
 </div>
 
@@ -263,8 +277,6 @@ export const ChannelPage = () => {
 <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
-
-
 
 
 </div>
