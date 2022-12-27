@@ -74,7 +74,7 @@ export const ChannelPage = () => {
     <i className="fa-regular fa-hashtag"/>
       &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}
-      <ChannelUpdateFormModal/>
+      <ChannelUpdateFormModal type="channel"/>
     </div>
   </li> )
 

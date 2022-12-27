@@ -17,25 +17,25 @@ export const ChannelForm = ( { onClose }) => {
 
   return (
     <>
-    <div>
-      <h2>Create a channel, friendo </h2>
-      <p>Channels are where your team communicates. They're best when organized around a topic &mdash; #dan, for example.</p>
+    <div id="channel-creation-div">
+      <div id="edit-prof-title">Create a channel</div>
+      <div>Channels are where your team communicates. They're best when organized around a topic &mdash; #dan, for example.</div>
       <form onSubmit={ handleSubmit }>
 
       <label>Title</label>
             <input  className="credential" type="text"
-            placeholder="  e.g. #dan "
+            placeholder=" e.g. #dan "
             value={ title }
             onChange = { (e) => setTitle(e.target.value) } />
 
-      <label>Description <span>(optional)</span></label>
+      <div id="description" >Description <span>(optional)</span></div>
           <input type="text"
-            placeholder="   y wi <3 2 h8 DAN"
+            placeholder=" y wi <3 2 h8 DAN"
             value={ description }
             onChange = { (e) => setDescription(e.target.value) } />
           <span id="whats-it-about">What's this channel about?</span>
           <input
-          type="submit" value="Create Channel" id="form-button"/>
+          type="submit" value="Create Channel" id="channel-form-button"/>
 
       </form>
       </div>

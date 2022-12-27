@@ -17,7 +17,7 @@ export const ChannelFormModal = () => {
     </div>
    </button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setShowModal(false)} type="channel">
           <ChannelForm onClose={() => {
             console.log("onClose")
             setShowModal(false)}}/>

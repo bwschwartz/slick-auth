@@ -76,7 +76,7 @@ export const EditProfileModal = () => {
           <div className="prof-component-edit" onClick={ prepareModal }><span>Edit</span></div>
 
           {showModal &&
-            <Modal onClose={onClose} id="profile-edit-modal" type="channel">
+            <Modal onClose={onClose} id="profile-edit-modal" type="profile">
               <div id="edit-prof-title">Edit your profile</div>
             <div id="prof-modal-container">
 
