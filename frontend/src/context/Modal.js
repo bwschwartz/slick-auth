@@ -22,8 +22,21 @@ export const ModalProvider = ({ children }) => {
   )
 }
 
-export const Modal = ({ onClose, children }) => {
+export const Modal = ({ onClose, children, type }) => {
   const modalNode = useContext(ModalContext);
+
+  const getContentStyling = (type) => {
+    switch(type) {
+      case "status":
+        return 'status-modal-content';
+      case "profile":
+        return 'profile-modal-content';
+      case "channel":
+        return 'modal-content';
+      default:
+        return null;
+    }
+  }
 
   if (!modalNode) return false;
 
@@ -32,7 +45,7 @@ export const Modal = ({ onClose, children }) => {
       <>
       <div id="modal">
         <div id="modal-background" onClick={onClose}></div>
-        <div id="modal-content"> {children} </div>
+        <div id={getContentStyling(type)}> {children} </div>
       </div>
     </>, modalNode
     )
