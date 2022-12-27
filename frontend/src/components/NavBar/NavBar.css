@@ -134,7 +134,11 @@
   margin-bottom: 8px;
   margin-right: 10px;
   margin-left: 14px;
+}
 
+#set-status:hover {
+  background-color: #504e561b;
+  cursor: pointer;
 }
 
 #prof-options{

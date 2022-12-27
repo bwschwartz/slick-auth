@@ -9,19 +9,18 @@ import Messages from '../Messages'
 import { Modal } from '../../context/Modal'
 import { ChannelFormModal } from '../ChannelCreationModal'
 import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
+import { StatusModal } from '../StatusModal'
 import { EditProfileModal } from '../EditProfileModal'
 import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
 import Clock from '../../assets/transparent-clock-right-color.png'
 import ActionCable from 'actioncable'
 
-
-
 export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
-  const user = useSelector ( (state) => state.session.user?.userName? state.session.user.userName :  state.session.user?.email )
+  const user = useSelector ( (state) => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
 
   const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null )
   const [timeObj, setTimeObj] = useState(new Date())
@@ -256,15 +255,11 @@ export const ChannelPage = () => {
 </div>
 
 <div id="prof-options">
-  <div id="set-status">Set a status</div>
-  <div id="set-status">View Profile</div>
+  <div><StatusModal/></div>
+  <div id="set-status">View</div>
 </div>
 
 <hr id="profile-ruler"/>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
 <div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>

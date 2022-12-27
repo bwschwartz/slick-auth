@@ -5,12 +5,10 @@
   padding-left: 10px;
 }
 
-#prof-modal-container {
+/* #prof-modal-container {
   height: 100%;
-  /* overflow-y: scroll; */
   overflow-x:visible;
-
-}
+} */
 
 
 #edit-prof-title {

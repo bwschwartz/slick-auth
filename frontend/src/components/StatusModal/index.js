@@ -7,10 +7,12 @@ import ChatContext  from '../../context/ChatContext'
 import './StatusModal.css'
 
 export const StatusModal = () => {
+  const user = useSelector(state => state.session.user? state.session.user : null);
+  const userId = user?.id
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [status, setStatus] = useState(user?.status)
 
-  const user = useSelector(state => state.session.user? state.session.user : null);
 
   const onClose = () => {
     setShowModal(false);
@@ -24,28 +26,32 @@ export const StatusModal = () => {
 
   const handleSubmit = async (e, justPhoto) => {
     e.preventDefault();
-
+    const formData = new FormData();
+    formData.append('user[status]', status)
+    formData.append('user[id]', userId)
+    dispatch(updateUser(formData))
     setShowModal(false);
   }
 
   return(<>
-          <div className="prof-component-edit" onClick={ prepareModal }><span>Set a status</span></div>
+          <div id="set-status" className="prof-component-edit" onClick={ prepareModal }>
+          Set a status
+          </div>
 
           {showModal &&
             <Modal onClose = { onClose } type={ "status" }>
-              <div id="edit-prof-title">Edit your profile</div>
-            <div id="prof-modal-container">
+              <div id="edit-prof-title">Set a status</div>
+
+            <div>
 
               <div >
-                {/* <form id="edit-prof-form">
+                <form id="edit-prof-form">
                   <input className="prof-edit-attr"
-                    placeholder={ user.fullName }
-                    // value= { fullName }
-                    // onChange={ e => setFullName(e.target.value) }
+                    placeholder={ status }
+                    value= { status }
+                    onChange={ e => setStatus(e.target.value) }
                   />
-
-
-                </form> */}
+                </form>
               </div>
 
 

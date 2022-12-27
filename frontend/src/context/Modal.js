@@ -26,7 +26,6 @@ export const Modal = ({ onClose, children, type }) => {
   const modalNode = useContext(ModalContext);
 
   const getContentStyling = (type) => {
-    console.log("in switch type is", type)
     switch(type) {
       case "status":
         return 'status-modal-content';
