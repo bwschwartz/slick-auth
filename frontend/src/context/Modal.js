@@ -34,6 +34,8 @@ export const Modal = ({ onClose, children, type }) => {
         return 'modal-content';
       case "channel":
         return 'channel-modal-content';
+      case "channel-update":
+        return 'channel-update-modal-content'
       default:
         return null;
     }

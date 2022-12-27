@@ -66,6 +66,20 @@
   color: #D1D2D3;
 }
 
+#channel-update-modal-content {
+  position: absolute;
+  background-color: #1B1D21;
+  padding: 20px;
+  border: 1px solid rgb(44, 43, 43);
+  border-radius: 11px;
+  height: 320px;
+  width: 400px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: #D1D2D3;
+}
+
 #modal-content-hidden {
   display:none;
 }
@@ -122,6 +136,18 @@
   margin-bottom: 8px;
   margin-top: 8px;
   font-weight: lighter;
+}
+
+#delete-channel-button {
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid palegoldenrod;
+}
+
+#delete-channel-button {
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid palegoldenrod;
 }
 
 

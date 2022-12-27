@@ -24,7 +24,7 @@ export const ChannelUpdateFormModal = () => {
 
   const onClose = () => {
     setShowModal(false)
-  } 
+  }
 
   return (<>
    <button
@@ -34,11 +34,11 @@ export const ChannelUpdateFormModal = () => {
    </button>
 
       {showModal && (
-        <Modal onClose={onClose}>
+        <Modal onClose={onClose} type="channel-update">
           <ChannelUpdateForm
           channelID={channelID}
           channelName={channelName}
-          onClose={() => {setShowModal(false)}}
+          onClose={ () => {setShowModal(false)} }
           />
         </Modal>
       )}

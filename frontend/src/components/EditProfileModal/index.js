@@ -70,7 +70,6 @@ export const EditProfileModal = () => {
 
 
   const photoPreview = photoUrl ? <img src={photoUrl} alt="" style={{width:"100%", height:"100%", backgroundColor:"blue"}} /> : null;
-  console.log("show prof pic is", showProfPic)
 
   return(<>
           <div className="prof-component-edit" onClick={ prepareModal }><span>Edit</span></div>

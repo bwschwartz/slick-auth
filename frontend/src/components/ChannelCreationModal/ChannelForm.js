@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState, createRef } from 'react';
 import * as channelActions from '../../store/channels'
 
-export const ChannelForm = ( { onClose }) => {
+export const ChannelForm = ({ onClose }) => {
   const dispatch = useDispatch();
   const [description, setDescription] = useState('');
   const [title, setTitle] = useState('');
@@ -28,7 +28,7 @@ export const ChannelForm = ( { onClose }) => {
             value={ title }
             onChange = { (e) => setTitle(e.target.value) } />
 
-      <div id="description" >Description <span>(optional)</span></div>
+      <div id="description">Description <span>(optional)</span></div>
           <input type="text"
             placeholder=" y wi <3 2 h8 DAN"
             value={ description }
