@@ -644,6 +644,11 @@ background-color: #1B1D21;
   border: .5px solid #2B2A2F;
 }
 
+
+#status-x{
+  margin-right: 4px;
+}
+
 #set-status {
 
 }

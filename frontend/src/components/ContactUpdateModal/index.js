@@ -5,11 +5,12 @@ import { updateUser } from '../../store/session'
 import { fetchChannel } from '../../store/channels'
 import ChatContext  from '../../context/ChatContext'
 
-export const ContactUpdateModal = ({ phone, setPhone }) => {
+export const ContactUpdateModal = () => {
   const user = useSelector(state => state.session.user? state.session.user : null);
   const userId = user?.id;
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [phone, setPhone] = useState(user?.phone)
 
   const onClose = () => {
     setShowModal(false);
@@ -48,8 +49,8 @@ export const ContactUpdateModal = ({ phone, setPhone }) => {
                 Email Address</div>
                 <input className="prof-edit-attr"
                 id="locked-email"
-                readOnly="true"
-                value={user.email}
+                readOnly={true}
+                value={ user.email }
                 />
 
                 <div className="contact-label">Phone</div>
@@ -67,8 +68,7 @@ export const ContactUpdateModal = ({ phone, setPhone }) => {
                 className="prof-edit-attr" id="save-button"
                 >Save Changes</button>
                 <button className="prof-edit-attr" id="cancel-button"
-                onClick={(e)=> setShowModal(false)}
-
+                onClick={ (e) => setShowModal(false) }
                 >Cancel</button>
               </div>
             </Modal>

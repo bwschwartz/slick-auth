@@ -24,6 +24,8 @@ export const ChannelPage = () => {
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
   const user = useSelector ( state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
   const userStatus = useSelector( state => state.session.user ? state.session.user.status : null )
+  const userEmail = useSelector( state => state.session.user ? state.session.user.email : null )
+  const userPhone = useSelector( state => state.session.user ? state.session.user.phone : null)
   const [status, setStatus] = useState(userStatus);
 
 
@@ -252,6 +254,7 @@ export const ChannelPage = () => {
  <div id="availability-status"><i class="fa-regular fa-comment-dots speech-bubble fa-xl"/>{userStatus}</div>
  <i class="fa-solid fa-x fa-xs"
   onClick={removeStatus}
+  id="status-x"
  />
 </div>
  }
@@ -273,7 +276,7 @@ export const ChannelPage = () => {
   <i className="fa-regular fa-envelope fa-xl envelope"/>
   <div>
     <div className="contact-display-text">Email Address</div>
-    <div className="contact-user-info">ben@test.com</div>
+    <div className="contact-user-info">{userEmail}</div>
   </div>
 </div>
 
@@ -281,7 +284,7 @@ export const ChannelPage = () => {
 <i class="fa-solid fa-lg fa-phone envelope"></i>
   <div>
     <div className="contact-display-text">Phone</div>
-    <div className="contact-user-info">ben@test.com</div>
+    <div className="contact-user-info">{userPhone}</div>
   </div>
 </div>
 
