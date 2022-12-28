@@ -592,16 +592,51 @@ background-color: #1B1D21;
   display: flex;
   width: 150px;
   width: 80%;
-  overflow-x: atuo;
+  overflow-x: auto;
+  font-size: 15px;
 }
 
+#contact-edit {
+  margin-top: -5px;
+}
 
+.contact-info-display {
+  display: flex;
+  width: 100%;
+  margin-left: 20px;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
 
-/* #empty-prof {
-  background-color: blue;
-  border: none;
-  border-left: 20px solid green;
-} */
+.contact-info-display:before {
+  background-color: green;
+}
+
+.envelope {
+  background-color: #E8E8E80A;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+  border-radius: 4px;
+}
+
+.contact-display-text {
+  color: #E8E8E8B3;
+  font-size: 13px;
+}
+
+.contact-user-info {
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+#contact-bottom {
+  padding-bottom: 60px;
+}
 
 #profile-ruler {
   /* border-top: 1px solid blue; */

@@ -46,13 +46,11 @@ export const StatusModal = ({status, setStatus}) => {
               <div >
                 <form id="edit-prof-form" className="status-input">
                   <input className="prof-edit-attr"
-                    // placeholder={ status }
                     value= { status }
                     onChange={ e => setStatus(e.target.value) }
                   />
                 </form>
               </div>
-
 
             </div>
 

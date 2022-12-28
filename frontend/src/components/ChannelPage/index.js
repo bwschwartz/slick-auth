@@ -274,14 +274,27 @@ export const ChannelPage = () => {
 </div>
 
 <hr id="profile-ruler"/>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
-<div className="prof-component-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit" id="contact-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+
+<div className="contact-info-display">
+  <i className="fa-regular fa-envelope fa-xl envelope"/>
+  <div>
+    <div className="contact-display-text">Email Address</div>
+    <div className="contact-user-info">ben@test.com</div>
+  </div>
+</div>
+
+<div className="contact-info-display" id="contact-bottom">
+<i class="fa-solid fa-lg fa-phone envelope"></i>
+  <div>
+    <div className="contact-display-text">Phone</div>
+    <div className="contact-user-info">ben@test.com</div>
+  </div>
+</div>
 
 
 </div>
-          </div>
-
+</div>
 
 
 
@@ -289,10 +302,6 @@ export const ChannelPage = () => {
 
         </>
         }</div>}
-        {/* {showProfileEdit[2] ==0 && <div id="empty-prof"></div>} */}
-
-
-       {/* {showProfileEdit[2] !==0 && <div style={{width:0}}>shit</div>} */}
 
        </>
       </Split>
