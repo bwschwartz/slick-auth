@@ -32,10 +32,13 @@ const NavBar = () => {
   const logOutUser= () => {
     console.log("loggingOutUser")
     showProf()
-
-
     // dispatch(clearChannels())
     // return dispatch(logout())
+  }
+
+  const filterList = () => {
+    console.log("i'm filtering honey")
+
   }
 
   return (
@@ -50,7 +53,12 @@ const NavBar = () => {
 
       <div id="center-nav">
         <div id="search-bar">
-          <span>Search A Real Workplace</span>
+          {/* <span>Search for a full-stack developer</span> */}
+          {/* <i class="fa-solid fa-magnifying-glass" id="search-icon"/> */}
+
+          <input type="text" id="search-input" onKeyUp={filterList}
+          placeholder="&#xF002; &nbsp; Search for a full-stack developer" style={{fontFamily:"Arial, FontAwesome"}}
+          ></input>
         </div>
       </div>
 
@@ -62,7 +70,6 @@ const NavBar = () => {
           <button id="logout-button" style={profPic? {backgroundColor:"transparent"} : {backgroundColor:"rgb(70, 86, 97)"}}
             onClick={ logOutUser }>
               {profPic? <img src={profPic} style={{width:"26px", height:"26px", borderRadius:"5px"}}/> : user[0].toUpperCase() }
-            {/* {user[0].toUpperCase()} */}
             <div className="availability-circle"></div>
           </button>
 
