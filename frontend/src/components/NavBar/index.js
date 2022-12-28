@@ -25,7 +25,7 @@ const NavBar = () => {
      })
    }
    const showProf = () => {
-     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 50, 30 ] : [20, 80, 0 ]
+     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 60, 20] : [20, 80, 0]
      setShowProfileEdit(dims)
    }
 

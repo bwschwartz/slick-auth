@@ -108,12 +108,12 @@ export const ChannelPage = () => {
   }
 
   const arrayEquals = (arr1, arr2) => {
-    return arr1.every((e, i, arr) =>{
+    return arr1.every((e, i, arr) => {
        return e === arr2[i]
      })
    }
    const showProf = () => {
-     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 50, 30 ] : [20, 80, 0 ]
+     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 60, 20] : [20, 80, 0]
      setShowProfileEdit(dims)
    }
 
