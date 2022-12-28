@@ -12,6 +12,7 @@ import { ChannelFormModal } from '../ChannelCreationModal'
 import { ChannelUpdateFormModal } from '../ChannelUpdateModal'
 import { StatusModal } from '../StatusModal'
 import { EditProfileModal } from '../EditProfileModal'
+import { ContactUpdateModal } from '../ContactUpdateModal'
 import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
 import Clock from '../../assets/transparent-clock-right-color.png'
@@ -77,7 +78,7 @@ export const ChannelPage = () => {
     <i className="fa-regular fa-hashtag"/>
       &nbsp; &nbsp;
     <div className ="title-and-pencil"> {channel.title}
-      <ChannelUpdateFormModal type="channel"/>
+      <ChannelUpdateFormModal/>
     </div>
   </li> )
 
@@ -139,14 +140,12 @@ export const ChannelPage = () => {
 
   const removeStatus = (e) => {
     e.preventDefault()
-    console.log("removing some shit")
     const formData = new FormData();
     formData.append('user[status]', '')
     formData.append('user[id]', currentUserId)
     setStatus(null);
     dispatch(updateUser(formData))
   }
-
 
   return (
     <>
@@ -194,18 +193,12 @@ export const ChannelPage = () => {
             </h3>
           </div>
 
-
         <div id="chat-container">
-
             <div id="messages-container">
               <div id="messages-list">
-
-                <Messages render={reRenderMessages}/>
-
+                <Messages/>
               </div>
           </div>
-
-
 
         </div>
         { channelDisplayName && <div id="send-message-container">
@@ -245,9 +238,9 @@ export const ChannelPage = () => {
         <>
           <div id="profile-title"><div id ="inner-title"> Profile <i className="fa-solid fa-x fa-xs" onClick={e => showProf()}></i></div></div>
 
-          <div id="profile-edit-scrollable">
-          <div id="scroll-flex">
-          <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>
+        <div id="profile-edit-scrollable">
+        <div id="scroll-flex">
+        <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>
 
 <div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
 
@@ -274,7 +267,7 @@ export const ChannelPage = () => {
 </div>
 
 <hr id="profile-ruler"/>
-<div className="prof-component-edit" id="contact-edit"><div id="contact-info-title">Contact Information</div> <span>Edit</span></div>
+<div className="prof-component-edit" id="contact-edit"><div id="contact-info-title">Contact Information</div> <span><ContactUpdateModal/></span></div>
 
 <div className="contact-info-display">
   <i className="fa-regular fa-envelope fa-xl envelope"/>
@@ -292,13 +285,8 @@ export const ChannelPage = () => {
   </div>
 </div>
 
-
 </div>
 </div>
-
-
-
-
 
         </>
         }</div>}

@@ -53,8 +53,50 @@
   display: flex;
   flex-direction: column;
   align-items: space-between;
-
 }
+
+#contact-modal-content {
+  position: absolute;
+  overflow-y: hidden;
+  background-color: #1B1D21;
+  padding: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border: 1px solid rgb(44, 43, 43);
+  border-radius: 11px;
+  height: 350px;
+  width: 504px;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  color: #d1d1d3;
+}
+
+.contact-label{
+  font-size: 15px;
+  margin-bottom: 13px;
+  margin-left: 5px;
+}
+
+#lock {
+  margin-right: 6px
+}
+
+#locked-email{
+  color: #D1D2D3;
+  font-size: 15px;
+  margin: 0px;
+  background-color: #222529;
+  margin-bottom: 30px;
+  box-shadow: 0 0 0 1px #afaeb7c5;
+  /* border-radius: 5px; */
+  text-indent: 10px;
+  height: 38px;
+  font-size: 18px;
+  width: 98%;
+  align-self: center;
+}
+
 
 #channel-modal-content {
   position: absolute;
@@ -157,6 +199,7 @@
 .status-input {
   width: 100%;
 }
+
 
 
 

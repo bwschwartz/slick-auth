@@ -2,7 +2,6 @@ import React, { useState, useEffect, useSelector, dispatch} from 'react';
 import { ChannelUpdateForm } from './ChannelUpdateForm';
 import { Modal } from '../../context/Modal';
 import './ChannelUpdateModal.css'
-// import { fetchChannels } from '../../store/channels'
 
 
 export const ChannelUpdateFormModal = () => {
