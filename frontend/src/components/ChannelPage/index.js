@@ -265,10 +265,11 @@ export const ChannelPage = () => {
 <div id="status-and-cancel">
 
  <div id="availability-status"><i class="fa-regular fa-comment-dots speech-bubble fa-xl"/>{userStatus}</div>
- <i class="fa-solid fa-x fa-xs"
+{!editProfView && <i class="fa-solid fa-x fa-xs"
   onClick={removeStatus}
   id="status-x"
- />
+ />}
+
 </div>
  }
 
