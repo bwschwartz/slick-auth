@@ -577,7 +577,11 @@ background-color: #1B1D21;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
+.prof-component-edit span:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #prof-username {
