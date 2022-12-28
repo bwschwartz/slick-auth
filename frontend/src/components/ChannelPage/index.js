@@ -21,16 +21,15 @@ import ActionCable from 'actioncable'
 export const ChannelPage = () => {
   const dispatch = useDispatch();
   const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
-  const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null)
-  const user = useSelector ( state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
-  const userStatus = useSelector( state => state.session.user ? state.session.user.status : null )
-  const userEmail = useSelector( state => state.session.user ? state.session.user.email : null )
-  const userPhone = useSelector( state => state.session.user ? state.session.user.phone : null)
+  const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null);
+  const user = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email );
+  const userStatus = useSelector(state => state.session.user ? state.session.user.status : null);
+  const userEmail = useSelector(state => state.session.user ? state.session.user.email : null);
+  const userPhone = useSelector(state => state.session.user ? state.session.user.phone : null);
   const [status, setStatus] = useState(userStatus);
-
-
-  const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null )
-  const [timeObj, setTimeObj] = useState(new Date())
+  const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null );
+  const [timeObj, setTimeObj] = useState(new Date());
+  const [editProfView, setEditProfView] = useState(false);
 
 
   useEffect (()=> {
@@ -68,7 +67,7 @@ export const ChannelPage = () => {
             document.getElementById("messages-list-bottom").scrollIntoView(false)
           }, 300)
         }
-           }
+       }
       );
     }
     return () => subscription?.unsubscribe();
@@ -149,6 +148,11 @@ export const ChannelPage = () => {
     dispatch(updateUser(formData))
   }
 
+  const toggleProfileView = () => {
+    setEditProfView(state => !state)
+    console.log("in toggle view, edit prof is", editProfView)
+  }
+
   return (
     <>
     <div className="split-container">
@@ -158,11 +162,8 @@ export const ChannelPage = () => {
         <div id="channel-bar" ref={channelsDivRef}>
           <div className="server-heading">
             <h3 className="server-name">A Real Workplace&nbsp;
-              <i className="fa-solid fa-angle-down"/>
+              {/* <i className="fa-solid fa-angle-down"/> */}
             </h3>
-
-        <div id="circle-around-pen">
-        </div>
         </div>
 
           {true &&
@@ -177,11 +178,11 @@ export const ChannelPage = () => {
               <ChannelFormModal/>
             </div>
 
-            {dropMenuBool && <div id="channels-component">
+            { dropMenuBool && <div id="channels-component">
                 <ul className="channel-list">
                   {channelsLis}
                 </ul>
-            </div>}
+            </div> }
           </div>
           </>}
 
@@ -225,7 +226,7 @@ export const ChannelPage = () => {
                   onKeyDown={ e => {
                   if (e.code === 'Enter' && !e.shiftKey) {
                   handleSubmit(e); }}}
-                  value={messageContent}
+                  value={ messageContent }
                   />
                 </form>
                 <div id= "plane">
@@ -242,9 +243,21 @@ export const ChannelPage = () => {
 
         <div id="profile-edit-scrollable">
         <div id="scroll-flex">
+
+
+        {editProfView &&
+        <div id="exit-preview-container">
+          <div id="exit-preview"
+          onClick={toggleProfileView}
+          >Exit Preview</div>
+        </div>
+        }
+
         <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>
 
-<div className="prof-component-edit"><div id="prof-username">{user}</div><span> <EditProfileModal/></span></div>
+<div className="prof-component-edit"><div id="prof-username">{user}</div>
+{!editProfView && <span> <EditProfileModal/></span>}
+</div>
 
 <div id="availability-status"><span id="profile-avail"></span>Active</div>
 
@@ -264,13 +277,17 @@ export const ChannelPage = () => {
   {getTime(timeObj) + ' local time'}
 </div>
 
-<div id="prof-options">
+{!editProfView && <div id="prof-options">
   <div><StatusModal status={status} setStatus={setStatus} /></div>
-  <div id="set-status">View</div>
-</div>
+  <div id="set-status"
+  onClick={toggleProfileView}
+  >View</div>
+</div>}
 
 <hr id="profile-ruler"/>
-<div className="prof-component-edit" id="contact-edit"><div id="contact-info-title">Contact Information</div> <span><ContactUpdateModal/></span></div>
+<div className="prof-component-edit" id="contact-edit"><div id="contact-info-title">Contact Information</div>
+ {!editProfView && <span><ContactUpdateModal/></span>}
+ </div>
 
 <div className="contact-info-display">
   <i className="fa-regular fa-envelope fa-xl envelope"/>
