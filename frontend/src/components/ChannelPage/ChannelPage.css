@@ -644,16 +644,23 @@ background-color: #1B1D21;
 }
 
 #status-x {
-  margin-right: 8px;
+  margin-right: 15px;
   color: #1B1D21;;
-  background-color:blue;
+  /* background-color:blue; */
   border-radius: 50%;
   height: 1px;
   width: 1px;
 }
+#status-and-cancel {
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  width: 100%;
+}
 
-#status-x:hover {
+#status-and-cancel:hover #status-x {
   background-color:#aeabbb;
+
 }
 
 #exit-preview-container {
