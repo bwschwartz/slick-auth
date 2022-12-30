@@ -112,7 +112,7 @@ export const EditProfileModal = () => {
                   <label>Profile Photo</label>
                   <div id="pic-placeholder"
                   >{photoPreview  ||
-                    ((showProfPic && currentProfPic )? <img src={currentProfPic} style={{width:"100%", height:"100%"}}/> : user?.displayName[0].toUpperCase())
+                    ((showProfPic && currentProfPic )? <img src={currentProfPic} style={{width:"100%", height:"100%"}}/> : user?.username[0].toUpperCase())
                    }</div>
 
                   <label id="wrapper-photo-button" htmlFor="photo-file-input">Upload Photo

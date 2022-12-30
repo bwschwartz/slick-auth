@@ -61,11 +61,6 @@
   color: #d1d2d3;
 }
 
-/* #search-input::placeholder::before {
-  content: 'sup slut';
-  color: blue;
-} */
-
 #search-input:focus {
   border: none;
   box-shadow: none;
@@ -78,9 +73,43 @@
 }
 
 
+#dev-links {
+  list-style: none;
+  padding: none;
+  margin: none;
+  width: 100%;
+  margin-left: -40px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
 
 
+#dev-links li a {
+  border: 1px solid rgb(227, 184, 184);
+  margin-top: -1px;
+  background-color: rgb(238, 143, 174);
+  padding: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  color: rgb(129, 102, 102);
+  display: block;
+  width: 300px;
+  /* margin-left: 170px; */
+}
 
+#dev-links li a:hover:not(.header) {
+  background-color: palegoldenrod;
+}
+
+.dev-link-icon {
+  margin-right: 10px;
+}
 
 
 #right-nav {

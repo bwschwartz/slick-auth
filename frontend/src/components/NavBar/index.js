@@ -1,5 +1,5 @@
 
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { logout } from '../../store/session'
 import { clearChannels } from '../../store/channels'
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,9 +13,8 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const { showProfileEdit, setShowProfileEdit } = useContext(ChatContext)
   const user = useSelector(state => state.session.user? state.session.user.email : null )
-
-
   const profPic = useSelector(state => state.session.user? state.session.user.photoUrl :  null)
+  const [showDropDown, setShowDropDown] = useState(false)
 
   if (!user) return  <Redirect to="/login"/>
 
@@ -25,7 +24,7 @@ const NavBar = () => {
      })
    }
    const showProf = () => {
-     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 60, 20] : [20, 80, 0]
+     const dims = arrayEquals(showProfileEdit, [20, 80, 0]) ? [20, 55, 25] : [20, 80, 0]
      setShowProfileEdit(dims)
    }
 
@@ -38,7 +37,6 @@ const NavBar = () => {
 
   const filterList = () => {
     console.log("i'm filtering honey")
-
   }
 
   return (
@@ -53,12 +51,30 @@ const NavBar = () => {
 
       <div id="center-nav">
         <div id="search-bar">
-          {/* <span>Search for a full-stack developer</span> */}
-          {/* <i class="fa-solid fa-magnifying-glass" id="search-icon"/> */}
 
-          <input type="text" id="search-input" onKeyUp={filterList}
-          placeholder="&#xF002; &nbsp; Search for a full-stack developer" style={{fontFamily:"Arial, FontAwesome"}}
-          ></input>
+          <input type="text" id="search-input"
+          autoComplete="off"
+          onKeyUp={filterList}
+          onFocus={() => setShowDropDown(true)}
+          onBlur={() => setTimeout(() => {
+          setShowDropDown(false)}, 100)
+          }
+          placeholder="&#xF002; &nbsp; Search for a full-stack developer"
+          style={{fontFamily:"Arial, FontAwesome"}}>
+          </input>
+
+         {showDropDown && <ul id="dev-links">
+            <li><a href="https://github.com/bwschwartz">
+            <i className="fa-brands fa-github dev-link-icon"></i>
+             Github</a></li>
+            <li><a href="#">
+            <i className="fa-brands fa-linkedin dev-link-icon"></i>
+            LinkedIn</a></li>
+            <li><a href="#">
+            <i className="fa-solid fa-palette dev-link-icon"></i>
+            Portfolio Site</a></li>
+          </ul>}
+
         </div>
       </div>
 
