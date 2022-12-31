@@ -12,9 +12,9 @@ export const EditProfileModal = () => {
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
   const user = useSelector(state => state.session.user? state.session.user : null)
-  const [displayName, setDisplayName] = useState(user.displayName);
-  const [fullName, setFullName] = useState(user.fullName);
-  const [title, setTitle] = useState(user.title);
+  const [displayName, setDisplayName] = useState(user?.displayName);
+  const [fullName, setFullName] = useState(user?.fullName);
+  const [title, setTitle] = useState(user?.title);
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
   const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
   const currentChannel = useSelector(state => state.channels ? state.channels.currentChannel : null)

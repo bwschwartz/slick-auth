@@ -690,7 +690,23 @@ background-color: #1B1D21;
 
 #exit-preview:hover {
   background-color: #1c8a6d;
-
-
 }
 
+#prof-logout {
+  height: 33px;
+  width: 100px;
+  margin-top: -45px;
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(216, 87, 87);
+  border: 1px solid rgb(216, 87, 87);
+  font-size: 18px;
+  font-weight: lighter;
+}
+
+#prof-logout:hover {
+  cursor: pointer;
+  background-color: #504e561b;
+}

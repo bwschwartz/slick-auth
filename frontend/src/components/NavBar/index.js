@@ -29,7 +29,7 @@ const NavBar = () => {
    }
 
   const logOutUser= () => {
-    console.log("loggingOutUser")
+    // console.log("loggingOutUser")
     showProf()
     // dispatch(clearChannels())
     // return dispatch(logout())
@@ -98,7 +98,7 @@ const NavBar = () => {
         <div id="logout">
 
           <button id="logout-button" style={profPic? {backgroundColor:"transparent"} : {backgroundColor:"rgb(70, 86, 97)"}}
-            onClick={ logOutUser }>
+            onClick={ () => showProf() }>
               {profPic? <img src={profPic} style={{width:"26px", height:"26px", borderRadius:"5px"}}/> : user[0].toUpperCase() }
             <div className="availability-circle"></div>
           </button>

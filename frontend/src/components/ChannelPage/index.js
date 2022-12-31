@@ -2,9 +2,9 @@ import { useEffect, useCallback, useState, createRef, useContext } from 'react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Split from 'react-split'
-import { fetchChannels, fetchChannel } from '../../store/channels'
+import { fetchChannels, fetchChannel, clearChannels } from '../../store/channels'
 import { createMessage, receiveMessage } from '../../store/messages'
-import { updateUser } from '../../store/session'
+import { updateUser, logout } from '../../store/session'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Messages from '../Messages'
 import { Modal } from '../../context/Modal'
@@ -150,7 +150,11 @@ export const ChannelPage = () => {
 
   const toggleProfileView = () => {
     setEditProfView(state => !state)
-    console.log("in toggle view, edit prof is", editProfView)
+  }
+
+  const logOutUser= () => {
+    dispatch(clearChannels())
+    return dispatch(logout())
   }
 
   return (
@@ -253,7 +257,7 @@ export const ChannelPage = () => {
         </div>
         }
 
-        <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>
+        {user && <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>}
 
 <div className="prof-component-edit"><div id="prof-username">{user}</div>
 {!editProfView && <span> <EditProfileModal/></span>}
@@ -305,6 +309,10 @@ export const ChannelPage = () => {
     <div className="contact-user-info">{userPhone}</div>
   </div>
 </div>
+
+<div id="prof-logout"
+onClick={logOutUser}
+>Log Out</div>
 
 </div>
 </div>
