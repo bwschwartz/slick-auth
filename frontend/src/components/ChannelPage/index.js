@@ -310,9 +310,9 @@ export const ChannelPage = () => {
   </div>
 </div>
 
-<div id="prof-logout"
+{!editProfView && <div id="prof-logout"
 onClick={logOutUser}
->Log Out</div>
+>Log Out</div>}
 
 </div>
 </div>
