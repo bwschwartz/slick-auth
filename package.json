@@ -11,7 +11,7 @@
     "build": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.16"
   },
   "repository": {
     "type": "git",
