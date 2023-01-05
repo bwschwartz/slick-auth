@@ -17,11 +17,12 @@ import ChatContext  from '../../context/ChatContext'
 import './ChannelPage.css'
 import Clock from '../../assets/transparent-clock-right-color.png'
 import ActionCable from 'actioncable'
+import consumer from '../../consumer'
 
 export const ChannelPage = () => {
   const dispatch = useDispatch();
   // const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
-  const consumer = ActionCable.createConsumer("https://slick-clone.herokuapp.com/");
+  // const consumer = ActionCable.createConsumer("https://slick-clone.herokuapp.com/");
 
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null);
   const user = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email );
