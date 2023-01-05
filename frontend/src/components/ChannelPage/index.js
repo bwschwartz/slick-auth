@@ -20,7 +20,9 @@ import ActionCable from 'actioncable'
 
 export const ChannelPage = () => {
   const dispatch = useDispatch();
-  const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
+  // const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
+  const consumer = ActionCable.createConsumer("https://slick-clone.herokuapp.com/");
+
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null);
   const user = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email );
   const userStatus = useSelector(state => state.session.user ? state.session.user.status : null);
