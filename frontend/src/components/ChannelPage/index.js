@@ -25,7 +25,11 @@ export const ChannelPage = () => {
   // const consumer = ActionCable.createConsumer("https://slick-clone.herokuapp.com/");
 
   const currentUserId = useSelector( state => state.session.user ? state.session.user.id : null);
-  const user = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email );
+  // const user = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email );
+  const user = useSelector (state => state.session.user?.username? state.session.user.username :  state.session.user?.email );
+  // const userDisplayName = useSelector (state => state.session.user?.fullName? state.session.user.username :  state.session.user?.email );
+
+  const userFullName = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
   const userStatus = useSelector(state => state.session.user ? state.session.user.status : null);
   const userEmail = useSelector(state => state.session.user ? state.session.user.email : null);
   const userPhone = useSelector(state => state.session.user ? state.session.user.phone : null);
@@ -262,7 +266,7 @@ export const ChannelPage = () => {
 
         {user && <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>}
 
-<div className="prof-component-edit"><div id="prof-username">{user}</div>
+<div className="prof-component-edit"><div id="prof-username">{userFullName}</div>
 {!editProfView && <span> <EditProfileModal/></span>}
 </div>
 
@@ -271,8 +275,8 @@ export const ChannelPage = () => {
 {userStatus &&
 <div id="status-and-cancel">
 
- <div id="availability-status"><i class="fa-regular fa-comment-dots speech-bubble fa-xl"/>{userStatus}</div>
-{!editProfView && <i class="fa-solid fa-x fa-xs"
+ <div id="availability-status"><i className="fa-regular fa-comment-dots speech-bubble fa-xl"/>{userStatus}</div>
+{!editProfView && <i className="fa-solid fa-x fa-xs"
   onClick={removeStatus}
   id="status-x"
  />}
@@ -306,7 +310,7 @@ export const ChannelPage = () => {
 </div>
 
 <div className="contact-info-display" id="contact-bottom">
-<i class="fa-solid fa-lg fa-phone envelope"></i>
+<i className="fa-solid fa-lg fa-phone envelope"></i>
   <div>
     <div className="contact-display-text">Phone</div>
     <div className="contact-user-info">{userPhone}</div>

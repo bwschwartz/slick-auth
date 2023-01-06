@@ -20,6 +20,8 @@ export const SignUpFormPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!username) {
+      return setErrors(["Please enter a display name!"])}
     if (password === confirmationPassword) {
       setErrors([]);
       return dispatch(sessionActions.signUp({ email, password, username }))
@@ -37,8 +39,10 @@ export const SignUpFormPage = () => {
         console.log(`data erros: ${data.errors}`)
       });
     }
+
+
     else {
-      return setErrors(['Password and confirmation password don\'t match, bro'])
+      return setErrors(['Please make sure password and confirmation password match!'])
     }
   }
 
@@ -76,7 +80,7 @@ export const SignUpFormPage = () => {
           placeholder=" your email"
           onChange={ (e) => setEmail(e.target.value) } />
 
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username">Display Name</label>
         <input id="username"
           type="text"
           value={ username }

@@ -52,6 +52,7 @@ export const EditProfileModal = () => {
     }
     formData.append('user[id]', userId)
     formData.append('user[display_name]', displayName)
+    formData.append('user[username]', displayName)
     formData.append('user[full_name]', fullName)
     formData.append('user[title]', title)
     await dispatch(updateUser(formData))

@@ -12,7 +12,7 @@ import './NavBar.css';
 const NavBar = () => {
   const dispatch = useDispatch();
   const { showProfileEdit, setShowProfileEdit } = useContext(ChatContext)
-  const user = useSelector(state => state.session.user? state.session.user.email : null )
+  const user = useSelector(state => state.session.user? state.session.user.username : null)
   const profPic = useSelector(state => state.session.user? state.session.user.photoUrl :  null)
   const [showDropDown, setShowDropDown] = useState(false)
 

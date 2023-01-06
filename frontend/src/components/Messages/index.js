@@ -93,9 +93,9 @@ const Messages = () => {
     {
       channelUsers[message.user_id]?.photoUrl ?
       <img className="message-pic" src={channelUsers[message.user_id]?.photoUrl}/> :
-      <div>hi</div> ||
 
-      {/* <div id="default-prof"  className="message-pic">{channelUsers[message.user_id].username[0].toUpperCase()}</div> */}
+
+      <div id="default-prof"  className="message-pic">{channelUsers[message.user_id].username[0].toUpperCase()}</div>
 
     }
 

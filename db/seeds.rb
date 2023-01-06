@@ -11,27 +11,28 @@ ApplicationRecord.transaction do
   ApplicationRecord.connection.reset_pk_sequence!('users')
   ApplicationRecord.connection.reset_pk_sequence!('channels')
   ApplicationRecord.connection.reset_pk_sequence!('channel_users') # Gives first user id of 1
-   # Gives first user id of 1
-   # Gives first user id of 1
 
   puts "Creating users..."
 
   User.create!(
     email: 'benjamin.schwart123@gmail.com',
-    password: 'password123'
+    password: 'password123',
+    username: 'Ben',
+    display_name: 'Ben',
+    full_name: 'Test User'
   )
 
-  User.create!(
-    email: 'demo@gmail.com',
-    password: 'password'
-  )
+  # User.create!(
+  #   email: 'demo@gmail.com',
+  #   password: 'password'
+  # )
 
-  10.times do
-    User.create!({
-      email:  Faker::Internet.unique.email,
-      password: 'password'
-    })
-  end
+  # 10.times do
+  #   User.create!({
+  #     email:  Faker::Internet.unique.email,
+  #     password: 'password'
+  #   })
+  # end
 
   puts "Done!"
 

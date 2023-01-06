@@ -45,7 +45,7 @@ export const ContactUpdateModal = () => {
                 <form id="edit-prof-form" className="status-input">
 
                 <div className="contact-label" style={{fontWeight:"bold"}}>
-                <i class="fa-solid fa-lock fa-sm" id="lock"></i>
+                <i className="fa-solid fa-lock fa-sm" id="lock"></i>
                 Email Address</div>
                 <input className="prof-edit-attr"
                 id="locked-email"
