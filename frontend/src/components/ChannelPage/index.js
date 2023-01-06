@@ -38,8 +38,6 @@ export const ChannelPage = () => {
   const [timeObj, setTimeObj] = useState(new Date());
   const [editProfView, setEditProfView] = useState(false);
 
-  console.log("user full name is,", userFullName)
-
   useEffect (()=> {
     dispatch(fetchChannels());
     setInterval(() => setTimeObj(new Date()), 6000)

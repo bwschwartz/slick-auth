@@ -27,7 +27,6 @@ export const updateUser = (updatedInfo) => async(dispatch)=> {
     body: updatedInfo
   })
   const data = await res.json();
-  console.log("data is firing", data)
   dispatch(editUser(data))
   return data
 }
