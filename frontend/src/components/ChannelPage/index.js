@@ -29,7 +29,7 @@ export const ChannelPage = () => {
   const user = useSelector (state => state.session.user?.username? state.session.user.username :  state.session.user?.email );
   // const userDisplayName = useSelector (state => state.session.user?.fullName? state.session.user.username :  state.session.user?.email );
 
-  const userFullName = useSelector (state => state.session.user?.fullName? state.session.user.fullName :  state.session.user?.email )
+  const userFullName = useSelector (state => (state.session.user?.fullName &&  state.session.user?.fullName !== "null") ? state.session.user.fullName :  state.session.user?.email )
   const userStatus = useSelector(state => state.session.user ? state.session.user.status : null);
   const userEmail = useSelector(state => state.session.user ? state.session.user.email : null);
   const userPhone = useSelector(state => state.session.user ? state.session.user.phone : null);
@@ -38,6 +38,7 @@ export const ChannelPage = () => {
   const [timeObj, setTimeObj] = useState(new Date());
   const [editProfView, setEditProfView] = useState(false);
 
+  console.log("user full name is,", userFullName)
 
   useEffect (()=> {
     dispatch(fetchChannels());
@@ -266,7 +267,7 @@ export const ChannelPage = () => {
 
         {user && <div id="profile-pic">{profPic? <img src={profPic} style={{width:"100%", height:"100%"}}/> : user[0].toUpperCase()}</div>}
 
-<div className="prof-component-edit"><div id="prof-username">{userFullName}</div>
+<div className="prof-component-edit"><div id="prof-username">{userFullName? userFullName : "hi"}</div>
 {!editProfView && <span> <EditProfileModal/></span>}
 </div>
 

@@ -14,7 +14,7 @@ export const EditProfileModal = () => {
   const user = useSelector(state => state.session.user? state.session.user : null)
   const [displayName, setDisplayName] = useState(user?.displayName);
   const [fullName, setFullName] = useState(user?.fullName);
-  const [title, setTitle] = useState(user?.title);
+  const [title, setTitle] = useState((user?.title && user.title !== 'null') ?  user.title : null );
   const userId = useSelector(state => state.session.user? state.session.user.id : null)
   const currentProfPic = useSelector(state => state.session.user? state.session.user.photoUrl : null)
   const currentChannel = useSelector(state => state.channels ? state.channels.currentChannel : null)
@@ -84,7 +84,7 @@ export const EditProfileModal = () => {
                 <form id="edit-prof-form">
                   <label className="prof-edit-label">Full name</label>
                   <input className="prof-edit-attr"
-                    placeholder={ user.fullName }
+                    placeholder={ 'Full name '}
                     value= { fullName }
                     onChange={ e => setFullName(e.target.value) }
                   />
@@ -101,7 +101,7 @@ export const EditProfileModal = () => {
 
                   <label>Title</label>
                   <input className="prof-edit-attr"
-                    // placeholder={ user.title }
+                    placeholder={ "Title" }
                     value= { title }
                     onChange={ e => setTitle(e.target.value)}
 
