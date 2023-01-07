@@ -75,7 +75,7 @@ const Messages = () => {
   }
 
 
-  const sortedMessages = messages?.sort(( a,  b ) => a.id-b.id ); //this is hacky, need to sort by created at
+  const sortedMessages = messages?.sort(( a,  b ) => a.id-b.id ); 
 
 
 
