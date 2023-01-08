@@ -37,24 +37,46 @@ export const ChannelPage = () => {
   const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null );
   const [timeObj, setTimeObj] = useState(new Date());
   const [editProfView, setEditProfView] = useState(false);
+  const [activeSubscriptions, setActiveSubscriptions] = useState([]);
+
 
   useEffect (()=> {
     dispatch(fetchChannels());
     setInterval(() => setTimeObj(new Date()), 6000)
   }, [])
-  const [currentChannelId, setCurrentChannelId] = useState(null)
-  const [messageContent, setMessageContent] = useState('')
+  const [currentChannelId, setCurrentChannelId] = useState(null);
+  const [messageContent, setMessageContent] = useState('');
 
   const { showProfileEdit, setShowProfileEdit, channelDisplayName, setChannelDisplayName, reRenderMessages } = useContext(ChatContext)
 
+  const unsubscribeAll = () => {
+    console.log("in unsub", consumer.subscriptions.subscriptions)
+    for (let i=0; i< consumer.subscriptions.subscriptions.length; i++){
+    console.log("in unsub for loop")
+
+      const sub = consumer.subscriptions.subscriptions[i];
+      console.log("the current sub is", consumer.subscriptions.subscriptions[i])
+      sub.unsubscribe()
+    }
+  }
+
   const changeChannel= (e) => {
+    // console.log(consumer.subscriptions)
+    console.log("active subscriptions are", activeSubscriptions)
+    unsubscribeAll()
+    console.log("after unsbubscribing", consumer.subscriptions)
+
+
     e.stopPropagation();
     localStorage.removeItem("usedDate")
     const channel = e.currentTarget
     if (channel.id !== currentChannelId) {
       setChannelDisplayName((channel.innerText).trim())
       dispatch(fetchChannel(channel.id))
+
       setCurrentChannelId(channel.id)
+      // console.log("channel.id is", channel.id)
+      // console.log("current channel in changeChannel is", currentChannelId)
     }
     setTimeout(() => {
       document.getElementById("messages-list-bottom").scrollIntoView(false)
@@ -63,18 +85,30 @@ export const ChannelPage = () => {
   //enter room and subscribe
   useEffect(() => {
     let subscription = null
+    // console.log("in use effect, current channel is", currentChannelId)
     if(currentChannelId) {
       const subscription = consumer.subscriptions.create(
         { channel: "ChannelsChannel", id: currentChannelId },
         { received: (message) => {
+          console.log("logging info about message", message[Object.keys(message)[0]].channelId)
           dispatch(receiveMessage(message))
-          dispatch(fetchChannel(currentChannelId))
+
+          console.log("current channel id in messages", currentChannelId)
+
+          // console.log("---------")
+          // console.log(message.id)
+          const messageChannel = message[Object.keys(message)[0]].channelId
+          console.log("message channel is", messageChannel)
+
+          dispatch(fetchChannel(messageChannel))
           setTimeout(() => {
             document.getElementById("messages-list-bottom").scrollIntoView(false)
           }, 300)
         }
        }
       );
+      // console.log("subscription is", subscription)
+      // setActiveSubscriptions(activeSubscriptions.push(subscription))
     }
     return () => subscription?.unsubscribe();
   }, [currentChannelId])

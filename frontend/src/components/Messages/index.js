@@ -75,7 +75,7 @@ const Messages = () => {
   }
 
 
-  const sortedMessages = messages?.sort(( a,  b ) => a.id-b.id ); 
+  const sortedMessages = messages?.sort(( a,  b ) => a.id-b.id );
 
 
 

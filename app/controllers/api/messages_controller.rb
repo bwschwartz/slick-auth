@@ -11,10 +11,14 @@ class Api::MessagesController < ApplicationController
     if @message.save
       # ChannelsChannel.broadcast_to(@message.channel, @message)
       # render json: {"#{@message}": @message}
-      ChannelsChannel.broadcast_to @message.channel,
-       from_template('api/messages/show', message: @message)
+      # ChannelsChannel.broadcast_to @message.channel,
+      #  from_template('api/messages/show', message: @message)
+
+      ActionCable.server.broadcast("chat_#{@message.channel_id}",from_template('api/messages/show', message: @message) )
+
+
     else
-      render json: "error bitch"
+      render json: "error"
     end
   end
 
