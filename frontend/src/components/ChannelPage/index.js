@@ -82,28 +82,29 @@ export const ChannelPage = () => {
       document.getElementById("messages-list-bottom").scrollIntoView(false)
     }, 400)
   }
+
+  const fetchChannelAndScroll = async (messageChannel) => {
+    await dispatch(fetchChannel(messageChannel))
+    document.getElementById("messages-list-bottom").scrollIntoView(false)
+  }
+
   //enter room and subscribe
-  useEffect(() => {
+  useEffect( () => {
     let subscription = null
     // console.log("in use effect, current channel is", currentChannelId)
     if(currentChannelId) {
       const subscription = consumer.subscriptions.create(
         { channel: "ChannelsChannel", id: currentChannelId },
         { received: (message) => {
-          console.log("logging info about message", message[Object.keys(message)[0]].channelId)
-          dispatch(receiveMessage(message))
 
-          console.log("current channel id in messages", currentChannelId)
-
-          // console.log("---------")
-          // console.log(message.id)
           const messageChannel = message[Object.keys(message)[0]].channelId
-          console.log("message channel is", messageChannel)
 
-          dispatch(fetchChannel(messageChannel))
-          setTimeout(() => {
-            document.getElementById("messages-list-bottom").scrollIntoView(false)
-          }, 300)
+          fetchChannelAndScroll(messageChannel)
+
+          // dispatch(fetchChannel(messageChannel))
+          // setTimeout(() => {
+          //   document.getElementById("messages-list-bottom").scrollIntoView(false)
+          // }, 400)
         }
        }
       );
