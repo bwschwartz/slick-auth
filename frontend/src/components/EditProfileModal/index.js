@@ -85,7 +85,7 @@ export const EditProfileModal = () => {
                   <label className="prof-edit-label">Full name</label>
                   <input className="prof-edit-attr"
                     placeholder={ 'Full name '}
-                    value= { fullName }
+                    value= { fullName !== 'null' ? fullName : '' }
                     onChange={ e => setFullName(e.target.value) }
                   />
 
@@ -93,7 +93,7 @@ export const EditProfileModal = () => {
 
                   <input className="prof-edit-attr"
                     placeholder={ user.displayName }
-                    value= { displayName }
+                    value= { displayName ? displayName : '' }
                     onChange={ e => setDisplayName(e.target.value) }
                   />
 
@@ -102,7 +102,7 @@ export const EditProfileModal = () => {
                   <label>Title</label>
                   <input className="prof-edit-attr"
                     placeholder={ "Title" }
-                    value= { title }
+                    value= { title ? title : ''}
                     onChange={ e => setTitle(e.target.value)}
 
                   />
