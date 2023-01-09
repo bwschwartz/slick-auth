@@ -103,7 +103,7 @@ export const EditProfileModal = () => {
                   <input className="prof-edit-attr"
                     placeholder={ "Title" }
                     value= { title ? title : ''}
-                    onChange={ e => setTitle(e.target.value)}
+                    onChange={ e => setTitle(e.target.value) }
 
                   />
                   <span>Let the people know what you do at A Real Workplace</span>
