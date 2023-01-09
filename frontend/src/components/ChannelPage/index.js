@@ -86,10 +86,11 @@ export const ChannelPage = () => {
   const fetchChannelAndScroll = async (messageChannel) => {
     await dispatch(fetchChannel(messageChannel))
     document.getElementById("messages-list-bottom").scrollIntoView(false)
+    console.log("this shit fired bitch")
   }
 
   //enter room and subscribe
-  useEffect( () => {
+  useEffect(  () => {
     let subscription = null
     // console.log("in use effect, current channel is", currentChannelId)
     if(currentChannelId) {
@@ -97,14 +98,13 @@ export const ChannelPage = () => {
         { channel: "ChannelsChannel", id: currentChannelId },
         { received: (message) => {
 
+
           const messageChannel = message[Object.keys(message)[0]].channelId
 
-          fetchChannelAndScroll(messageChannel)
-
-          // dispatch(fetchChannel(messageChannel))
-          // setTimeout(() => {
-          //   document.getElementById("messages-list-bottom").scrollIntoView(false)
-          // }, 400)
+          dispatch(fetchChannel(messageChannel))
+          setTimeout(() => {
+            document.getElementById("messages-list-bottom").scrollIntoView(false)
+          }, 400)
         }
        }
       );
