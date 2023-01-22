@@ -374,6 +374,10 @@ i span {
   padding-left: .38;
 }
 
+a {
+  text-decoration: none;
+}
+
 .chat-styling-icons {
   /* background-color:blue; */
   width: 95%;
