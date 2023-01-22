@@ -261,7 +261,8 @@ export const ChannelPage = () => {
                   />
                 </form>
                 <div id= "plane">
-                  <i className="fa-solid fa-paper-plane fa-lg"></i>
+                  <i onClick={handleSubmit}
+                  className="fa-solid fa-paper-plane fa-lg"></i>
                 </div>
               </div>
           </div>}

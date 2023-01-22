@@ -450,6 +450,12 @@ i span {
   margin-right: 20px;
 }
 
+#plane:hover {
+  cursor: pointer;
+  color: #a0a3a7;
+
+}
+
 #messages-list {
   margin-top: 100px;
   /* height: fit-content; */
