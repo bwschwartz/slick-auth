@@ -20,7 +20,6 @@ import ActionCable from 'actioncable'
 import consumer from '../../consumer'
 
 export const ChannelPage = () => {
-  console.log("on channel page")
 
   const dispatch = useDispatch();
   // const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
