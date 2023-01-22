@@ -20,6 +20,8 @@ import ActionCable from 'actioncable'
 import consumer from '../../consumer'
 
 export const ChannelPage = () => {
+  console.log("on channel page")
+
   const dispatch = useDispatch();
   // const consumer = ActionCable.createConsumer("ws://localhost:5000/cable");
   // const consumer = ActionCable.createConsumer("https://slick-clone.herokuapp.com/");
@@ -37,7 +39,6 @@ export const ChannelPage = () => {
   const profPic = useSelector ( state => state.session.user? state.session.user.photoUrl : null );
   const [timeObj, setTimeObj] = useState(new Date());
   const [editProfView, setEditProfView] = useState(false);
-
 
   useEffect (()=> {
     dispatch(fetchChannels());
@@ -88,10 +89,10 @@ export const ChannelPage = () => {
 
           fetchChannelAndScroll(messageChannel)
 
-          // dispatch(fetchChannel(messageChannel))
-          // setTimeout(() => {
-          //   document.getElementById("messages-list-bottom").scrollIntoView(false)
-          // }, 400)
+          dispatch(fetchChannel(messageChannel))
+          setTimeout(() => {
+            document.getElementById("messages-list-bottom").scrollIntoView(false)
+          }, 400)
         }
        }
       );

@@ -16,7 +16,7 @@ const NavBar = () => {
   const profPic = useSelector(state => state.session.user? state.session.user.photoUrl :  null)
   const [showDropDown, setShowDropDown] = useState(false)
 
-  if (!user) return  <Redirect to="/login"/>
+  if (!user) return  <Redirect to ="/login"/>
 
   const arrayEquals = (arr1, arr2) => {
     return arr1.every((e, i, arr) =>{

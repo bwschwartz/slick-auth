@@ -7,13 +7,16 @@ import SlackIcon from '../../assets/slick_icon1.png'
 import FredsFace from '../../assets/demo_user.PNG'
 
 const LoginFormPage = () => {
+  console.log("on login for page")
+
   const dispatch = useDispatch();
-  const user = useSelector( (state) => state.session.user )
+  const user = useSelector( (state) => state.session.user? state.session.user : null  );
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (user) return <Redirect to="/" />;
+  if (user) return <Redirect from="/login" exact to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +26,7 @@ const LoginFormPage = () => {
       let data;
       try {
         data = await res.clone().json();
+
       } catch {
         data = await res.text();
       }
