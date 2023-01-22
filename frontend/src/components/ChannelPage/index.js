@@ -67,9 +67,10 @@ export const ChannelPage = () => {
       setCurrentChannelId(channel.id)
     }
 
-    document.getElementById('message-box').focus();
 
     setTimeout(() => {
+    if(document.getElementById('message-box')) document.getElementById('message-box').focus();
+
       document.getElementById("messages-list-bottom").scrollIntoView(false)
     }, 400)
   }
