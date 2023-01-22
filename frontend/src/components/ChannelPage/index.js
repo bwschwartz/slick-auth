@@ -67,6 +67,8 @@ export const ChannelPage = () => {
       setCurrentChannelId(channel.id)
     }
 
+    document.getElementById('message-box').focus();
+
     setTimeout(() => {
       document.getElementById("messages-list-bottom").scrollIntoView(false)
     }, 400)
@@ -238,14 +240,18 @@ export const ChannelPage = () => {
         { channelDisplayName && <div id="send-message-container">
               <div className="chat-styling-icons">
                 <div className="style-icon">
-                  <i className="fa-sharp fa-solid fa-bold fa-xs"/>
+                  <a href="https://bwschwartz.github.io/personal_site/">
+                    <i className="fa-sharp fa-solid fa-bold fa-xs"/>
+                  </a>
                 </div>
-                <div className="style-icon">
+                {/* <div className="style-icon">
                   <i className="fa-solid fa-italic fa-xs"/>
-                </div>
-
+                </div> */}
                 <div className="style-icon">
+                <a href="https://bwschwartz.github.io/personal_site/">
+
                   <i className="fa-solid fa-strikethrough fa-xs"/>
+                </a>
                 </div>
               </div>
 
