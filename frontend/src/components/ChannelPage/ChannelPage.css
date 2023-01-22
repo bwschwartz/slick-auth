@@ -415,6 +415,7 @@ i span {
   text-justify: start;
   background-color: transparent;
   font-family: Slack-Lato,Slack-Fractions,appleLogo,sans-serif;
+  color:#d5dadf;
 }
 
 #message-box:focus  {
