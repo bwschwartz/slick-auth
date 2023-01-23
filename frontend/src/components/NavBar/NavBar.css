@@ -91,15 +91,17 @@
 
 
 #dev-links li a {
-  border: 1px solid rgb(227, 184, 184);
+  border: 3px solid rgb(210, 6, 26);
   margin-top: -1px;
-  background-color: rgb(238, 143, 174);
+  background-color: rgb(222, 87, 153);
   padding: 10px;
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
-  color: rgb(129, 102, 102);
+  color: rgb(161, 21, 128);
   display: block;
   width: 300px;
+  border-radius: 20px;
+  margin: 10px;
   /* margin-left: 170px; */
 }
 
