@@ -79,7 +79,7 @@
 }
 
 .prof-edit-attr:focus{
-  box-shadow: 0 0 0 1px rgba(98, 162, 231, 0.775),0 0 0 5px #1f8cb487;
+  box-shadow: 0 0 0 1px rgba(98, 162, 231, 0.775),0 0 0 2px #1f8cb487;
   outline: none;
   border-radius: 5px;
   border: none;
