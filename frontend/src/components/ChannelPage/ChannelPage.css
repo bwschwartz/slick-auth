@@ -706,7 +706,7 @@ background-color: #1B1D21;
 }
 
 #prof-logout {
-  height: 33px;
+  height: 40px;
   width: 100px;
   margin-top: -45px;
   margin-bottom: 80px;
@@ -717,6 +717,7 @@ background-color: #1B1D21;
   border: 1px solid rgb(216, 87, 87);
   font-size: 18px;
   font-weight: lighter;
+  border-radius: 8px;
 }
 
 #prof-logout:hover {
