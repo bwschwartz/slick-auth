@@ -69,7 +69,7 @@ export const SignUpFormPage = () => {
       </header>
 
     <div id="sign-up-form">
-      <h1>Join <span id="suave">Google Magenta</span></h1>
+      <h1>Join <span id="suave">A Real Workplace</span></h1>
 
       <form
       onSubmit= { handleSubmit }>
