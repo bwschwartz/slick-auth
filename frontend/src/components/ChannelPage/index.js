@@ -54,9 +54,10 @@ export const ChannelPage = () => {
       sub.unsubscribe()
     }
   }
-  const changeChannel= (e) => {
-    e.stopPropagation();
-
+  const changeChannel = (e) => {
+    console.log("n change channel")
+    console.log(e.target.classList)
+    if (e.target.classList[0] ==="credential") return
     unsubscribeAll()
     localStorage.removeItem("usedDate")
     const channel = e.currentTarget
@@ -68,6 +69,7 @@ export const ChannelPage = () => {
 
 
     setTimeout(() => {
+    console.log("in set timeout")
     if(document.getElementById('message-box')) document.getElementById('message-box').focus();
 
       document.getElementById("messages-list-bottom").scrollIntoView(false)

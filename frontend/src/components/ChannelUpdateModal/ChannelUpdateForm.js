@@ -20,7 +20,7 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
     const sendTitle = title === '' ? channelName : title
     const sendDescription = inputDescription === '' ? storeDescription : inputDescription
     dispatch(channelActions.updateChannel({sendDescription, sendTitle, channelID, owner_id}))
-    onClose()
+    onClose();
   }
 
   const deleteChannel = (e) => {
@@ -38,13 +38,16 @@ export const ChannelUpdateForm = ({ onClose, channelName, channelID }) => {
       <form onSubmit={ handleSubmit }>
 
       <label>Channel Name</label>
-            <input  className="credential" type="text"
+            <input className="credential" type="text"
             placeholder={channelName}
             value={ title }
-            onChange = { (e) => setTitle(e.target.value) } />
+            onChange = { (e) => setTitle(e.target.value) }
+             />
 
       <div id="description">Description <span>(optional)</span></div>
+
           <input type="text"
+          className="credential"
             placeholder={ storeDescription }
             value={ inputDescription }
             onChange = { (e) => setInputDescription(e.target.value) } />
